@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const scrollTop = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     if (docHeight <= 0) {
-      progressBar.style.width = '100%';
+      progressBar.style.width = '0%';
       return;
     }
     const pct = Math.min(100, (scrollTop / docHeight) * 100);
@@ -64,8 +64,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function markCurrentAsVisited() {
     const pathFile = currentPath.split('/').pop();
-    // Only track chapter pages
-    if (!pathFile || pathFile === 'index.html' || !pathFile.startsWith('0')) return;
+    // Only track chapter pages (01-how-web-works.html through 10-component-thinking.html)
+    const isChapterFile = pathFile && /^\d{2}-/.test(pathFile);
+    if (!isChapterFile) return;
 
     const visited = getVisited();
     if (!visited.includes(pathFile)) {

@@ -1024,6 +1024,28 @@ code:not(.code-block code) {
   color: var(--color-text-muted);
 }
 
+.chapter-nav__completion {
+  padding: var(--space-4) var(--space-5);
+  text-align: right;
+}
+
+.chapter-nav__completion-label {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+
+.chapter-nav__completion-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--color-accent);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
 .chapter-nav__title {
   font-size: 14px;
   font-weight: 600;
