@@ -49,12 +49,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ------------------------------------------
      3. COURSE PROGRESS TRACKER (sidebar footer)
-     Shows overall progress based on chapters visited
+     Shows overall progress based on chapters completed (clicked "next" button)
   ------------------------------------------ */
   const TOTAL_CHAPTERS = 10;
-  const STORAGE_KEY = 'dwc_visited';
+  const STORAGE_KEY = 'dwc_completed';
 
-  function getVisited() {
+  function getCompleted() {
     try {
       return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
     } catch (e) {
@@ -62,32 +62,45 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  function markCurrentAsVisited() {
-    const pathFile = currentPath.split('/').pop();
-    // Only track chapter pages (01-how-web-works.html through 10-component-thinking.html)
-    const isChapterFile = pathFile && /^\d{2}-/.test(pathFile);
-    if (!isChapterFile) return;
-
-    const visited = getVisited();
-    if (!visited.includes(pathFile)) {
-      visited.push(pathFile);
+  function markChapterCompleted(chapterFile) {
+    const completed = getCompleted();
+    if (!completed.includes(chapterFile)) {
+      completed.push(chapterFile);
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(visited));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(completed));
       } catch (e) {}
     }
-    return visited;
+    updateCourseProgress();
   }
 
   function updateCourseProgress() {
     const fill = document.getElementById('courseProgress');
     if (!fill) return;
-    const visited = getVisited();
-    const pct = Math.round((visited.length / TOTAL_CHAPTERS) * 100);
+    const completed = getCompleted();
+    const pct = Math.round((completed.length / TOTAL_CHAPTERS) * 100);
     fill.style.width = pct + '%';
     fill.title = pct + '% complete';
   }
 
-  markCurrentAsVisited();
+  // Attach click handlers to "next" buttons to mark chapters as completed
+  const nextLinks = document.querySelectorAll('.chapter-nav__link--next');
+  nextLinks.forEach(function (link) {
+    link.addEventListener('click', function () {
+      const href = link.getAttribute('href');
+      if (href) {
+        // Extract filename from href (could be relative or absolute)
+        const nextChapter = href.split('/').pop();
+        if (nextChapter && /^\d{2}-/.test(nextChapter)) {
+          // Mark the current chapter as completed when user clicks next
+          const currentFile = currentPath.split('/').pop() || 'index.html';
+          if (currentFile !== 'index.html' && /^\d{2}-/.test(currentFile)) {
+            markChapterCompleted(currentFile);
+          }
+        }
+      }
+    });
+  });
+
   updateCourseProgress();
 
   /* ------------------------------------------
