@@ -159,22 +159,24 @@ document.addEventListener('DOMContentLoaded', function () {
     fill.title = pct + '% complete';
   }
 
-  // "Next" buttons → mark current chapter complete + confetti, then navigate after delay
+  // If arriving from a "next" click, fire confetti immediately on page load
+  if (sessionStorage.getItem('dwc_confetti') === '1') {
+    sessionStorage.removeItem('dwc_confetti');
+    launchConfetti(1800);
+  }
+
+  // "Next" buttons → mark complete, set confetti flag, navigate immediately
   const nextLinks = document.querySelectorAll('.chapter-nav__link--next');
   nextLinks.forEach(function (link) {
-    link.addEventListener('click', function (e) {
+    link.addEventListener('click', function () {
       const href = link.getAttribute('href');
       if (!href) return;
       const nextChapter = href.split('/').pop();
       if (nextChapter && /^\d{2}-/.test(nextChapter)) {
         const currentFile = currentPath.split('/').pop() || 'index.html';
         if (currentFile !== 'index.html' && /^\d{2}-/.test(currentFile)) {
-          e.preventDefault(); // stop immediate navigation
           markChapterCompleted(currentFile);
-          launchConfetti(1800);
-          setTimeout(function () {
-            window.location.href = href;
-          }, 1800);
+          sessionStorage.setItem('dwc_confetti', '1'); // trigger confetti on next page
         }
       }
     });
