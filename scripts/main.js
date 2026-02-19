@@ -114,7 +114,8 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Attach click handlers to "previous" buttons to unmark chapters
-  const prevLinks = document.querySelectorAll('.chapter-nav__link:not(.chapter-nav__link--next)');
+  // Use more specific selector to avoid matching unintended elements
+  const prevLinks = document.querySelectorAll('.chapter-nav .chapter-nav__link:not(.chapter-nav__link--next)');
   prevLinks.forEach(function (link) {
     link.addEventListener('click', function () {
       const href = link.getAttribute('href');
@@ -131,6 +132,12 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
+
+  // Auto-mark the final chapter (10) as completed when loaded, since it has no next button
+  const currentFile = currentPath.split('/').pop() || 'index.html';
+  if (currentFile === '10-component-thinking.html') {
+    markChapterCompleted(currentFile);
+  }
 
   updateCourseProgress();
 
