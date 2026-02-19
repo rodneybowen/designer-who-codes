@@ -1,6 +1,7 @@
 /* ============================================
    THE DESIGNER WHO CODES — Main JavaScript
-   Handles: sidebar nav, mobile toggle, reading progress, theme toggle
+   Handles: sidebar nav, mobile toggle, reading progress, theme toggle,
+            course progress, confetti, copy-to-clipboard, graduate modal
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -48,8 +49,72 @@ document.addEventListener('DOMContentLoaded', function () {
   updateProgressBar();
 
   /* ------------------------------------------
-     3. COURSE PROGRESS TRACKER (sidebar footer)
-     Shows overall progress based on chapters completed (clicked "next" button)
+     3. CONFETTI
+     Lightweight canvas-based confetti burst
+  ------------------------------------------ */
+  function launchConfetti(duration) {
+    const canvas = document.getElementById('confettiCanvas');
+    if (!canvas) return;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const ctx = canvas.getContext('2d');
+    const pieces = [];
+    const colors = ['#f5e642', '#ff4d4d', '#4d9fff', '#4dff9a', '#ff9f4d', '#ffffff'];
+
+    for (let i = 0; i < 160; i++) {
+      pieces.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height,
+        w: Math.random() * 10 + 5,
+        h: Math.random() * 5 + 3,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rot: Math.random() * 360,
+        rotSpeed: (Math.random() - 0.5) * 8,
+        vx: (Math.random() - 0.5) * 3,
+        vy: Math.random() * 4 + 2,
+        opacity: 1
+      });
+    }
+
+    const end = Date.now() + duration;
+    let raf;
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const now = Date.now();
+      const remaining = end - now;
+
+      pieces.forEach(function (p) {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rot += p.rotSpeed;
+        if (remaining < 2000) p.opacity = Math.max(0, remaining / 2000);
+
+        ctx.save();
+        ctx.globalAlpha = p.opacity;
+        ctx.translate(p.x + p.w / 2, p.y + p.h / 2);
+        ctx.rotate((p.rot * Math.PI) / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+
+        if (p.y > canvas.height) { p.y = -20; p.x = Math.random() * canvas.width; }
+      });
+
+      if (now < end) {
+        raf = requestAnimationFrame(draw);
+      } else {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+
+    draw();
+    return function () { cancelAnimationFrame(raf); ctx.clearRect(0, 0, canvas.width, canvas.height); };
+  }
+
+  /* ------------------------------------------
+     4. COURSE PROGRESS TRACKER (sidebar footer)
+     Fills when users click "next"; decreases on "previous"
   ------------------------------------------ */
   const TOTAL_CHAPTERS = 10;
   const STORAGE_KEY = 'dwc_completed';
@@ -94,36 +159,32 @@ document.addEventListener('DOMContentLoaded', function () {
     fill.title = pct + '% complete';
   }
 
-  // Attach click handlers to "next" buttons to mark chapters as completed
+  // "Next" buttons → mark current chapter complete + mini confetti (2s)
   const nextLinks = document.querySelectorAll('.chapter-nav__link--next');
   nextLinks.forEach(function (link) {
     link.addEventListener('click', function () {
       const href = link.getAttribute('href');
       if (href) {
-        // Extract filename from href (could be relative or absolute)
         const nextChapter = href.split('/').pop();
         if (nextChapter && /^\d{2}-/.test(nextChapter)) {
-          // Mark the current chapter as completed when user clicks next
           const currentFile = currentPath.split('/').pop() || 'index.html';
           if (currentFile !== 'index.html' && /^\d{2}-/.test(currentFile)) {
             markChapterCompleted(currentFile);
+            launchConfetti(2000);
           }
         }
       }
     });
   });
 
-  // Attach click handlers to "previous" buttons to unmark chapters
-  // Use more specific selector to avoid matching unintended elements
+  // "Previous" buttons → unmark current chapter
   const prevLinks = document.querySelectorAll('.chapter-nav .chapter-nav__link:not(.chapter-nav__link--next)');
   prevLinks.forEach(function (link) {
     link.addEventListener('click', function () {
       const href = link.getAttribute('href');
       if (href) {
-        // Extract filename from href (could be relative or absolute)
         const prevChapter = href.split('/').pop();
         if (prevChapter && /^\d{2}-/.test(prevChapter)) {
-          // Unmark the current chapter as completed when user clicks previous
           const currentFile = currentPath.split('/').pop() || 'index.html';
           if (currentFile !== 'index.html' && /^\d{2}-/.test(currentFile)) {
             unmarkChapterCompleted(currentFile);
@@ -133,16 +194,94 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Auto-mark the final chapter (10) as completed when loaded, since it has no next button
-  const currentFile = currentPath.split('/').pop() || 'index.html';
-  if (currentFile === '10-component-thinking.html') {
-    markChapterCompleted(currentFile);
-  }
-
   updateCourseProgress();
 
   /* ------------------------------------------
-     4. MOBILE SIDEBAR TOGGLE
+     5. GRADUATE BUTTON + MODAL (Chapter 10)
+     Marks ch10 complete, fills progress to 100%,
+     launches 10s confetti + celebration modal
+  ------------------------------------------ */
+  const graduateBtn = document.getElementById('graduateBtn');
+  const graduateModal = document.getElementById('graduateModal');
+  const graduateClose = document.getElementById('graduateClose');
+
+  if (graduateBtn && graduateModal) {
+    graduateBtn.addEventListener('click', function () {
+      // Mark Chapter 10 as completed
+      markChapterCompleted('10-component-thinking.html');
+
+      // Instantly fill progress bar to 100%
+      const fill = document.getElementById('courseProgress');
+      if (fill) { fill.style.width = '100%'; fill.title = '100% complete'; }
+
+      // Open modal
+      graduateModal.classList.add('graduate-modal--open');
+
+      // Launch big confetti for 10 seconds
+      launchConfetti(10000);
+    });
+
+    if (graduateClose) {
+      graduateClose.addEventListener('click', function () {
+        graduateModal.classList.remove('graduate-modal--open');
+      });
+    }
+
+    // Also close on backdrop click
+    graduateModal.addEventListener('click', function (e) {
+      if (e.target === graduateModal) {
+        graduateModal.classList.remove('graduate-modal--open');
+      }
+    });
+  }
+
+  /* ------------------------------------------
+     6. COPY-TO-CLIPBOARD for code blocks
+     Adds a "copy" button to every .code-block header
+  ------------------------------------------ */
+  document.querySelectorAll('.code-block').forEach(function (block) {
+    const header = block.querySelector('.code-block__header');
+    const code = block.querySelector('code');
+    if (!header || !code) return;
+
+    const copyBtn = document.createElement('button');
+    copyBtn.className = 'code-block__copy';
+    copyBtn.textContent = 'copy';
+    copyBtn.setAttribute('aria-label', 'Copy code to clipboard');
+
+    copyBtn.addEventListener('click', function () {
+      const text = code.innerText || code.textContent;
+      navigator.clipboard.writeText(text).then(function () {
+        copyBtn.textContent = 'copied!';
+        copyBtn.classList.add('code-block__copy--copied');
+        setTimeout(function () {
+          copyBtn.textContent = 'copy';
+          copyBtn.classList.remove('code-block__copy--copied');
+        }, 2000);
+      }).catch(function () {
+        // Fallback for older browsers
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        copyBtn.textContent = 'copied!';
+        copyBtn.classList.add('code-block__copy--copied');
+        setTimeout(function () {
+          copyBtn.textContent = 'copy';
+          copyBtn.classList.remove('code-block__copy--copied');
+        }, 2000);
+      });
+    });
+
+    header.appendChild(copyBtn);
+  });
+
+  /* ------------------------------------------
+     7. MOBILE SIDEBAR TOGGLE
      Hamburger button shows/hides sidebar on mobile
   ------------------------------------------ */
   const hamburger = document.getElementById('hamburger');
@@ -192,7 +331,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* ------------------------------------------
-     5. THEME TOGGLE (light / dark mode)
+     8. THEME TOGGLE (light / dark mode)
      Persists preference in localStorage
   ------------------------------------------ */
   const THEME_KEY = 'dwc_theme';

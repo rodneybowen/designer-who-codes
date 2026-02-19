@@ -16,6 +16,7 @@
   --color-border-subtle: #1a1a1a;
   --color-accent: #f5e642;
   --color-accent-dim: rgba(245, 230, 66, 0.12);
+  --color-accent-border: rgba(245, 230, 66, 0.4);
   --color-red: #ff4d4d;
   --color-red-dim: rgba(255, 77, 77, 0.12);
   --color-blue: #4d9fff;
@@ -65,6 +66,7 @@
   --color-border-subtle: #eae7e2;
   --color-accent: #c9a800;
   --color-accent-dim: rgba(201, 168, 0, 0.10);
+  --color-accent-border: rgba(201, 168, 0, 0.4);
   --color-red: #cc2200;
   --color-red-dim: rgba(204, 34, 0, 0.10);
   --color-blue: #0066cc;
@@ -283,7 +285,7 @@ img { max-width: 100%; display: block; }
   gap: var(--space-2);
   padding: 6px 14px;
   background: transparent;
-  border: 1.5px solid rgba(245, 230, 66, 0.5);
+  border: 1.5px solid var(--color-accent-border);
   border-radius: 99px;
   cursor: pointer;
   transition: background 0.2s ease, border-color 0.2s ease;
@@ -799,6 +801,29 @@ img { max-width: 100%; display: block; }
 .code-block__dot:nth-child(2) { background: #febc2e; }
 .code-block__dot:nth-child(3) { background: #28c840; }
 
+.code-block__copy {
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.code-block__copy:hover {
+  border-color: var(--color-accent-border);
+  color: var(--color-accent);
+}
+.code-block__copy--copied {
+  color: #28c840;
+  border-color: #28c840;
+}
+
 .code-block pre {
   padding: var(--space-5) var(--space-6);
   overflow-x: auto;
@@ -1143,6 +1168,105 @@ code:not(.code-block code) {
   .chapter-cards {
     grid-template-columns: 1fr;
   }
+}
+
+/* ============================================
+   GRADUATE BUTTON (Chapter 10)
+   ============================================ */
+.graduate-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-accent);
+  color: var(--color-text-on-accent);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  text-decoration: none;
+}
+.graduate-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 230, 66, 0.25);
+}
+
+/* ============================================
+   GRADUATE MODAL (full-screen celebration)
+   ============================================ */
+.graduate-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.graduate-modal--open {
+  opacity: 1;
+  pointer-events: all;
+}
+.graduate-modal__card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: var(--space-10) var(--space-16);
+  text-align: center;
+  max-width: 520px;
+  width: 90%;
+  transform: scale(0.85);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.graduate-modal--open .graduate-modal__card {
+  transform: scale(1);
+}
+.graduate-modal__emoji {
+  font-size: 64px;
+  margin-bottom: var(--space-4);
+  display: block;
+}
+.graduate-modal__title {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--color-accent);
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-2);
+}
+.graduate-modal__sub {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-8);
+}
+.graduate-modal__close {
+  background: var(--color-accent);
+  color: var(--color-text-on-accent);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-8);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.graduate-modal__close:hover { transform: translateY(-1px); }
+
+/* ============================================
+   CONFETTI CANVAS
+   ============================================ */
+#confettiCanvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1999;
 }
 
 /* ============================================

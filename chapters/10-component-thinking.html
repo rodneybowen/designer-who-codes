@@ -340,11 +340,21 @@
           <span class="chapter-nav__direction">&larr; Previous</span>
           <span class="chapter-nav__title">AI-Assisted Design Workflow</span>
         </a>
-        <div class="chapter-nav__completion">
-          <div class="chapter-nav__completion-label">You made it</div>
-          <div class="chapter-nav__completion-title">The Designer Who Codes</div>
-        </div>
+        <button class="graduate-btn" id="graduateBtn">🎓 Graduate</button>
       </nav>
+
+      <!-- Graduate celebration modal -->
+      <div class="graduate-modal" id="graduateModal" role="dialog" aria-modal="true" aria-label="Graduation celebration">
+        <div class="graduate-modal__card">
+          <span class="graduate-modal__emoji">🎓</span>
+          <div class="graduate-modal__title">You did it.</div>
+          <div class="graduate-modal__sub">You're now a designer who codes. Go build something real, ship it, and share it with the world.</div>
+          <button class="graduate-modal__close" id="graduateClose">Close & keep building →</button>
+        </div>
+      </div>
+
+      <!-- Confetti canvas -->
+      <canvas id="confettiCanvas"></canvas>
     </main>
   </div>
   <script src="../scripts/main.js"></script>
