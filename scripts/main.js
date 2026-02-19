@@ -159,19 +159,22 @@ document.addEventListener('DOMContentLoaded', function () {
     fill.title = pct + '% complete';
   }
 
-  // "Next" buttons → mark current chapter complete + mini confetti (2s)
+  // "Next" buttons → mark current chapter complete + confetti, then navigate after delay
   const nextLinks = document.querySelectorAll('.chapter-nav__link--next');
   nextLinks.forEach(function (link) {
-    link.addEventListener('click', function () {
+    link.addEventListener('click', function (e) {
       const href = link.getAttribute('href');
-      if (href) {
-        const nextChapter = href.split('/').pop();
-        if (nextChapter && /^\d{2}-/.test(nextChapter)) {
-          const currentFile = currentPath.split('/').pop() || 'index.html';
-          if (currentFile !== 'index.html' && /^\d{2}-/.test(currentFile)) {
-            markChapterCompleted(currentFile);
-            launchConfetti(2000);
-          }
+      if (!href) return;
+      const nextChapter = href.split('/').pop();
+      if (nextChapter && /^\d{2}-/.test(nextChapter)) {
+        const currentFile = currentPath.split('/').pop() || 'index.html';
+        if (currentFile !== 'index.html' && /^\d{2}-/.test(currentFile)) {
+          e.preventDefault(); // stop immediate navigation
+          markChapterCompleted(currentFile);
+          launchConfetti(1800);
+          setTimeout(function () {
+            window.location.href = href;
+          }, 1800);
         }
       }
     });
