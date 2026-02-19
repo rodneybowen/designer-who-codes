@@ -281,7 +281,88 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* ------------------------------------------
-     7. MOBILE SIDEBAR TOGGLE
+     7. SCROLL-SPY SECTION INDICATOR
+     Sticky bar showing current section as user scrolls
+  ------------------------------------------ */
+  const sections = Array.from(document.querySelectorAll('.chapter-body .section'));
+
+  if (sections.length > 0) {
+    // Auto-assign IDs to sections that don't have them
+    sections.forEach(function (sec, i) {
+      if (!sec.id) sec.id = 'section-' + (i + 1);
+    });
+
+    // Build the indicator element and inject after chapter-header
+    const chapterHeader = document.querySelector('.chapter-header');
+    if (chapterHeader) {
+      const indicator = document.createElement('div');
+      indicator.className = 'section-indicator';
+      indicator.id = 'sectionIndicator';
+
+      const countEl = document.createElement('span');
+      countEl.className = 'section-indicator__count';
+
+      const divider = document.createElement('span');
+      divider.className = 'section-indicator__divider';
+
+      const titleEl = document.createElement('span');
+      titleEl.className = 'section-indicator__title';
+
+      const dotsEl = document.createElement('span');
+      dotsEl.className = 'section-indicator__dots';
+      sections.forEach(function (_, i) {
+        const dot = document.createElement('span');
+        dot.className = 'section-indicator__dot';
+        dot.dataset.index = i;
+        dotsEl.appendChild(dot);
+      });
+
+      indicator.appendChild(countEl);
+      indicator.appendChild(divider);
+      indicator.appendChild(titleEl);
+      indicator.appendChild(dotsEl);
+
+      // Insert after the chapter header
+      chapterHeader.insertAdjacentElement('afterend', indicator);
+
+      // Update indicator on scroll
+      function updateSectionIndicator() {
+        const scrollMid = window.scrollY + window.innerHeight * 0.35;
+        let activeIndex = -1;
+
+        sections.forEach(function (sec, i) {
+          if (sec.offsetTop <= scrollMid) activeIndex = i;
+        });
+
+        // Hide until user scrolls past the chapter header
+        const headerBottom = chapterHeader.offsetTop + chapterHeader.offsetHeight;
+        if (window.scrollY < headerBottom - 10 || activeIndex < 0) {
+          indicator.classList.remove('section-indicator--visible');
+          return;
+        }
+
+        indicator.classList.add('section-indicator--visible');
+
+        const titleEl2 = indicator.querySelector('.section-indicator__title');
+        const countEl2 = indicator.querySelector('.section-indicator__count');
+        const titleNode = sections[activeIndex].querySelector('.section__title');
+        if (titleNode) titleEl2.textContent = titleNode.textContent;
+        countEl2.textContent = (activeIndex + 1) + ' / ' + sections.length;
+
+        // Update dots
+        indicator.querySelectorAll('.section-indicator__dot').forEach(function (dot) {
+          dot.classList.toggle('section-indicator__dot--active',
+            parseInt(dot.dataset.index) === activeIndex);
+        });
+      }
+
+      window.addEventListener('scroll', updateSectionIndicator, { passive: true });
+      updateSectionIndicator();
+    }
+  }
+
+  /* ------------------------------------------
+     9. MOBILE SIDEBAR TOGGLE
      Hamburger button shows/hides sidebar on mobile
   ------------------------------------------ */
   const hamburger = document.getElementById('hamburger');
@@ -331,7 +412,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   /* ------------------------------------------
-     8. THEME TOGGLE (light / dark mode)
+     10. THEME TOGGLE (light / dark mode)
      Persists preference in localStorage
   ------------------------------------------ */
   const THEME_KEY = 'dwc_theme';
