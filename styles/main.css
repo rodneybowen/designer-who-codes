@@ -135,6 +135,21 @@ img { max-width: 100%; display: block; }
 .sidebar__brand {
   padding: var(--space-6);
   border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.sidebar__brand-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.sidebar__brand-text {
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar__brand-title {
