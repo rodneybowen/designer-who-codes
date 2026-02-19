@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 01 — How the Web Actually Works | The Designer Who Codes</title>
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+  <header class="mobile-header">
+    <span class="mobile-header__title">Ch. 01 — How the Web Works</span>
+    <button class="mobile-hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand">
+        <div class="sidebar__brand-title">The Designer<br>Who Codes</div>
+        <div class="sidebar__brand-sub">A 10-chapter guidebook</div>
+      </div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__section-label">Start Here</div>
+        <a class="nav-item" href="../index.html">
+          <span class="nav-item__number">00</span>
+          <div class="nav-item__text"><span class="nav-item__title">Introduction</span></div>
+        </a>
+        <div class="sidebar__section-label">The Course</div>
+        <a class="nav-item" href="01-how-web-works.html">
+          <span class="nav-item__number">01</span>
+          <div class="nav-item__text"><span class="nav-item__title">How the Web Works</span><span class="nav-item__tag">45 min</span></div>
+        </a>
+        <a class="nav-item" href="02-html-css.html">
+          <span class="nav-item__number">02</span>
+          <div class="nav-item__text"><span class="nav-item__title">Reading &amp; Writing HTML + CSS</span><span class="nav-item__tag">1.5 hrs</span></div>
+        </a>
+        <a class="nav-item" href="03-building-with-claude.html">
+          <span class="nav-item__number">03</span>
+          <div class="nav-item__text"><span class="nav-item__title">Building with Claude</span><span class="nav-item__tag">1 hr</span></div>
+        </a>
+        <a class="nav-item" href="04-figma-to-code.html">
+          <span class="nav-item__number">04</span>
+          <div class="nav-item__text"><span class="nav-item__title">Figma to Code</span><span class="nav-item__tag">1.5 hrs</span></div>
+        </a>
+        <a class="nav-item" href="05-git-github.html">
+          <span class="nav-item__number">05</span>
+          <div class="nav-item__text"><span class="nav-item__title">Git &amp; GitHub</span><span class="nav-item__tag">1 hr</span></div>
+        </a>
+        <a class="nav-item" href="06-design-tokens.html">
+          <span class="nav-item__number">06</span>
+          <div class="nav-item__text"><span class="nav-item__title">Design Tokens &amp; Systems</span><span class="nav-item__tag">1 hr</span></div>
+        </a>
+        <a class="nav-item" href="07-working-with-devs.html">
+          <span class="nav-item__number">07</span>
+          <div class="nav-item__text"><span class="nav-item__title">Working with Developers</span><span class="nav-item__tag">1 hr</span></div>
+        </a>
+        <a class="nav-item" href="08-responsive-accessibility.html">
+          <span class="nav-item__number">08</span>
+          <div class="nav-item__text"><span class="nav-item__title">Responsive &amp; Accessibility</span><span class="nav-item__tag">1 hr</span></div>
+        </a>
+        <a class="nav-item" href="09-ai-design-workflow.html">
+          <span class="nav-item__number">09</span>
+          <div class="nav-item__text"><span class="nav-item__title">AI-Assisted Design</span><span class="nav-item__tag">45 min · Bonus</span></div>
+        </a>
+        <a class="nav-item" href="10-component-thinking.html">
+          <span class="nav-item__number">10</span>
+          <div class="nav-item__text"><span class="nav-item__title">Component Thinking</span><span class="nav-item__tag">45 min · Bonus</span></div>
+        </a>
+      </nav>
+      <div class="sidebar__footer">
+        <div class="sidebar__progress-label">Your progress</div>
+        <div class="sidebar__progress-track">
+          <div class="sidebar__progress-fill" id="courseProgress" style="width: 0%"></div>
+        </div>
+        <div class="theme-toggle">
+          <div class="theme-toggle__icons">
+            <span class="theme-icon theme-icon--dark">🌙</span>
+            <span class="theme-icon theme-icon--light">☀️</span>
+          </div>
+          <button class="theme-toggle__btn" id="themeToggle" aria-label="Toggle light/dark mode"></button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="chapter-header">
+        <div class="chapter-header__eyebrow">
+          <span class="chapter-header__number">Chapter 01</span>
+        </div>
+        <h1 class="chapter-header__title">How the Web Actually Works</h1>
+        <p class="chapter-header__tagline">Before you write a single line of code, understand the stage you're building on.</p>
+        <div class="chapter-header__meta">
+          <span class="meta-badge meta-badge--time">⏱ 45 minutes</span>
+          <span class="meta-badge meta-badge--tools">🛠 No installs needed</span>
+        </div>
+      </header>
+
+      <article class="chapter-body">
+
+        <section class="section">
+          <h2 class="section__title">Why this matters before anything else</h2>
+          <div class="prose">
+            <p>You wouldn't try to design a building without knowing what walls, floors, and ceilings do. The web is the same. There are three "materials" every website is made of — and once you know what each one does, everything else makes sense.</p>
+            <p>This chapter has no coding. It's pure understanding. Give it 45 minutes and you'll walk away able to look at any website and see the skeleton underneath.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">The three materials of the web</h2>
+          <ul class="concept-list">
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>HTML (HyperText Markup Language)</strong> — the structure. Think of it as the bones of a building. It defines what things <em>are</em>: this is a heading, this is a paragraph, this is an image, this is a button. HTML doesn't care about how things look — it just says what they are.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>CSS (Cascading Style Sheets)</strong> — the style. If HTML is the bones, CSS is everything visual: color, size, spacing, fonts, layout. CSS takes the raw structure and makes it look like a designed product.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>JavaScript (JS)</strong> — the behavior. This is what makes things move, respond, and change. When you click a button and a menu drops down — that's JavaScript. When you type in a search box and results appear instantly — JavaScript. As a designer, you'll use it sparingly, but knowing it exists is important.</div>
+            </li>
+          </ul>
+          <div class="callout callout--tip">
+            <div class="callout__label">💡 Designer's mental model</div>
+            <div class="callout__title">Think of it like a house</div>
+            <div class="callout__body">HTML = the floor plan and walls (structure). CSS = the paint, furniture, and lighting (style). JavaScript = the electricity, plumbing, and smart home automation (behavior). A house needs all three, but a designer mostly works on the first two.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">The browser: your website's translator</h2>
+          <div class="prose">
+            <p>A website is, at its core, just a bunch of plain text files sitting on a computer somewhere. When you type a URL, your browser (Chrome, Safari, Firefox) goes and fetches those files, then <em>translates</em> them into the visual page you see.</p>
+            <p>The browser reads your HTML file and thinks: "okay, there's a heading, then a paragraph, then an image." Then it reads the CSS and thinks: "the heading should be this big, this color, with this much space around it." Then it reads the JavaScript and runs any behaviors.</p>
+          </div>
+          <div class="callout callout--jargon">
+            <div class="callout__label">📖 Jargon decoded</div>
+            <div class="callout__title">What's a "URL"?</div>
+            <div class="callout__body">URL stands for Uniform Resource Locator — but just think of it as a web address. It's the thing you type into the browser bar, like <code>https://figma.com</code>. The browser uses it to find the right computer and the right files.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Frontend vs. backend — what's your lane?</h2>
+          <div class="prose">
+            <p>You'll hear these terms constantly. Here's the plain-English version:</p>
+          </div>
+          <ul class="concept-list">
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Frontend</strong> = everything the user sees and touches. HTML, CSS, JavaScript. This is your lane as a designer who codes. The browser runs this code. You can see it, inspect it, and tweak it.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Backend</strong> = everything the user never sees. Servers, databases, business logic. When you log into Instagram and it shows YOUR photos — that's the backend figuring out who you are and fetching your data. You don't need to build this. You need to know it exists and know how to design for it.</div>
+            </li>
+          </ul>
+          <div class="callout callout--insight">
+            <div class="callout__label">🎯 What this means for you</div>
+            <div class="callout__title">Your job ends at the door</div>
+            <div class="callout__body">As a designer who codes, you work almost entirely in the frontend. When you get to Chapter 07 (Working with Backend Developers), you'll learn exactly how to hand things off at the boundary — and what questions to ask.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Hosting: putting files on the internet</h2>
+          <div class="prose">
+            <p>Every website is just files on a computer. "Hosting" means putting those files on a computer that's connected to the internet 24/7, so anyone can access them anytime.</p>
+            <p>In Chapter 05, you'll use <strong>GitHub Pages</strong> — a completely free hosting service that takes your HTML/CSS/JS files and makes them live on the internet in about 2 minutes. No credit card. No server to manage.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">What happens when you type a URL</h2>
+          <div class="prose">
+            <p>Here's a simplified version of what happens in the half-second between you pressing Enter and seeing a webpage:</p>
+          </div>
+          <ul class="concept-list">
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Step 1 — DNS lookup:</strong> Your browser asks "where does this domain live?" and gets back an IP address (a numbered address like 142.250.80.46). Think of DNS like a phone book for the internet.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Step 2 — Request:</strong> Your browser sends an HTTP request — a polite knock on the door saying "can I have the files for this page?"</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Step 3 — Response:</strong> The server sends back the HTML file and a response code — 200 means "here you go!", 404 means "I can't find that." You'll learn more of these codes in Chapter 07.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Step 4 — Rendering:</strong> The browser reads the HTML, fetches any linked CSS and JS files, and builds the visual page you see.</div>
+            </li>
+          </ul>
+          <div class="callout callout--jargon">
+            <div class="callout__label">📖 Jargon decoded</div>
+            <div class="callout__title">What's HTTP?</div>
+            <div class="callout__body">HTTP (HyperText Transfer Protocol) is the language browsers and servers use to talk to each other. When you see <code>https://</code> at the start of a URL, the S means "secure" — the conversation is encrypted. You don't need to understand the details; just know it's how data travels on the web.</div>
+          </div>
+        </section>
+
+        <div class="activity">
+          <div class="activity__header">
+            <div class="activity__icon">🔍</div>
+            <div class="activity__header-text">
+              <div class="activity__label">Hands-on activity</div>
+              <div class="activity__title">Peek behind the curtain of any website</div>
+            </div>
+          </div>
+          <div class="activity__body">
+            <div class="activity__tools">
+              <span class="activity__tools-label">You need:</span>
+              <span class="tool-badge">Chrome or Safari (already on your Mac)</span>
+            </div>
+            <ol class="activity__steps">
+              <li class="activity__step">
+                <div class="activity__step-number">1</div>
+                <div class="activity__step-text">Open Chrome and go to any website you find interesting. Try <strong>linear.app</strong> or <strong>stripe.com</strong> — they have exceptional design worth studying.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">2</div>
+                <div class="activity__step-text">Right-click anywhere on the page and choose <strong>"Inspect"</strong> (or press <code>Cmd + Option + I</code>). A panel will open — this is Chrome DevTools, your new best friend.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">3</div>
+                <div class="activity__step-text">Move your mouse around the page slowly. Notice how sections of the page highlight in blue — those are the HTML "boxes." Every piece of content lives inside a box.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">4</div>
+                <div class="activity__step-text">Click on the <strong>Elements</strong> tab in DevTools. You'll see HTML on the left and CSS on the right. Find: one heading tag (<code>&lt;h1&gt;</code> or <code>&lt;h2&gt;</code>), one color value in CSS (like <code>#fff</code>), and one font name.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">5</div>
+                <div class="activity__step-text"><strong>Bonus:</strong> Double-click on any text in the Elements panel and change it. The live page updates instantly — you're only changing it on your screen. Refresh and it goes back.</div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="takeaways">
+          <div class="takeaways__title">Key takeaways</div>
+          <ul class="takeaways__list">
+            <li>HTML = structure, CSS = style, JavaScript = behavior. Three layers, always.</li>
+            <li>A website is just text files on a computer. The browser translates them into what you see.</li>
+            <li>Frontend = your lane (what users see). Backend = what you hand off to developers.</li>
+            <li>Hosting = putting your files on a computer that's always online. Free with GitHub Pages.</li>
+            <li>DevTools is your X-ray vision for any website. Use it constantly.</li>
+          </ul>
+        </div>
+
+      </article>
+
+      <nav class="chapter-nav">
+        <a class="chapter-nav__link" href="../index.html">
+          <span class="chapter-nav__direction">&larr; Previous</span>
+          <span class="chapter-nav__title">Introduction</span>
+        </a>
+        <a class="chapter-nav__link chapter-nav__link--next" href="02-html-css.html">
+          <span class="chapter-nav__direction">Next &rarr;</span>
+          <span class="chapter-nav__title">Reading &amp; Writing HTML + CSS</span>
+        </a>
+      </nav>
+
+    </main>
+  </div>
+  <script src="../scripts/main.js"></script>
+</body>
+</html>

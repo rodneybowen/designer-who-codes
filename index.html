@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Designer Who Codes</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <style>
+    /* Home-specific overrides */
+    .home-intro-strip {
+      padding: var(--space-8) var(--space-16);
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-surface);
+      max-width: var(--content-max-width);
+    }
+    .home-intro-strip p {
+      font-size: 16px;
+      color: var(--color-text-secondary);
+      line-height: 1.75;
+    }
+    .home-intro-strip p + p { margin-top: var(--space-4); }
+    .chapter-grid__subheading {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-6);
+      margin-top: calc(-1 * var(--space-4));
+    }
+    .home-footer {
+      padding: var(--space-10) var(--space-16);
+      border-top: 1px solid var(--color-border);
+      max-width: var(--content-max-width);
+    }
+    .home-footer p {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+    .stack-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 3px 8px;
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      color: var(--color-text-muted);
+      margin: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Reading progress bar -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- Mobile header -->
+  <header class="mobile-header">
+    <span class="mobile-header__title">The Designer Who Codes</span>
+    <button class="mobile-hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Sidebar overlay (mobile) -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand">
+        <div class="sidebar__brand-title">The Designer<br>Who Codes</div>
+        <div class="sidebar__brand-sub">A 10-chapter guidebook</div>
+      </div>
+
+      <nav class="sidebar__nav">
+        <div class="sidebar__section-label">Start Here</div>
+        <a class="nav-item nav-item--active" href="index.html">
+          <span class="nav-item__number">00</span>
+          <div class="nav-item__text">
+            <span class="nav-item__title">Introduction</span>
+            <span class="nav-item__tag">You are here</span>
+          </div>
+        </a>
+
+        <div class="sidebar__section-label">The Course</div>
+        <a class="nav-item" href="chapters/01-how-web-works.html">
+          <span class="nav-item__number">01</span>
+          <div class="nav-item__text">
+            <span class="nav-item__title">How the Web Works</span>
+            <span class="nav-item__tag">45 min</span>
+          </div>
+        </a>
+        <a class="nav-item" href="chapters/02-html-css.html">
+          <span class="nav-item__number">02</span>
+          <div class="nav-item__text">
+            <span class="nav-item__title">Reading & Writing HTML + CSS</span>
+            <span class="nav-item__tag">1.5 hrs</span>
+          </div>
+        </a>
+        <a class="nav-item" href="chapters/03-building-with-claude.html">
+          <span class="nav-item__number">03</span>
+          <div class="nav-item__text">
+            <span class="nav-item__title">Building with Claude</span>
+            <span class="nav-item__tag">1 hr</span>
+          </div>
+        </a>
+        <a class="nav-item" href="chapters/04-figma-to-code.html">
+          <span class="nav-item__number">04</span>
+          <div class="nav-item__text">
+            <span class="nav-item__title">Figma to Code</span>
+            <span class="nav-item__tag">1.5 hrs</span>
+          </div>
+        </a>
+        <a class="nav-item" href="chapters/05-git-github.html">
+          <span class="nav-item__number">05</span>
+          <div class="nav-item__text">
+            <span class="nav-item__title">Git & GitHub</span>
+            <span class="nav-item__tag">1 hr</span>
+          </div>
+        </a>
+        <a class="nav-item" href="chapters/06-design-tokens.html">
+          <span class="nav-item__number">06</span>
+          <div class="nav-item__text">
+            <span class="nav-item__title">Design Tokens & Systems</span>
+            <span class="nav-item__tag">1 hr</span>
+          </div>
+        </a>
+        <a class="nav-item" href="chapters/07-working-with-devs.html">
+          <span class="nav-item__number">07</span>
+          <div class="nav-item__text">
+            <span class="nav-item__title">Working with Developers</span>
+            <span class="nav-item__tag">1 hr</span>
+          </div>
+        </a>
+        <a class="nav-item" href="chapters/08-responsive-accessibility.html">
+          <span class="nav-item__number">08</span>
+          <div class="nav-item__text">
+            <span class="nav-item__title">Responsive & Accessibility</span>
+            <span class="nav-item__tag">1 hr</span>
+          </div>
+        </a>
+        <a class="nav-item" href="chapters/09-ai-design-workflow.html">
+          <span class="nav-item__number">09</span>
+          <div class="nav-item__text">
+            <span class="nav-item__title">AI-Assisted Design</span>
+            <span class="nav-item__tag">45 min · Bonus</span>
+          </div>
+        </a>
+        <a class="nav-item" href="chapters/10-component-thinking.html">
+          <span class="nav-item__number">10</span>
+          <div class="nav-item__text">
+            <span class="nav-item__title">Component Thinking</span>
+            <span class="nav-item__tag">45 min · Bonus</span>
+          </div>
+        </a>
+      </nav>
+
+      <div class="sidebar__footer">
+        <div class="sidebar__progress-label">Your progress</div>
+        <div class="sidebar__progress-track">
+          <div class="sidebar__progress-fill" id="courseProgress" style="width: 0%"></div>
+        </div>
+        <div class="theme-toggle">
+          <div class="theme-toggle__icons">
+            <span class="theme-icon theme-icon--dark">🌙</span>
+            <span class="theme-icon theme-icon--light">☀️</span>
+          </div>
+          <button class="theme-toggle__btn" id="themeToggle" aria-label="Toggle light/dark mode"></button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+
+      <!-- Hero -->
+      <section class="home-hero">
+        <div class="home-hero__eyebrow">A guidebook for designers</div>
+        <h1 class="home-hero__title">The Designer<br>Who <em>Codes</em></h1>
+        <p class="home-hero__subtitle">
+          You don't need to become a developer. You need to know just enough to build things, speak the language, and work faster than everyone else in the room.
+        </p>
+        <div class="home-hero__meta" style="margin-bottom: 32px;">
+          <div class="home-hero__meta-item"><strong>10 chapters</strong></div>
+          <div class="home-hero__meta-item"><strong>~9 hours</strong> total</div>
+          <div class="home-hero__meta-item"><strong>Doable in a week</strong></div>
+          <div class="home-hero__meta-item"><strong>Free tools only</strong></div>
+        </div>
+        <a href="chapters/01-how-web-works.html" class="home-start-btn">
+          Start Chapter 01 &rarr;
+        </a>
+      </section>
+
+      <!-- Who this is for -->
+      <section class="home-intro-strip">
+        <p>
+          <strong style="color: var(--color-text-primary);">This course is for you if:</strong> You're a UX or product designer who wants to build real things, not just mock them up. You want to use Claude and Figma to go from idea to working website. You want to sit in a meeting with engineers and actually understand what they're saying.
+        </p>
+        <p>
+          You don't need to memorize syntax. You don't need to become a "developer." You need fluency — the ability to read code, direct AI to write it, translate your designs into reality, and hand off work that developers actually love working with.
+        </p>
+        <p>
+          <strong style="color: var(--color-text-primary);">What you'll need:</strong>
+          <span class="stack-tag">MacBook</span>
+          <span class="stack-tag">Claude (free)</span>
+          <span class="stack-tag">Figma (free)</span>
+          <span class="stack-tag">Chrome browser (free)</span>
+          <span class="stack-tag">VS Code (free, we'll install it)</span>
+          <span class="stack-tag">GitHub account (free)</span>
+        </p>
+      </section>
+
+      <!-- Chapter grid -->
+      <section class="chapter-grid">
+        <h2 class="chapter-grid__heading">10 Chapters. One transformation.</h2>
+        <p class="chapter-grid__subheading">Chapters 01–08 are the core. Chapters 09–10 are your secret weapons.</p>
+        <div class="chapter-cards">
+
+          <a class="chapter-card" href="chapters/01-how-web-works.html">
+            <div class="chapter-card__number">Chapter 01</div>
+            <div class="chapter-card__title">How the Web Actually Works</div>
+            <div class="chapter-card__tagline">Before you write a single line of code, understand the stage you're building on.</div>
+            <div class="chapter-card__meta">45 min &middot; No installs</div>
+          </a>
+
+          <a class="chapter-card" href="chapters/02-html-css.html">
+            <div class="chapter-card__number">Chapter 02</div>
+            <div class="chapter-card__title">Reading & Writing HTML + CSS</div>
+            <div class="chapter-card__tagline">You don't need to memorize everything. You need to know enough to read it and ask better questions.</div>
+            <div class="chapter-card__meta">1.5 hrs &middot; VS Code</div>
+          </a>
+
+          <a class="chapter-card" href="chapters/03-building-with-claude.html">
+            <div class="chapter-card__number">Chapter 03</div>
+            <div class="chapter-card__title">Building with Claude</div>
+            <div class="chapter-card__tagline">Claude is your pair programmer. Learn how to direct it like a creative director, not a developer.</div>
+            <div class="chapter-card__meta">1 hr &middot; Claude + VS Code</div>
+          </a>
+
+          <a class="chapter-card" href="chapters/04-figma-to-code.html">
+            <div class="chapter-card__number">Chapter 04</div>
+            <div class="chapter-card__title">Figma to Code</div>
+            <div class="chapter-card__tagline">Your designs are the blueprint. Learn how to make them developer-ready.</div>
+            <div class="chapter-card__meta">1.5 hrs &middot; Figma + VS Code</div>
+          </a>
+
+          <a class="chapter-card" href="chapters/05-git-github.html">
+            <div class="chapter-card__number">Chapter 05</div>
+            <div class="chapter-card__title">Git & GitHub</div>
+            <div class="chapter-card__tagline">Git is not scary. It's just a very obsessive save system.</div>
+            <div class="chapter-card__meta">1 hr &middot; GitHub account</div>
+          </a>
+
+          <a class="chapter-card" href="chapters/06-design-tokens.html">
+            <div class="chapter-card__number">Chapter 06</div>
+            <div class="chapter-card__title">Design Tokens & Systems Thinking</div>
+            <div class="chapter-card__tagline">This is what separates a designer who codes from a designer who dabbles.</div>
+            <div class="chapter-card__meta">1 hr &middot; VS Code</div>
+          </a>
+
+          <a class="chapter-card" href="chapters/07-working-with-devs.html">
+            <div class="chapter-card__number">Chapter 07</div>
+            <div class="chapter-card__title">Working with Backend Developers</div>
+            <div class="chapter-card__tagline">You don't need to build the backend. You need to speak its language.</div>
+            <div class="chapter-card__meta">1 hr &middot; No installs</div>
+          </a>
+
+          <a class="chapter-card" href="chapters/08-responsive-accessibility.html">
+            <div class="chapter-card__number">Chapter 08</div>
+            <div class="chapter-card__title">Responsive Design & Accessibility</div>
+            <div class="chapter-card__tagline">A beautiful website that breaks on mobile isn't beautiful. And one that excludes people isn't either.</div>
+            <div class="chapter-card__meta">1 hr &middot; VS Code + browser</div>
+          </a>
+
+          <a class="chapter-card" href="chapters/09-ai-design-workflow.html">
+            <div class="chapter-card__number">Chapter 09 &mdash; Bonus</div>
+            <div class="chapter-card__title">AI-Assisted Design Workflow</div>
+            <div class="chapter-card__tagline">Every other designer is still moving pixels. You're moving fast.</div>
+            <div class="chapter-card__meta">45 min &middot; Claude + Figma</div>
+          </a>
+
+          <a class="chapter-card" href="chapters/10-component-thinking.html">
+            <div class="chapter-card__number">Chapter 10 &mdash; Bonus</div>
+            <div class="chapter-card__title">Component Thinking</div>
+            <div class="chapter-card__tagline">The way developers think about code is exactly how you should think about design.</div>
+            <div class="chapter-card__meta">45 min &middot; VS Code</div>
+          </a>
+
+        </div>
+      </section>
+
+      <footer class="home-footer">
+        <p>Built with pure HTML, CSS, and JavaScript &mdash; no frameworks, no build tools. Hostable for free on <a href="https://pages.github.com" style="color: var(--color-accent); text-decoration: underline;">GitHub Pages</a>. See the README for instructions.</p>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>

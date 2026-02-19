@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 08 — Responsive Design & Accessibility | The Designer Who Codes</title>
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+  <header class="mobile-header">
+    <span class="mobile-header__title">Ch. 08 — Responsive + a11y</span>
+    <button class="mobile-hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand"><div class="sidebar__brand-title">The Designer<br>Who Codes</div><div class="sidebar__brand-sub">A 10-chapter guidebook</div></div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__section-label">Start Here</div>
+        <a class="nav-item" href="../index.html"><span class="nav-item__number">00</span><div class="nav-item__text"><span class="nav-item__title">Introduction</span></div></a>
+        <div class="sidebar__section-label">The Course</div>
+        <a class="nav-item" href="01-how-web-works.html"><span class="nav-item__number">01</span><div class="nav-item__text"><span class="nav-item__title">How the Web Works</span><span class="nav-item__tag">45 min</span></div></a>
+        <a class="nav-item" href="02-html-css.html"><span class="nav-item__number">02</span><div class="nav-item__text"><span class="nav-item__title">Reading &amp; Writing HTML + CSS</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="03-building-with-claude.html"><span class="nav-item__number">03</span><div class="nav-item__text"><span class="nav-item__title">Building with Claude</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="04-figma-to-code.html"><span class="nav-item__number">04</span><div class="nav-item__text"><span class="nav-item__title">Figma to Code</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="05-git-github.html"><span class="nav-item__number">05</span><div class="nav-item__text"><span class="nav-item__title">Git &amp; GitHub</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="06-design-tokens.html"><span class="nav-item__number">06</span><div class="nav-item__text"><span class="nav-item__title">Design Tokens &amp; Systems</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="07-working-with-devs.html"><span class="nav-item__number">07</span><div class="nav-item__text"><span class="nav-item__title">Working with Developers</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="08-responsive-accessibility.html"><span class="nav-item__number">08</span><div class="nav-item__text"><span class="nav-item__title">Responsive &amp; Accessibility</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="09-ai-design-workflow.html"><span class="nav-item__number">09</span><div class="nav-item__text"><span class="nav-item__title">AI-Assisted Design</span><span class="nav-item__tag">45 min · Bonus</span></div></a>
+        <a class="nav-item" href="10-component-thinking.html"><span class="nav-item__number">10</span><div class="nav-item__text"><span class="nav-item__title">Component Thinking</span><span class="nav-item__tag">45 min · Bonus</span></div></a>
+      </nav>
+      <div class="sidebar__footer">
+        <div class="sidebar__progress-label">Your progress</div>
+        <div class="sidebar__progress-track">
+          <div class="sidebar__progress-fill" id="courseProgress" style="width: 0%"></div>
+        </div>
+        <div class="theme-toggle">
+          <div class="theme-toggle__icons">
+            <span class="theme-icon theme-icon--dark">🌙</span>
+            <span class="theme-icon theme-icon--light">☀️</span>
+          </div>
+          <button class="theme-toggle__btn" id="themeToggle" aria-label="Toggle light/dark mode"></button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="chapter-header">
+        <div class="chapter-header__eyebrow"><span class="chapter-header__number">Chapter 08</span></div>
+        <h1 class="chapter-header__title">Responsive Design &amp; Accessibility</h1>
+        <p class="chapter-header__tagline">A beautiful website that breaks on mobile isn't beautiful. And one that excludes people isn't either.</p>
+        <div class="chapter-header__meta">
+          <span class="meta-badge meta-badge--time">⏱ 1 hour</span>
+          <span class="meta-badge meta-badge--tools">🛠 VS Code · Chrome browser</span>
+        </div>
+      </header>
+
+      <article class="chapter-body">
+
+        <section class="section">
+          <h2 class="section__title">Two things that aren't optional</h2>
+          <div class="prose">
+            <p>Responsive design and accessibility are often treated as features you add at the end. They're not. They're baseline requirements — the floor of what "good" means on the web today.</p>
+            <p><strong>Responsive:</strong> Over 60% of web traffic globally is on mobile devices. If your website breaks on a phone screen, you've excluded the majority of your audience before they've seen a single word of your content.</p>
+            <p><strong>Accessibility (a11y — that's the 11 letters between "a" and "y" in "accessibility"):</strong> Roughly 1 in 7 people globally has some form of disability — visual, auditory, motor, or cognitive — that affects how they use the web. Laws in many countries (ADA in the US, EN 301 549 in the EU) require digital accessibility. And here's the thing: accessible design is almost always better design for everyone. Captions help people in noisy environments. High contrast helps people in bright sunlight. Keyboard navigation helps power users.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Responsive design — making things adapt</h2>
+          <div class="prose">
+            <p>A responsive website doesn't have a separate "mobile version" — it's the same website, but the layout adapts to the screen size. The main CSS tool for this is the <strong>media query</strong>.</p>
+            <p>A media query says: "only apply these CSS rules if the screen is this wide." Here's an example:</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__lang">CSS — Media Queries</span>
+              <div class="code-block__dots"><div class="code-block__dot"></div><div class="code-block__dot"></div><div class="code-block__dot"></div></div>
+            </div>
+            <pre><code>/* Mobile-first: default styles apply to all screens */
+.card-grid {
+  display: flex;
+  flex-direction: column; /* Stack cards vertically on mobile */
+  gap: 16px;
+}
+
+/* When screen is 768px wide or more (tablet+): */
+@media (min-width: 768px) {
+  .card-grid {
+    flex-direction: row;   /* Cards go side by side */
+    flex-wrap: wrap;       /* Wrap to next row if needed */
+  }
+}
+
+/* When screen is 1200px wide or more (desktop): */
+@media (min-width: 1200px) {
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  }
+}</code></pre>
+          </div>
+          <div class="prose">
+            <p>Notice the approach: <strong>mobile-first</strong>. You write your default CSS for mobile (small screens), then use media queries to add rules for larger screens. This is the modern standard. It's also more logical: start simple, then add complexity for bigger screens.</p>
+          </div>
+          <div class="callout callout--jargon">
+            <div class="callout__label">📖 Jargon decoded</div>
+            <div class="callout__title">What's a "breakpoint"?</div>
+            <div class="callout__body">A breakpoint is the screen width at which your layout changes. Common breakpoints: 390px (mobile), 768px (tablet), 1280px (desktop). When you write a media query at 768px, that's your breakpoint — the point where your layout "breaks" from one configuration to another. In Figma, when you design frames at different sizes, you're designing at breakpoints.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Testing responsiveness in Chrome</h2>
+          <div class="prose">
+            <p>You don't need to own an iPhone and an iPad and a desktop to test responsive design. Chrome DevTools has a device simulation mode built in.</p>
+            <p>Open DevTools (<code>Cmd + Option + I</code>). Click the <strong>device icon</strong> in the top-left of the DevTools panel (it looks like a phone and tablet overlapping). This activates Device Mode — your page now renders at any screen size you choose.</p>
+            <p>Common sizes to test: 390px (iPhone 14), 768px (iPad), 1280px (laptop), 1920px (desktop). Drag the edges of the simulated screen to resize it — watch your layout change in real time. This is the fastest feedback loop in responsive development.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Accessibility — designing for everyone</h2>
+          <div class="prose">
+            <p>Accessibility isn't a checklist you run through at the end of a project. It's a set of design principles that, when applied from the start, make products better for everyone. Here are the four most important things to understand:</p>
+          </div>
+          <ul class="concept-list">
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Semantic HTML</strong> — use the right element for the right job. A button should be a <code>&lt;button&gt;</code>, not a <code>&lt;div&gt;</code> you styled to look like a button. A heading should be an <code>&lt;h1&gt;</code> or <code>&lt;h2&gt;</code>, not bold text in a <code>&lt;div&gt;</code>. Why? Screen readers (software used by visually impaired people) read out loud based on HTML structure. A <code>&lt;button&gt;</code> is announced as "button." A <code>&lt;div&gt;</code> that looks like a button is announced as nothing. Also: <code>&lt;button&gt;</code> works with the keyboard by default. <code>&lt;div&gt;</code> doesn't.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Color contrast</strong> — the difference in brightness between your text color and background color must be high enough for people with low vision to read. The minimum standard (called WCAG AA) is a contrast ratio of 4.5:1 for normal text. You can check any two colors at <strong>webaim.org/resources/contrastchecker</strong> — free, no account needed.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Alt text on images</strong> — every <code>&lt;img&gt;</code> element needs an <code>alt</code> attribute describing what the image shows. Screen readers read this aloud to blind users. <code>&lt;img src="photo.jpg" alt="A smiling person holding a cup of coffee"&gt;</code>. If the image is purely decorative, use <code>alt=""</code> — this tells the screen reader to skip it.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Keyboard navigation</strong> — every interactive element (buttons, links, form inputs) should be reachable and usable with just the Tab key, without a mouse. Press Tab on any webpage and watch the focus move through interactive elements. If your button can't be reached by Tab, keyboard users can't use it.</div>
+            </li>
+          </ul>
+          <div class="callout callout--jargon">
+            <div class="callout__label">📖 Jargon decoded</div>
+            <div class="callout__title">What's WCAG?</div>
+            <div class="callout__body">WCAG stands for Web Content Accessibility Guidelines — the internationally recognized standards for digital accessibility, published by the W3C (the organization that sets web standards). WCAG has three levels: A (minimum), AA (standard requirement in most laws), and AAA (the gold standard). When a company says "we're WCAG 2.1 AA compliant," they mean they meet the standard-level accessibility requirements. Knowing this acronym and using it confidently will impress any product team.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Practical accessibility for designers</h2>
+          <div class="prose">
+            <p>You don't need to audit code to do accessibility work as a designer. Here's what you do in Figma and in your process:</p>
+          </div>
+          <ul class="concept-list">
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Check contrast ratios</strong> in Figma before handoff. Select a text layer — the right panel shows the fill color. Compare it to the background color at webaim.org/resources/contrastchecker. If it fails AA, adjust the colors until it passes.</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Label every interactive element.</strong> Buttons that are just icons (like a trash icon or a close X) need an invisible text label in the design spec — called an "aria-label." Note it in your Figma: "aria-label: Delete item."</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Design focus states.</strong> Every interactive element has a "focused" state — what it looks like when selected via keyboard. This is often completely forgotten. Design it explicitly: a visible outline, a highlight, anything that shows "this element is selected."</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Test at 200% zoom.</strong> In Chrome, press <code>Cmd + +</code> to zoom in to 200%. Does your layout still work? Can you still read everything? This simulates how many users with low vision browse the web.</div></li>
+          </ul>
+        </section>
+
+        <div class="activity">
+          <div class="activity__header">
+            <div class="activity__icon">📱</div>
+            <div class="activity__header-text">
+              <div class="activity__label">Hands-on activity</div>
+              <div class="activity__title">Make your card responsive and accessible</div>
+            </div>
+          </div>
+          <div class="activity__body">
+            <div class="activity__tools">
+              <span class="activity__tools-label">You need:</span>
+              <span class="tool-badge">VS Code</span>
+              <span class="tool-badge">Chrome browser (DevTools)</span>
+              <span class="tool-badge">webaim.org (free, no account)</span>
+            </div>
+            <ol class="activity__steps">
+              <li class="activity__step">
+                <div class="activity__step-number">1</div>
+                <div class="activity__step-text">Open your <code>index.html</code> from Chapter 02 in VS Code. Make sure it has this in the <code>&lt;head&gt;</code>: <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code>. This is required for responsive design to work on mobile — without it, mobile browsers zoom out and render a tiny desktop layout.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">2</div>
+                <div class="activity__step-text">Open the file in Chrome. Open DevTools and switch to Device Mode (phone/tablet icon). Set the width to 390px. Does your card look reasonable? If it's overflowing or breaking, add a media query to fix it: switch any horizontal flex layout to <code>flex-direction: column</code> at small widths.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">3</div>
+                <div class="activity__step-text">Find the hex color of your text and the hex color of your background. Go to <strong>webaim.org/resources/contrastchecker</strong>. Enter both colors. Does it pass AA (ratio of 4.5:1 or higher for normal text)? If not, adjust your text color to be brighter/darker until it passes.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">4</div>
+                <div class="activity__step-text">Check your HTML: if you have a button, is it a <code>&lt;button&gt;</code> element? If you have a main heading, is it <code>&lt;h1&gt;</code>? If you used <code>&lt;div&gt;</code> for these, change them to the semantic elements.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">5</div>
+                <div class="activity__step-text">Open DevTools → <strong>Lighthouse</strong> tab → click "Generate report" with "Accessibility" checked. Aim for a score above 90. Fix whatever Lighthouse flags — it explains each issue and links to documentation on how to fix it.</div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="takeaways">
+          <div class="takeaways__title">Key takeaways</div>
+          <ul class="takeaways__list">
+            <li>Responsive design = your layout adapts to any screen size using CSS media queries</li>
+            <li>Mobile-first: write styles for mobile first, then add styles for larger screens with <code>@media (min-width: ...)</code></li>
+            <li>Use Chrome DevTools Device Mode to test any screen size without owning multiple devices</li>
+            <li>Use semantic HTML: <code>&lt;button&gt;</code> for buttons, <code>&lt;h1&gt;</code> for headings — not <code>&lt;div&gt;</code> for everything</li>
+            <li>Check color contrast: minimum 4.5:1 ratio for body text (WCAG AA standard)</li>
+            <li>Design focus states — keyboard users need to see which element is selected</li>
+          </ul>
+        </div>
+
+      </article>
+      <nav class="chapter-nav">
+        <a class="chapter-nav__link" href="07-working-with-devs.html">
+          <span class="chapter-nav__direction">&larr; Previous</span>
+          <span class="chapter-nav__title">Working with Developers</span>
+        </a>
+        <a class="chapter-nav__link chapter-nav__link--next" href="09-ai-design-workflow.html">
+          <span class="chapter-nav__direction">Next &rarr;</span>
+          <span class="chapter-nav__title">AI-Assisted Design Workflow</span>
+        </a>
+      </nav>
+    </main>
+  </div>
+  <script src="../scripts/main.js"></script>
+</body>
+</html>

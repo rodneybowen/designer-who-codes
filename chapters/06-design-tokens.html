@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 06 — Design Tokens & Systems Thinking | The Designer Who Codes</title>
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+  <header class="mobile-header">
+    <span class="mobile-header__title">Ch. 06 — Design Tokens</span>
+    <button class="mobile-hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand"><div class="sidebar__brand-title">The Designer<br>Who Codes</div><div class="sidebar__brand-sub">A 10-chapter guidebook</div></div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__section-label">Start Here</div>
+        <a class="nav-item" href="../index.html"><span class="nav-item__number">00</span><div class="nav-item__text"><span class="nav-item__title">Introduction</span></div></a>
+        <div class="sidebar__section-label">The Course</div>
+        <a class="nav-item" href="01-how-web-works.html"><span class="nav-item__number">01</span><div class="nav-item__text"><span class="nav-item__title">How the Web Works</span><span class="nav-item__tag">45 min</span></div></a>
+        <a class="nav-item" href="02-html-css.html"><span class="nav-item__number">02</span><div class="nav-item__text"><span class="nav-item__title">Reading &amp; Writing HTML + CSS</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="03-building-with-claude.html"><span class="nav-item__number">03</span><div class="nav-item__text"><span class="nav-item__title">Building with Claude</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="04-figma-to-code.html"><span class="nav-item__number">04</span><div class="nav-item__text"><span class="nav-item__title">Figma to Code</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="05-git-github.html"><span class="nav-item__number">05</span><div class="nav-item__text"><span class="nav-item__title">Git &amp; GitHub</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="06-design-tokens.html"><span class="nav-item__number">06</span><div class="nav-item__text"><span class="nav-item__title">Design Tokens &amp; Systems</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="07-working-with-devs.html"><span class="nav-item__number">07</span><div class="nav-item__text"><span class="nav-item__title">Working with Developers</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="08-responsive-accessibility.html"><span class="nav-item__number">08</span><div class="nav-item__text"><span class="nav-item__title">Responsive &amp; Accessibility</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="09-ai-design-workflow.html"><span class="nav-item__number">09</span><div class="nav-item__text"><span class="nav-item__title">AI-Assisted Design</span><span class="nav-item__tag">45 min · Bonus</span></div></a>
+        <a class="nav-item" href="10-component-thinking.html"><span class="nav-item__number">10</span><div class="nav-item__text"><span class="nav-item__title">Component Thinking</span><span class="nav-item__tag">45 min · Bonus</span></div></a>
+      </nav>
+      <div class="sidebar__footer">
+        <div class="sidebar__progress-label">Your progress</div>
+        <div class="sidebar__progress-track">
+          <div class="sidebar__progress-fill" id="courseProgress" style="width: 0%"></div>
+        </div>
+        <div class="theme-toggle">
+          <div class="theme-toggle__icons">
+            <span class="theme-icon theme-icon--dark">🌙</span>
+            <span class="theme-icon theme-icon--light">☀️</span>
+          </div>
+          <button class="theme-toggle__btn" id="themeToggle" aria-label="Toggle light/dark mode"></button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="chapter-header">
+        <div class="chapter-header__eyebrow"><span class="chapter-header__number">Chapter 06</span></div>
+        <h1 class="chapter-header__title">Design Tokens &amp; Systems Thinking</h1>
+        <p class="chapter-header__tagline">This is what separates a designer who codes from a designer who dabbles.</p>
+        <div class="chapter-header__meta">
+          <span class="meta-badge meta-badge--time">⏱ 1 hour</span>
+          <span class="meta-badge meta-badge--tools">🛠 VS Code</span>
+        </div>
+      </header>
+
+      <article class="chapter-body">
+
+        <section class="section">
+          <h2 class="section__title">The problem this solves</h2>
+          <div class="prose">
+            <p>Imagine you designed an app with 47 screens. Every button uses the same shade of yellow. Then your company rebrands and the yellow changes to orange. Without design tokens, you update 47 screens in Figma and tell a developer to find every instance of <code>#f5e642</code> in the code and replace it. That's hours of tedious work — and something will get missed. You'll ship the rebrand and find a rogue yellow button hiding on screen 31.</p>
+            <p>With design tokens, you change one value in one place — and everything updates everywhere. One change in Figma, one change in code. Done. That's not just a nice workflow improvement. It's a completely different way of working.</p>
+            <p>This is why every mature design system in the world uses tokens. Google Material, Apple HIG, Shopify Polaris, Atlassian Design System — all of them are built on this foundation. It's the industry standard. And it starts with a simple concept: named values.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">What is a design token?</h2>
+          <div class="prose">
+            <p>A design token is a named value. That's it.</p>
+            <p>Instead of "that yellow we use for buttons," you have a token named <code>color/action/primary</code>. Instead of "the normal body text size," you have a token named <code>font-size/body</code>. The name is the token. The value behind it can change, but the name stays the same — and everything that references that name updates automatically.</p>
+            <p>Think of it like a variable in algebra. If <em>x = 5</em> today and <em>x = 7</em> tomorrow, every equation that uses <em>x</em> gets the new value automatically. A design token works the same way.</p>
+            <p>Tokens exist for every design decision that repeats:</p>
+          </div>
+          <ul class="concept-list">
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Colors</strong> — brand colors, neutral scales, semantic colors (error, success, warning)</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Typography</strong> — font families, sizes, weights, line heights</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Spacing</strong> — padding and gap values, usually based on a 4px or 8px grid</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Border radius</strong> — from sharp to fully rounded</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Shadows &amp; elevation</strong> — depth and layering</div></li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">CSS variables — tokens in code</h2>
+          <div class="prose">
+            <p>In CSS, design tokens are implemented as "custom properties" — more commonly called CSS variables. Here's what they look like:</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__lang">CSS</span>
+              <div class="code-block__dots"><div class="code-block__dot"></div><div class="code-block__dot"></div><div class="code-block__dot"></div></div>
+            </div>
+            <pre><code>/* Define your tokens here — once, for the whole page */
+:root {
+  --color-action-primary: #f5e642;
+  --color-bg: #0a0a0a;
+  --color-text-primary: #f0f0f0;
+  --font-size-body: 17px;
+  --space-4: 16px;
+  --radius-button: 6px;
+}
+
+/* Use them with var(--token-name) */
+.button {
+  background: var(--color-action-primary);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-body);
+  padding: var(--space-4);
+  border-radius: var(--radius-button);
+}
+
+/* Now change ONE variable... */
+:root {
+  --color-action-primary: #ff6b35; /* yellow → orange */
+}
+/* ...and EVERY button on the page updates instantly */</code></pre>
+          </div>
+          <div class="prose">
+            <p><code>:root</code> is a special CSS selector that applies to the entire page — it's your global token dictionary. Variables defined there are available everywhere in your CSS. <code>var(--variable-name)</code> is how you use them. Anywhere you'd put a raw value like <code>#f5e642</code>, you write <code>var(--color-action-primary)</code> instead.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Figma Variables — the design side of tokens</h2>
+          <div class="prose">
+            <p>In 2023, Figma introduced Variables — the design equivalent of CSS variables. You define named values for colors, spacing, and other properties in Figma, and use those names instead of raw values in your designs.</p>
+            <p>The goal: your Figma variable named <code>color/action/primary</code> maps directly to your CSS variable <code>--color-action-primary</code>. Same concept, both tools. When someone changes the value in Figma Variables, designers see the update. When someone changes the CSS variable, developers see the update. One concept, two expressions.</p>
+            <p>Variables require a paid Figma plan. On the free plan, use <strong>Color Styles</strong> and <strong>Text Styles</strong> instead — they work the same way conceptually, just with a slightly different UI. The key habit: always name your colors and text styles. Never leave them as raw hex values.</p>
+          </div>
+          <div class="callout callout--tip">
+            <div class="callout__label">💡 Free plan tip</div>
+            <div class="callout__title">Use Styles on the free plan</div>
+            <div class="callout__body">In Figma, select a layer with a color → in the right panel, look for the "Fill" section → click the 4-dot grid icon → "+" → name your color (e.g., "Action / Primary"). Now you have a named color style you can apply anywhere. Change it once, update everywhere — same power as Variables, just one step less automated.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Naming tokens: the rule that changes everything</h2>
+          <div class="prose">
+            <p>There's one rule that makes the difference between a token system that works and one that breaks down in 6 months: <strong>name tokens by their role, not their value.</strong></p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__lang">CSS — naming comparison</span>
+              <div class="code-block__dots"><div class="code-block__dot"></div><div class="code-block__dot"></div><div class="code-block__dot"></div></div>
+            </div>
+            <pre><code>/* ❌ BAD — named by value */
+--yellow: #f5e642;
+--dark-gray: #333333;
+--sixteen-pixels: 16px;
+
+/* ✓ GOOD — named by role */
+--color-action-primary: #f5e642;
+--color-text-muted: #333333;
+--space-4: 16px;</code></pre>
+          </div>
+          <div class="prose">
+            <p>Why does this matter? If your brand color changes from yellow to orange, <code>--yellow</code> becomes a lie — it stores orange but the name says yellow. Every developer who reads it is confused. But <code>--color-action-primary</code> is still true — it's still the primary action color, regardless of what the actual color happens to be. The meaning is stable even when the value changes.</p>
+          </div>
+        </section>
+
+        <div class="activity">
+          <div class="activity__header">
+            <div class="activity__icon">🔧</div>
+            <div class="activity__header-text">
+              <div class="activity__label">Hands-on activity</div>
+              <div class="activity__title">Refactor your CSS to use design tokens</div>
+            </div>
+          </div>
+          <div class="activity__body">
+            <div class="activity__tools">
+              <span class="activity__tools-label">You need:</span>
+              <span class="tool-badge">VS Code</span>
+              <span class="tool-badge">Your index.html from Chapter 02</span>
+            </div>
+            <ol class="activity__steps">
+              <li class="activity__step">
+                <div class="activity__step-number">1</div>
+                <div class="activity__step-text">Open your <code>index.html</code> from Chapter 02 in VS Code. Look at the CSS — you'll see raw color values scattered throughout (like <code>#0a0a0a</code>, <code>#ffffff</code>, <code>16px</code>, etc.).</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">2</div>
+                <div class="activity__step-text">At the very top of your <code>&lt;style&gt;</code> tag, add a <code>:root { ... }</code> block. For each unique color and spacing value you're using, create a named CSS variable with a role-based name.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">3</div>
+                <div class="activity__step-text">Replace every raw color and spacing value in your CSS with <code>var(--your-token)</code>. Where you had <code>color: #f0f0f0</code>, write <code>color: var(--color-text-primary)</code>.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">4</div>
+                <div class="activity__step-text">Save and reload Chrome. Nothing should look different — the tokens have the same values, they're just named now.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">5</div>
+                <div class="activity__step-text">Now <strong>change one variable value</strong> in <code>:root</code> — say, change your background color. Save and reload. Watch everything that uses that variable update at once. That feeling is the point.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">6</div>
+                <div class="activity__step-text"><strong>Bonus — dark mode in 10 lines:</strong> Add this below your <code>:root</code> block and add <code>data-theme="dark"</code> to your <code>&lt;html&gt;</code> tag to see a dark mode version of your design:<br><code>[data-theme="dark"] { --color-bg: #0a0a0a; --color-text-primary: #f0f0f0; }</code></div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="takeaways">
+          <div class="takeaways__title">Key takeaways</div>
+          <ul class="takeaways__list">
+            <li>A design token is a named value — shared vocabulary between design and code</li>
+            <li>CSS variables (custom properties) in <code>:root</code> are how tokens work in code</li>
+            <li>Change one variable → everything that uses it updates instantly</li>
+            <li>Name tokens by their role, not their value: <code>--color-action-primary</code> not <code>--yellow</code></li>
+            <li>Figma Styles (free) and Variables (paid) are the design-side equivalent of CSS variables</li>
+            <li>This is the foundation of every professional design system — you're thinking at that level now</li>
+          </ul>
+        </div>
+
+      </article>
+      <nav class="chapter-nav">
+        <a class="chapter-nav__link" href="05-git-github.html">
+          <span class="chapter-nav__direction">&larr; Previous</span>
+          <span class="chapter-nav__title">Git &amp; GitHub</span>
+        </a>
+        <a class="chapter-nav__link chapter-nav__link--next" href="07-working-with-devs.html">
+          <span class="chapter-nav__direction">Next &rarr;</span>
+          <span class="chapter-nav__title">Working with Developers</span>
+        </a>
+      </nav>
+    </main>
+  </div>
+  <script src="../scripts/main.js"></script>
+</body>
+</html>

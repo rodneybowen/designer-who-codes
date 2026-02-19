@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 04 — Figma to Code | The Designer Who Codes</title>
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+  <header class="mobile-header">
+    <span class="mobile-header__title">Ch. 04 — Figma to Code</span>
+    <button class="mobile-hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand"><div class="sidebar__brand-title">The Designer<br>Who Codes</div><div class="sidebar__brand-sub">A 10-chapter guidebook</div></div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__section-label">Start Here</div>
+        <a class="nav-item" href="../index.html"><span class="nav-item__number">00</span><div class="nav-item__text"><span class="nav-item__title">Introduction</span></div></a>
+        <div class="sidebar__section-label">The Course</div>
+        <a class="nav-item" href="01-how-web-works.html"><span class="nav-item__number">01</span><div class="nav-item__text"><span class="nav-item__title">How the Web Works</span><span class="nav-item__tag">45 min</span></div></a>
+        <a class="nav-item" href="02-html-css.html"><span class="nav-item__number">02</span><div class="nav-item__text"><span class="nav-item__title">Reading &amp; Writing HTML + CSS</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="03-building-with-claude.html"><span class="nav-item__number">03</span><div class="nav-item__text"><span class="nav-item__title">Building with Claude</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="04-figma-to-code.html"><span class="nav-item__number">04</span><div class="nav-item__text"><span class="nav-item__title">Figma to Code</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="05-git-github.html"><span class="nav-item__number">05</span><div class="nav-item__text"><span class="nav-item__title">Git &amp; GitHub</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="06-design-tokens.html"><span class="nav-item__number">06</span><div class="nav-item__text"><span class="nav-item__title">Design Tokens &amp; Systems</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="07-working-with-devs.html"><span class="nav-item__number">07</span><div class="nav-item__text"><span class="nav-item__title">Working with Developers</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="08-responsive-accessibility.html"><span class="nav-item__number">08</span><div class="nav-item__text"><span class="nav-item__title">Responsive &amp; Accessibility</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="09-ai-design-workflow.html"><span class="nav-item__number">09</span><div class="nav-item__text"><span class="nav-item__title">AI-Assisted Design</span><span class="nav-item__tag">45 min · Bonus</span></div></a>
+        <a class="nav-item" href="10-component-thinking.html"><span class="nav-item__number">10</span><div class="nav-item__text"><span class="nav-item__title">Component Thinking</span><span class="nav-item__tag">45 min · Bonus</span></div></a>
+      </nav>
+      <div class="sidebar__footer">
+        <div class="sidebar__progress-label">Your progress</div>
+        <div class="sidebar__progress-track">
+          <div class="sidebar__progress-fill" id="courseProgress" style="width: 0%"></div>
+        </div>
+        <div class="theme-toggle">
+          <div class="theme-toggle__icons">
+            <span class="theme-icon theme-icon--dark">🌙</span>
+            <span class="theme-icon theme-icon--light">☀️</span>
+          </div>
+          <button class="theme-toggle__btn" id="themeToggle" aria-label="Toggle light/dark mode"></button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="chapter-header">
+        <div class="chapter-header__eyebrow"><span class="chapter-header__number">Chapter 04</span></div>
+        <h1 class="chapter-header__title">Figma to Code</h1>
+        <p class="chapter-header__tagline">Your designs are the blueprint. Learn how to make them developer-ready.</p>
+        <div class="chapter-header__meta">
+          <span class="meta-badge meta-badge--time">⏱ 1.5 hours</span>
+          <span class="meta-badge meta-badge--tools">🛠 Figma (free) · VS Code</span>
+        </div>
+      </header>
+
+      <article class="chapter-body">
+
+        <section class="section">
+          <h2 class="section__title">Design and code are closer than you think</h2>
+          <div class="prose">
+            <p>Here's something that would have saved a lot of designers a lot of time: the gap between Figma and CSS is almost nothing. The concepts are nearly identical. Once you see the mapping, you start designing in a way that makes code almost write itself.</p>
+            <p>Auto Layout in Figma? That's Flexbox. Figma Variables? Those are CSS variables. Figma components with variants? Those are code components with props. The tools look different, but the underlying thinking is the same. This is not a coincidence — Figma was built with the web's model in mind.</p>
+          </div>
+          <div class="callout callout--insight">
+            <div class="callout__label">🎯 The big insight</div>
+            <div class="callout__title">You've been thinking in code without knowing it</div>
+            <div class="callout__body">Every time you used Auto Layout in Figma, you were doing Flexbox. Every time you created a component with variants, you were designing a component with props. The vocabulary is different, but the model is the same. This chapter makes the mapping explicit — and once you see it, you can't unsee it.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Auto Layout = Flexbox</h2>
+          <div class="prose">
+            <p>Auto Layout in Figma is Figma's implementation of the same layout system that browsers use (Flexbox). They're not just similar — they're based on the same ideas.</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__lang">Figma → CSS mapping</span>
+              <div class="code-block__dots"><div class="code-block__dot"></div><div class="code-block__dot"></div><div class="code-block__dot"></div></div>
+            </div>
+            <pre><code>/* FIGMA Auto Layout setting   →   CSS equivalent */
+
+Direction: Horizontal          →   flex-direction: row
+Direction: Vertical            →   flex-direction: column
+
+Gap: 16                        →   gap: 16px
+
+Padding: 12 24 (top/bottom left/right) → padding: 12px 24px
+
+Align items: Center            →   align-items: center
+Align items: Start             →   align-items: flex-start
+Align items: End               →   align-items: flex-end
+
+Justify: Space between         →   justify-content: space-between
+Justify: Center                →   justify-content: center
+
+Fill container                 →   flex: 1  (or width: 100%)
+Hug contents                   →   (default — no width needed)</code></pre>
+          </div>
+          <div class="prose">
+            <p>Next time you're in Figma setting up Auto Layout, consciously think about what the CSS would be. You'll get better at both simultaneously. And when Claude generates your CSS, you'll immediately recognize the layout properties because you set them in Figma.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Figma Dev Mode — your values, ready to copy</h2>
+          <div class="prose">
+            <p>Figma has a mode called Dev Mode that switches the interface from design-focused to handoff-focused. When you select an element in Dev Mode, Figma shows you all the values a developer needs: exact pixel sizes, color hex codes, font names and weights, spacing values.</p>
+            <p>To access Dev Mode: look for the <strong>Dev Mode toggle</strong> in the top-right corner of Figma (it looks like <code>&lt;/&gt;</code>). On the free plan, you can view Dev Mode information but may have limitations on inspecting certain components.</p>
+            <p>What Dev Mode shows you:</p>
+          </div>
+          <ul class="concept-list">
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Sizes and positions</strong> — width, height, x and y position on the canvas</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Colors</strong> — the exact hex or RGB value of any fill, border, or text color</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Typography</strong> — font family, font size, font weight, line height, letter spacing</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Spacing</strong> — padding values and gaps from Auto Layout</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>CSS code</strong> — Figma can generate approximate CSS for the selected element</div></li>
+          </ul>
+          <div class="callout callout--tip">
+            <div class="callout__label">💡 How to use this with Claude</div>
+            <div class="callout__title">Copy values from Dev Mode, paste into your prompt</div>
+            <div class="callout__body">Select your button in Figma's Dev Mode. Note the background color, padding values, border-radius, font size, and font weight. Paste those exact numbers into your Claude prompt: "Build a button with background #f5e642, padding 12px 24px, border-radius 6px, font Inter 700, font-size 15px." The more specific your values, the closer the code will match your design.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Design tokens — naming your values in Figma</h2>
+          <div class="prose">
+            <p>If your button color is stored as a raw hex value (#f5e642), you have to hunt for it every time you use it. If it's a named color style called "Action / Primary," you can find it instantly, use it everywhere, and update it in one place when the brand changes.</p>
+            <p>In Figma, you create Color Styles (free) or Variables (paid) to name your values. This is the design-side equivalent of CSS variables (Chapter 06 goes deep on this). The connection: your Figma style named "Action / Primary" should have a matching CSS variable named <code>--color-action-primary</code>. Same concept, two tools.</p>
+            <p>To create a Color Style in Figma: select a layer with a color fill → in the right panel next to "Fill," click the 4-dot grid icon → "+ Create style" → give it a meaningful name.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">What developers actually need from your handoff</h2>
+          <div class="prose">
+            <p>A beautiful Figma file alone is not a complete handoff. Developers often get handed a file that shows the "happy path" — everything working perfectly, real data, good content. Then they hit reality: what does this look like on mobile? What happens when the user's name is 47 characters long? What's the empty state when there are no results?</p>
+            <p>A great handoff includes:</p>
+          </div>
+          <ul class="concept-list">
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>All states</strong> — default, hover, active, focused, disabled, loading, error, success. Every interactive element needs all of these designed.</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>All screen sizes</strong> — at minimum: mobile (390px), tablet (768px), desktop (1280px+). Use Figma frames at these sizes.</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Edge cases</strong> — what happens with a very long name? An empty state (no items, no data)? A list with 1 item vs. 100 items?</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Interaction notes</strong> — what happens when you click this button? What animates, what appears, what changes state?</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Named styles</strong> — colors and text styles should be named, not raw values. Developers can work from names in a design system.</div></li>
+          </ul>
+          <div class="callout callout--warning">
+            <div class="callout__label">⚠️ The biggest handoff mistake</div>
+            <div class="callout__title">Only designing the "happy path"</div>
+            <div class="callout__body">If you only design what everything looks like when it works perfectly — and don't design loading states, error states, and empty states — a developer will invent those states. They'll usually do it quickly, without much thought about UX, and it usually looks bad. Designing every state is your job. It's also one of the most valuable things you can do for the final product.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Components in Figma = Components in code</h2>
+          <div class="prose">
+            <p>In Figma, when you make something a Component (Cmd + Alt + K), you create a reusable element that can be placed anywhere. In code, components work the same way — a developer builds a Button once and uses it everywhere.</p>
+            <p>The mapping gets more precise with <strong>Variants</strong>. In Figma, a Button might have variants for Size (Small, Medium, Large) and State (Default, Hover, Disabled). In code, those variants become "props" — properties you pass to the component to change how it looks or behaves.</p>
+            <p>When your Figma variants match how a developer thinks about the component, the handoff becomes almost automatic. The developer doesn't need to guess what states exist — they're all there in your file. Chapter 10 goes much deeper on this way of thinking.</p>
+          </div>
+        </section>
+
+        <div class="activity">
+          <div class="activity__header">
+            <div class="activity__icon">🔘</div>
+            <div class="activity__header-text">
+              <div class="activity__label">Hands-on activity</div>
+              <div class="activity__title">Design a button in Figma, build it in code</div>
+            </div>
+          </div>
+          <div class="activity__body">
+            <div class="activity__tools">
+              <span class="activity__tools-label">You need:</span>
+              <span class="tool-badge">Figma (free account — figma.com)</span>
+              <span class="tool-badge">VS Code</span>
+              <span class="tool-badge">Chrome</span>
+            </div>
+            <ol class="activity__steps">
+              <li class="activity__step">
+                <div class="activity__step-number">1</div>
+                <div class="activity__step-text">Open Figma and create a new file. Design a button component with 3 variants: <strong>Default</strong> (yellow background #f5e642, dark text), <strong>Hover</strong> (slightly lighter yellow, still dark text), <strong>Disabled</strong> (grey background #333, grey text #666). Use Auto Layout for all three — set the padding to 12px top/bottom, 24px left/right.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">2</div>
+                <div class="activity__step-text">Select your Default button. Open Dev Mode (the &lt;/&gt; icon in the top right). Write down: the hex color, padding values, border-radius, font size, font weight, and font name. These are the values you'll use in code.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">3</div>
+                <div class="activity__step-text">Open VS Code. Create a file called <code>button.html</code>. Ask Claude: <em>"Write a single HTML file with a button styled with these exact values from Figma: background #f5e642, padding 12px 24px, border-radius 6px, font Inter 700 15px, dark text (#0a0a0a). Include a hover state that lightens the yellow slightly. Also include a disabled state with grey background (#333) and grey text (#666). Show all 3 versions on the page."</em></div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">4</div>
+                <div class="activity__step-text">Open the file in Chrome. Compare the result to your Figma design. Are the values matching? If something looks off, adjust the CSS values manually until they match — this is a direct exercise in reading and tweaking CSS.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">5</div>
+                <div class="activity__step-text"><strong>Reflect:</strong> Notice how the Auto Layout padding in Figma (12, 24) became <code>padding: 12px 24px</code> in CSS. The same numbers, the same concept. This direct mapping is what makes being a designer who codes so powerful.</div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="takeaways">
+          <div class="takeaways__title">Key takeaways</div>
+          <ul class="takeaways__list">
+            <li>Auto Layout in Figma maps directly to Flexbox in CSS — direction, gap, padding, alignment are the same concepts</li>
+            <li>Figma Dev Mode shows you the exact values (colors, spacing, fonts) that go into code</li>
+            <li>A complete handoff includes all states, all screen sizes, edge cases, and interaction notes</li>
+            <li>Name your Figma colors and text styles — raw hex values are much harder to work with than named tokens</li>
+            <li>Figma component variants = code component props — align them intentionally for smoother collaboration</li>
+          </ul>
+        </div>
+
+      </article>
+      <nav class="chapter-nav">
+        <a class="chapter-nav__link" href="03-building-with-claude.html">
+          <span class="chapter-nav__direction">&larr; Previous</span>
+          <span class="chapter-nav__title">Building with Claude</span>
+        </a>
+        <a class="chapter-nav__link chapter-nav__link--next" href="05-git-github.html">
+          <span class="chapter-nav__direction">Next &rarr;</span>
+          <span class="chapter-nav__title">Git &amp; GitHub</span>
+        </a>
+      </nav>
+    </main>
+  </div>
+  <script src="../scripts/main.js"></script>
+</body>
+</html>

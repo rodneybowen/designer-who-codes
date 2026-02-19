@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 05 — Git & GitHub | The Designer Who Codes</title>
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+  <header class="mobile-header">
+    <span class="mobile-header__title">Ch. 05 — Git &amp; GitHub</span>
+    <button class="mobile-hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand"><div class="sidebar__brand-title">The Designer<br>Who Codes</div><div class="sidebar__brand-sub">A 10-chapter guidebook</div></div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__section-label">Start Here</div>
+        <a class="nav-item" href="../index.html"><span class="nav-item__number">00</span><div class="nav-item__text"><span class="nav-item__title">Introduction</span></div></a>
+        <div class="sidebar__section-label">The Course</div>
+        <a class="nav-item" href="01-how-web-works.html"><span class="nav-item__number">01</span><div class="nav-item__text"><span class="nav-item__title">How the Web Works</span><span class="nav-item__tag">45 min</span></div></a>
+        <a class="nav-item" href="02-html-css.html"><span class="nav-item__number">02</span><div class="nav-item__text"><span class="nav-item__title">Reading &amp; Writing HTML + CSS</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="03-building-with-claude.html"><span class="nav-item__number">03</span><div class="nav-item__text"><span class="nav-item__title">Building with Claude</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="04-figma-to-code.html"><span class="nav-item__number">04</span><div class="nav-item__text"><span class="nav-item__title">Figma to Code</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="05-git-github.html"><span class="nav-item__number">05</span><div class="nav-item__text"><span class="nav-item__title">Git &amp; GitHub</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="06-design-tokens.html"><span class="nav-item__number">06</span><div class="nav-item__text"><span class="nav-item__title">Design Tokens &amp; Systems</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="07-working-with-devs.html"><span class="nav-item__number">07</span><div class="nav-item__text"><span class="nav-item__title">Working with Developers</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="08-responsive-accessibility.html"><span class="nav-item__number">08</span><div class="nav-item__text"><span class="nav-item__title">Responsive &amp; Accessibility</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="09-ai-design-workflow.html"><span class="nav-item__number">09</span><div class="nav-item__text"><span class="nav-item__title">AI-Assisted Design</span><span class="nav-item__tag">45 min · Bonus</span></div></a>
+        <a class="nav-item" href="10-component-thinking.html"><span class="nav-item__number">10</span><div class="nav-item__text"><span class="nav-item__title">Component Thinking</span><span class="nav-item__tag">45 min · Bonus</span></div></a>
+      </nav>
+      <div class="sidebar__footer">
+        <div class="sidebar__progress-label">Your progress</div>
+        <div class="sidebar__progress-track">
+          <div class="sidebar__progress-fill" id="courseProgress" style="width: 0%"></div>
+        </div>
+        <div class="theme-toggle">
+          <div class="theme-toggle__icons">
+            <span class="theme-icon theme-icon--dark">🌙</span>
+            <span class="theme-icon theme-icon--light">☀️</span>
+          </div>
+          <button class="theme-toggle__btn" id="themeToggle" aria-label="Toggle light/dark mode"></button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="chapter-header">
+        <div class="chapter-header__eyebrow"><span class="chapter-header__number">Chapter 05</span></div>
+        <h1 class="chapter-header__title">Git &amp; GitHub: Saving and Sharing Your Work</h1>
+        <p class="chapter-header__tagline">Git is not scary. It's just a very obsessive save system.</p>
+        <div class="chapter-header__meta">
+          <span class="meta-badge meta-badge--time">⏱ 1 hour</span>
+          <span class="meta-badge meta-badge--tools">🛠 GitHub Desktop (free) · GitHub account (free)</span>
+        </div>
+      </header>
+
+      <article class="chapter-body">
+
+        <section class="section">
+          <h2 class="section__title">Why you need this</h2>
+          <div class="prose">
+            <p>Every developer uses Git. Every company that builds software uses GitHub (or a similar platform). When you join a team or freelance for a company, code lives on GitHub. Knowing how to put your work there, get work from there, and not accidentally break things makes you a real collaborator — not just someone who hands over a Figma file and hopes for the best.</p>
+            <p>But there's an even more immediately useful reason: <strong>GitHub Pages</strong>. By the end of this chapter, you'll have a real live website with a real URL, hosted for free, that you can share with anyone in the world. No credit card. No server. No hosting bill.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Git: the obsessive save system</h2>
+          <div class="prose">
+            <p>You know how when you're working on a big Figma file, you sometimes duplicate it before making a major change — just in case? "Landing Page v2 — before rebrand" and "Landing Page v3 — after rebrand FINAL"? Git replaces that messy system with something that actually works.</p>
+            <p>Git watches your project folder and remembers every single change you've ever saved to it. Instead of duplicating files, you "commit" — you save a labeled snapshot of your project at that moment in time. You can have hundreds of commits and jump back to any of them instantly. Nothing is ever lost.</p>
+          </div>
+          <ul class="concept-list">
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Repository (repo)</strong> = a project folder that Git is watching. "I'm in the repo" means "I'm in the project folder."</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Commit</strong> = a saved snapshot of your project with a short message describing what changed. Like a Figma version history label, but for code.</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Branch</strong> = a parallel version of your project where you can make changes without affecting the main version. When the changes are ready, you "merge" them in. For now, you'll work only on the "main" branch.</div></li>
+          </ul>
+          <div class="callout callout--jargon">
+            <div class="callout__label">📖 Jargon decoded</div>
+            <div class="callout__title">What's the "terminal" (and do you need it)?</div>
+            <div class="callout__body">The terminal (also called "command line" or "shell") is a text-based way to control your computer. Git was originally designed for the terminal. However, <strong>GitHub Desktop</strong> — a free app — lets you use Git visually without ever opening the terminal. Start there. You can learn terminal commands later if you want to go faster, but it's not required for this course.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">GitHub: your code's home on the internet</h2>
+          <div class="prose">
+            <p>Git lives on your computer. GitHub is a website that stores your Git repos online. Think of it like Dropbox, but specifically designed for code — with version history, collaboration tools, and the ability to let others see and contribute to your work.</p>
+            <p>When you "push" to GitHub, you're uploading your local commits to the online repo. When your teammates "pull" from GitHub, they download the latest changes to their machines. This is how software teams work on the same codebase without overwriting each other's work.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">The basic Git workflow</h2>
+          <ul class="concept-list">
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Write or change files</strong> — you do your work in VS Code as usual</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Stage</strong> — select which changed files to include in this snapshot (GitHub Desktop shows you a checklist)</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Commit</strong> — write a short message describing what you changed ("Add nav bar", "Fix button color", "Make layout responsive") and save the snapshot</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Push</strong> — upload your commits to GitHub so they're online and backed up</div></li>
+          </ul>
+          <div class="callout callout--tip">
+            <div class="callout__label">💡 Good commit messages</div>
+            <div class="callout__title">Write them like you're leaving a note for your future self</div>
+            <div class="callout__body">"Update" or "Fix stuff" or "Changes" are useless commit messages. In 6 months, you won't remember what you changed. Write: "Add mobile responsive layout to homepage" or "Fix button hover state color." Clear, specific, past-tense. Your future self will thank you.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">GitHub Pages — free website hosting in 2 minutes</h2>
+          <div class="prose">
+            <p>GitHub has a feature called GitHub Pages. If your repo has an <code>index.html</code> file and you turn on GitHub Pages in Settings, GitHub will serve that file as a live website for free. No hosting costs. No server setup. Just files on GitHub, live on the internet.</p>
+            <p>Your website will live at: <code>https://[your-username].github.io/[repo-name]/</code></p>
+            <p>This is how this course website is hosted. It's how hundreds of thousands of designers and developers share their portfolios, projects, and experiments. It's completely free and it takes about 2 minutes to set up.</p>
+          </div>
+          <div class="callout callout--insight">
+            <div class="callout__label">🎯 Real-world use</div>
+            <div class="callout__title">Every project you build can be shared</div>
+            <div class="callout__body">Every exercise in this course can be put on GitHub Pages. Your card from Chapter 02, your landing page from Chapter 03, your button from Chapter 04 — all of these can become real, sharable URLs. Start building a portfolio of living, breathing projects, not just Figma files. A designer who can share a working URL is fundamentally more impressive than one who shares a screenshot.</div>
+          </div>
+        </section>
+
+        <div class="activity">
+          <div class="activity__header">
+            <div class="activity__icon">🌐</div>
+            <div class="activity__header-text">
+              <div class="activity__label">Hands-on activity</div>
+              <div class="activity__title">Get your first website live on the internet</div>
+            </div>
+          </div>
+          <div class="activity__body">
+            <div class="activity__tools">
+              <span class="activity__tools-label">You need:</span>
+              <span class="tool-badge">GitHub account (free — github.com)</span>
+              <span class="tool-badge">GitHub Desktop (free — desktop.github.com)</span>
+              <span class="tool-badge">VS Code</span>
+            </div>
+            <ol class="activity__steps">
+              <li class="activity__step">
+                <div class="activity__step-number">1</div>
+                <div class="activity__step-text">Create a free account at <strong>github.com</strong>. Choose a username you're comfortable sharing — it'll be in your website's URL.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">2</div>
+                <div class="activity__step-text">Download <strong>GitHub Desktop</strong> at desktop.github.com (free). Install it and sign in with your GitHub account.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">3</div>
+                <div class="activity__step-text">In GitHub Desktop: <strong>File → New Repository</strong>. Name it <code>my-first-site</code>. Set the local path to your Desktop. Click "Create Repository."</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">4</div>
+                <div class="activity__step-text">Open that new folder in VS Code (in GitHub Desktop: Repository → Open in Visual Studio Code). Create a file called <code>index.html</code>. Paste in your card HTML from Chapter 02, or ask Claude to generate a simple personal page.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">5</div>
+                <div class="activity__step-text">Back in GitHub Desktop, you'll see <code>index.html</code> listed under "Changes." In the bottom left, type a commit message: <strong>"Add homepage"</strong>. Click "Commit to main."</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">6</div>
+                <div class="activity__step-text">Click <strong>"Publish repository"</strong> (top right in GitHub Desktop). Make sure "Keep this code private" is unchecked (it needs to be public for GitHub Pages). Click "Publish Repository."</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">7</div>
+                <div class="activity__step-text">Go to <strong>github.com</strong>, find your repo, click <strong>Settings → Pages</strong> (left sidebar). Under Source: select "Deploy from a branch" → Branch: main → /(root) → Save.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">8</div>
+                <div class="activity__step-text">Wait 1–2 minutes. Refresh the Pages settings page. You'll see a green message: "Your site is published at..." — that URL is your live website. <strong>Share it.</strong></div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="takeaways">
+          <div class="takeaways__title">Key takeaways</div>
+          <ul class="takeaways__list">
+            <li>Git is a save system that remembers every change you've ever made — nothing is ever lost</li>
+            <li>A commit is a labeled snapshot of your project at a moment in time</li>
+            <li>GitHub stores your repos online and makes collaboration possible</li>
+            <li>GitHub Desktop lets you use Git without the terminal — start there</li>
+            <li>GitHub Pages = free, instant website hosting — every project you build can have a real URL</li>
+            <li>Good commit messages are short, specific, and past-tense: "Add responsive nav bar"</li>
+          </ul>
+        </div>
+
+      </article>
+      <nav class="chapter-nav">
+        <a class="chapter-nav__link" href="04-figma-to-code.html">
+          <span class="chapter-nav__direction">&larr; Previous</span>
+          <span class="chapter-nav__title">Figma to Code</span>
+        </a>
+        <a class="chapter-nav__link chapter-nav__link--next" href="06-design-tokens.html">
+          <span class="chapter-nav__direction">Next &rarr;</span>
+          <span class="chapter-nav__title">Design Tokens &amp; Systems</span>
+        </a>
+      </nav>
+    </main>
+  </div>
+  <script src="../scripts/main.js"></script>
+</body>
+</html>

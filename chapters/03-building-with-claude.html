@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 03 — Building with Claude | The Designer Who Codes</title>
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+  <header class="mobile-header">
+    <span class="mobile-header__title">Ch. 03 — Building with Claude</span>
+    <button class="mobile-hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand"><div class="sidebar__brand-title">The Designer<br>Who Codes</div><div class="sidebar__brand-sub">A 10-chapter guidebook</div></div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__section-label">Start Here</div>
+        <a class="nav-item" href="../index.html"><span class="nav-item__number">00</span><div class="nav-item__text"><span class="nav-item__title">Introduction</span></div></a>
+        <div class="sidebar__section-label">The Course</div>
+        <a class="nav-item" href="01-how-web-works.html"><span class="nav-item__number">01</span><div class="nav-item__text"><span class="nav-item__title">How the Web Works</span><span class="nav-item__tag">45 min</span></div></a>
+        <a class="nav-item" href="02-html-css.html"><span class="nav-item__number">02</span><div class="nav-item__text"><span class="nav-item__title">Reading &amp; Writing HTML + CSS</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="03-building-with-claude.html"><span class="nav-item__number">03</span><div class="nav-item__text"><span class="nav-item__title">Building with Claude</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="04-figma-to-code.html"><span class="nav-item__number">04</span><div class="nav-item__text"><span class="nav-item__title">Figma to Code</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="05-git-github.html"><span class="nav-item__number">05</span><div class="nav-item__text"><span class="nav-item__title">Git &amp; GitHub</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="06-design-tokens.html"><span class="nav-item__number">06</span><div class="nav-item__text"><span class="nav-item__title">Design Tokens &amp; Systems</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="07-working-with-devs.html"><span class="nav-item__number">07</span><div class="nav-item__text"><span class="nav-item__title">Working with Developers</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="08-responsive-accessibility.html"><span class="nav-item__number">08</span><div class="nav-item__text"><span class="nav-item__title">Responsive &amp; Accessibility</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="09-ai-design-workflow.html"><span class="nav-item__number">09</span><div class="nav-item__text"><span class="nav-item__title">AI-Assisted Design</span><span class="nav-item__tag">45 min · Bonus</span></div></a>
+        <a class="nav-item" href="10-component-thinking.html"><span class="nav-item__number">10</span><div class="nav-item__text"><span class="nav-item__title">Component Thinking</span><span class="nav-item__tag">45 min · Bonus</span></div></a>
+      </nav>
+      <div class="sidebar__footer">
+        <div class="sidebar__progress-label">Your progress</div>
+        <div class="sidebar__progress-track">
+          <div class="sidebar__progress-fill" id="courseProgress" style="width: 0%"></div>
+        </div>
+        <div class="theme-toggle">
+          <div class="theme-toggle__icons">
+            <span class="theme-icon theme-icon--dark">🌙</span>
+            <span class="theme-icon theme-icon--light">☀️</span>
+          </div>
+          <button class="theme-toggle__btn" id="themeToggle" aria-label="Toggle light/dark mode"></button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="chapter-header">
+        <div class="chapter-header__eyebrow"><span class="chapter-header__number">Chapter 03</span></div>
+        <h1 class="chapter-header__title">Building with Claude</h1>
+        <p class="chapter-header__tagline">Claude is your pair programmer. Learn how to direct it like a creative director, not a developer.</p>
+        <div class="chapter-header__meta">
+          <span class="meta-badge meta-badge--time">⏱ 1 hour</span>
+          <span class="meta-badge meta-badge--tools">🛠 Claude (free) · VS Code</span>
+        </div>
+      </header>
+
+      <article class="chapter-body">
+
+        <section class="section">
+          <h2 class="section__title">The right mental model</h2>
+          <div class="prose">
+            <p>Claude is not a vending machine. You don't put in "make me a website" and get back a perfect finished product. It's more like working with a very fast, very capable junior developer who needs clear direction.</p>
+            <p>You are the creative director. You have the vision, the taste, the understanding of the user. Claude has the technical knowledge to implement things quickly. The best results come from back-and-forth — you set the direction, Claude drafts, you react, Claude adjusts. Three rounds of iteration almost always produces better work than one perfect prompt.</p>
+          </div>
+          <div class="callout callout--tip">
+            <div class="callout__label">💡 The mindset shift</div>
+            <div class="callout__title">Stop trying to write perfect prompts</div>
+            <div class="callout__body">New Claude users spend a lot of time trying to write the "perfect" prompt that gets a perfect result in one shot. That's not how it works — and that's not how even senior developers write code. The power is in iteration. Get something on screen fast, then describe what's wrong and improve it. Move like a creative director: react, direct, refine.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">How to prompt for UI</h2>
+          <div class="prose">
+            <p>The best prompts for UI describe things <em>visually</em> and <em>functionally</em>, not technically. You don't need to know CSS property names to describe what you want. Talk like a designer.</p>
+          </div>
+          <div class="callout callout--warning">
+            <div class="callout__label">❌ Weak prompt</div>
+            <div class="callout__title">"Make a button"</div>
+            <div class="callout__body">This gives Claude almost no information. It will produce something technically valid but visually generic. You'll be back in a minute asking it to "make it look better."</div>
+          </div>
+          <div class="callout callout--insight">
+            <div class="callout__label">✓ Strong prompt</div>
+            <div class="callout__title">"Make a primary call-to-action button"</div>
+            <div class="callout__body">"Make a button with a bright yellow background (#f5e642), dark text (almost black), Inter font, bold weight, slightly rounded corners (6px), and a smooth hover effect where the background lightens slightly. It should say 'Get Started'. Make it feel high-quality and confident, not generic."</div>
+          </div>
+          <div class="prose">
+            <p>The elements of a strong UI prompt:</p>
+          </div>
+          <ul class="concept-list">
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>What it looks like</strong> — colors, fonts, spacing, shape, visual style</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>What it does</strong> — hover effects, click behavior, any animation</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>What style/tone</strong> — "editorial and bold", "clean and minimal", "playful and rounded"</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>What constraints</strong> — "single HTML file", "no JavaScript", "use Inter font", "dark background"</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>What to avoid</strong> — "don't use drop shadows", "no bright colors", "keep it simple"</div></li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">The iteration loop</h2>
+          <div class="prose">
+            <p>This is the actual workflow you'll use 90% of the time:</p>
+          </div>
+          <ul class="concept-list">
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>1. Prompt</strong> — describe what you want to build</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>2. Get code</strong> — Claude generates HTML/CSS</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>3. Open in browser</strong> — paste code into VS Code, open in Chrome</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>4. Spot issues</strong> — something looks wrong, doesn't match your vision, or needs refinement</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>5. Describe it in plain English</strong> — tell Claude exactly what to fix</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>6. Repeat</strong> — 3 to 5 rounds of this gets you somewhere great</div></li>
+          </ul>
+          <div class="callout callout--tip">
+            <div class="callout__label">💬 How to describe problems</div>
+            <div class="callout__title">Plain language works perfectly</div>
+            <div class="callout__body">You don't need to know the CSS property name to describe the problem. "The button is too close to the title" = increase margin-top. "The text is hard to read" = increase contrast or font size. "The card feels cramped" = increase padding. Describe what you see and what you want — Claude translates it into code.</div>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__lang">Prompt examples</span>
+              <div class="code-block__dots"><div class="code-block__dot"></div><div class="code-block__dot"></div><div class="code-block__dot"></div></div>
+            </div>
+            <pre><code>// After getting the first draft, these are real prompts that work:
+
+"The button is too close to the heading above it. Add more space between them."
+
+"The card feels too narrow on desktop. Make it wider, up to 600px max."
+
+"The font looks too light and hard to read. Make the body text brighter."
+
+"The hover effect on the button is too subtle — make it more noticeable,
+ maybe a slight scale up or a brighter background."
+
+"This looks good on desktop but I think it'll break on mobile.
+ Can you add media queries to make it stack vertically on screens under 768px?"</code></pre>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">How to read error messages without panicking</h2>
+          <div class="prose">
+            <p>Things will break. This is completely normal — it happens to every developer, every day. The skill isn't avoiding errors; it's knowing what to do when you see them.</p>
+          </div>
+          <ul class="concept-list">
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>"The page is blank"</strong> — The HTML file likely has a structural error (a missing tag, a broken link to the CSS file). Open DevTools (Cmd + Option + I), click the Console tab, and look for red error messages.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>"The styles aren't applying"</strong> — Your CSS file isn't linked correctly, or the class name in HTML doesn't match the class name in CSS (check for typos — <code>class="Card"</code> and <code>.card</code> are different).</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Red errors in the Console</strong> — Copy the exact error text and paste it into Claude with: "I'm getting this error in my browser console. What does it mean and how do I fix it? Here's my code: [paste your code]"</div>
+            </li>
+          </ul>
+          <div class="callout callout--insight">
+            <div class="callout__label">🎯 The key move</div>
+            <div class="callout__title">Copy the error, paste it to Claude</div>
+            <div class="callout__body">This is genuinely the most valuable skill in this entire chapter. Any error you see — in the browser console, in VS Code, anywhere — copy it exactly, paste it to Claude with your code, and ask "what does this mean and how do I fix it?" Claude is extraordinarily good at debugging. Use it.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Giving Claude the right context</h2>
+          <div class="prose">
+            <p>Claude doesn't remember your previous conversations (unless you're in a Project). Every new chat is a fresh start. This means you need to treat each conversation like briefing a new collaborator — give them the context they need.</p>
+            <p>The most common mistake: asking Claude to change something without giving it the current code. "Add a dark mode" is useless context-free. "Here's my current HTML and CSS [paste] — can you add a dark mode toggle that switches between light and dark using a button?" is actionable.</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__lang">Prompt template</span>
+              <div class="code-block__dots"><div class="code-block__dot"></div><div class="code-block__dot"></div><div class="code-block__dot"></div></div>
+            </div>
+            <pre><code>Here's my current HTML and CSS:
+
+[paste your entire code here]
+
+---
+
+I want to [describe the change].
+Specifically: [describe what it should look like/do].
+Please give me the updated full file.</code></pre>
+          </div>
+          <div class="prose">
+            <p>Always ask for "the updated full file" — this way you don't have to manually merge changes. Claude rewrites the whole thing and you replace your file with the new version.</p>
+          </div>
+        </section>
+
+        <div class="activity">
+          <div class="activity__header">
+            <div class="activity__icon">🚀</div>
+            <div class="activity__header-text">
+              <div class="activity__label">Hands-on activity</div>
+              <div class="activity__title">Design in Figma, build with Claude</div>
+            </div>
+          </div>
+          <div class="activity__body">
+            <div class="activity__tools">
+              <span class="activity__tools-label">You need:</span>
+              <span class="tool-badge">Figma (free account)</span>
+              <span class="tool-badge">Claude (free — claude.ai)</span>
+              <span class="tool-badge">VS Code</span>
+              <span class="tool-badge">Chrome</span>
+            </div>
+            <ol class="activity__steps">
+              <li class="activity__step">
+                <div class="activity__step-number">1</div>
+                <div class="activity__step-text">Open Figma and create a new file. Create a frame at iPhone 14 size: 390 × 844px. Using just rectangles and text, sketch a simple landing page layout: a nav bar at the top, a big headline, a subtitle, and a "Get Started" button. This is a lo-fi sketch — it doesn't need to look great.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">2</div>
+                <div class="activity__step-text">Take a screenshot of your Figma frame (in Figma: select the frame → right-click → "Copy as PNG", or use <code>Cmd + Shift + 4</code> on your Mac to screenshot the screen).</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">3</div>
+                <div class="activity__step-text">Open <strong>claude.ai</strong>. Click the paperclip icon to attach your screenshot. Then type: <em>"Build this as a single HTML and CSS file. Use a dark background (#0a0a0a), white text (#f0f0f0), Inter font from Google Fonts, and a yellow (#f5e642) accent color for the button. Make it responsive for mobile. The CSS should be inside a &lt;style&gt; tag in the same file."</em></div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">4</div>
+                <div class="activity__step-text">Paste Claude's code into a new <code>index.html</code> file in VS Code. Open it in Chrome. Look at it critically — what's not right? What doesn't match your design sketch?</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">5</div>
+                <div class="activity__step-text">Do at least <strong>3 rounds of iteration</strong>. For each: describe one specific thing that needs to change. Paste your current code into Claude with the context. Get the updated file. Replace and reload. By round 3, it should look meaningfully better than round 1.</div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="takeaways">
+          <div class="takeaways__title">Key takeaways</div>
+          <ul class="takeaways__list">
+            <li>You're the creative director — Claude is the implementer. Set direction, iterate on the details.</li>
+            <li>Describe things visually ("the button is too close to the title") not technically.</li>
+            <li>Always paste your existing code when asking Claude for changes — never ask without context.</li>
+            <li>Error messages aren't failure — they're clues. Copy them and paste into Claude.</li>
+            <li>3–5 rounds of iteration almost always produces better work than one "perfect" prompt.</li>
+            <li>Ask for "the updated full file" so you don't have to manually merge changes.</li>
+          </ul>
+        </div>
+
+      </article>
+      <nav class="chapter-nav">
+        <a class="chapter-nav__link" href="02-html-css.html">
+          <span class="chapter-nav__direction">&larr; Previous</span>
+          <span class="chapter-nav__title">Reading &amp; Writing HTML + CSS</span>
+        </a>
+        <a class="chapter-nav__link chapter-nav__link--next" href="04-figma-to-code.html">
+          <span class="chapter-nav__direction">Next &rarr;</span>
+          <span class="chapter-nav__title">Figma to Code</span>
+        </a>
+      </nav>
+    </main>
+  </div>
+  <script src="../scripts/main.js"></script>
+</body>
+</html>

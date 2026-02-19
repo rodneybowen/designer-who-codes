@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 10 — Component Thinking | The Designer Who Codes</title>
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+  <header class="mobile-header">
+    <span class="mobile-header__title">Ch. 10 — Component Thinking</span>
+    <button class="mobile-hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand"><div class="sidebar__brand-title">The Designer<br>Who Codes</div><div class="sidebar__brand-sub">A 10-chapter guidebook</div></div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__section-label">Start Here</div>
+        <a class="nav-item" href="../index.html"><span class="nav-item__number">00</span><div class="nav-item__text"><span class="nav-item__title">Introduction</span></div></a>
+        <div class="sidebar__section-label">The Course</div>
+        <a class="nav-item" href="01-how-web-works.html"><span class="nav-item__number">01</span><div class="nav-item__text"><span class="nav-item__title">How the Web Works</span><span class="nav-item__tag">45 min</span></div></a>
+        <a class="nav-item" href="02-html-css.html"><span class="nav-item__number">02</span><div class="nav-item__text"><span class="nav-item__title">Reading &amp; Writing HTML + CSS</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="03-building-with-claude.html"><span class="nav-item__number">03</span><div class="nav-item__text"><span class="nav-item__title">Building with Claude</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="04-figma-to-code.html"><span class="nav-item__number">04</span><div class="nav-item__text"><span class="nav-item__title">Figma to Code</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="05-git-github.html"><span class="nav-item__number">05</span><div class="nav-item__text"><span class="nav-item__title">Git &amp; GitHub</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="06-design-tokens.html"><span class="nav-item__number">06</span><div class="nav-item__text"><span class="nav-item__title">Design Tokens &amp; Systems</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="07-working-with-devs.html"><span class="nav-item__number">07</span><div class="nav-item__text"><span class="nav-item__title">Working with Developers</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="08-responsive-accessibility.html"><span class="nav-item__number">08</span><div class="nav-item__text"><span class="nav-item__title">Responsive &amp; Accessibility</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="09-ai-design-workflow.html"><span class="nav-item__number">09</span><div class="nav-item__text"><span class="nav-item__title">AI-Assisted Design</span><span class="nav-item__tag">45 min · Bonus</span></div></a>
+        <a class="nav-item" href="10-component-thinking.html"><span class="nav-item__number">10</span><div class="nav-item__text"><span class="nav-item__title">Component Thinking</span><span class="nav-item__tag">45 min · Bonus</span></div></a>
+      </nav>
+      <div class="sidebar__footer">
+        <div class="sidebar__progress-label">Your progress</div>
+        <div class="sidebar__progress-track">
+          <div class="sidebar__progress-fill" id="courseProgress" style="width: 0%"></div>
+        </div>
+        <div class="theme-toggle">
+          <div class="theme-toggle__icons">
+            <span class="theme-icon theme-icon--dark">🌙</span>
+            <span class="theme-icon theme-icon--light">☀️</span>
+          </div>
+          <button class="theme-toggle__btn" id="themeToggle" aria-label="Toggle light/dark mode"></button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="chapter-header">
+        <div class="chapter-header__eyebrow"><span class="chapter-header__number">Chapter 10 — Bonus</span></div>
+        <h1 class="chapter-header__title">Component Thinking</h1>
+        <p class="chapter-header__tagline">The way developers think about code is exactly how you should think about design.</p>
+        <div class="chapter-header__meta">
+          <span class="meta-badge meta-badge--time">⏱ 45 minutes</span>
+          <span class="meta-badge meta-badge--tools">🛠 VS Code · Any browser</span>
+        </div>
+      </header>
+
+      <article class="chapter-body">
+
+        <div class="callout callout--tip">
+          <div class="callout__label">Final chapter — Bonus</div>
+          <div class="callout__title">This one changes how you see every product you've ever used</div>
+          <div class="callout__body">After this chapter, you'll never look at a UI the same way again. You'll see components everywhere — and you'll design with that awareness, which makes you a dramatically better collaborator with any engineering team.</div>
+        </div>
+
+        <section class="section">
+          <h2 class="section__title">Think in systems, not screens</h2>
+          <div class="prose">
+            <p>Most designers think in screens. "This is the profile screen. This is the settings screen. This is the checkout screen." It's a natural way to think — you're designing what users see.</p>
+            <p>Developers think in components. They don't build a "profile screen" — they assemble a nav bar component, a user avatar component, a settings card component, and a button component. The screen is just a composition of reusable pieces.</p>
+            <p>This difference in perspective creates friction. Designers hand off screens; developers think in components. When those two ways of seeing the same product aren't aligned, you get miscommunication, rework, and inconsistency.</p>
+            <p>The designer who understands components — who designs and thinks in systems, not just screens — eliminates that friction. They become the bridge between design and engineering. And that person is extraordinarily valuable.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">What is a component?</h2>
+          <div class="prose">
+            <p>A component is a self-contained, reusable piece of UI. It's a thing — not a screen. It has three parts:</p>
+          </div>
+          <ul class="concept-list">
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Structure (HTML)</strong> — what it's made of: a button has a label and maybe an icon. A card has an image, a title, a description, and a CTA.</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Style (CSS)</strong> — what it looks like: colors, spacing, typography, border radius, hover effects.</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Properties (props)</strong> — what can change between instances. A button's label can change. Its variant (primary, secondary) can change. Its state (loading, disabled) can change. But the structure stays the same.</div></li>
+          </ul>
+          <div class="prose">
+            <p>Examples of components in any mature product: Button, Input, Card, Badge, Avatar, Modal, Toast notification, Dropdown menu, Tooltip, Tab bar, Navigation bar, Data table, Progress bar.</p>
+            <p>Look at any real product and you'll see the same components repeating across dozens of screens. That repetition is intentional — it's what makes a product feel consistent, and it's what makes it efficient to build.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Props — what makes components flexible</h2>
+          <div class="prose">
+            <p>In Figma, you use <strong>Variants</strong> to show different versions of a component — a button that's Primary, or Secondary, or Ghost. In code, these are called <strong>props</strong> (short for "properties") — values you pass to the component that change how it looks or behaves.</p>
+            <p>A Button component might have props like:</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__lang">Component props (concept)</span>
+              <div class="code-block__dots"><div class="code-block__dot"></div><div class="code-block__dot"></div><div class="code-block__dot"></div></div>
+            </div>
+            <pre><code>Button props:
+  variant:  "primary" | "secondary" | "ghost" | "danger"
+  size:     "small" | "medium" | "large"
+  state:    "default" | "loading" | "disabled"
+  label:    string (the button text)
+  icon:     icon name or null (optional icon)
+  onClick:  function (what happens when clicked)
+
+// Used like:
+&lt;Button variant="primary" size="medium" label="Get Started" /&gt;
+&lt;Button variant="ghost" size="small" label="Cancel" /&gt;
+&lt;Button variant="primary" state="loading" label="Saving..." /&gt;</code></pre>
+          </div>
+          <div class="prose">
+            <p>See how this mirrors Figma variants? In Figma, you'd create a Button component with a Variant property called "variant" (Primary, Secondary, Ghost, Danger) and another called "size" (Small, Medium, Large). The goal: your Figma component structure should match the code component structure exactly.</p>
+            <p>When they match, the handoff is almost automated. The developer looks at your Figma variants, knows exactly what props to build, and implements them. No back-and-forth, no guessing.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Atomic design — a vocabulary for systems</h2>
+          <div class="prose">
+            <p>Atomic Design (coined by designer Brad Frost) is a mental model for building UIs from small, reusable pieces up to full pages. It has five levels:</p>
+          </div>
+          <ul class="concept-list">
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Atoms</strong> — the smallest indivisible UI elements. A Button. An Input field. A Label. A Color swatch. An Icon. These are the raw materials.</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Molecules</strong> — atoms combined into a simple functional unit. A Search Bar is a molecule: Input atom + Button atom + Icon atom. A Form Field is a molecule: Label atom + Input atom + Error message atom.</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Organisms</strong> — molecules combined into a larger section. A Navigation Bar is an organism: Logo + Nav links (each a molecule) + Search Bar + Avatar. A Product Card is an organism: Image + Tag + Title + Description + Price + CTA Button.</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Templates</strong> — the layout of a page, using real components but with placeholder content. The wireframe of how organisms arrange on a screen.</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Pages</strong> — templates with real content. The final, specific instance of a design — the thing you see in production.</div></li>
+          </ul>
+          <div class="prose">
+            <p>You don't need to follow Atomic Design religiously. But the underlying idea — that big things are made of smaller, reusable, named things — is one of the most powerful mental models in product design. Internalize it and it changes how you design every system, every Figma file, every handoff.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Building a component in HTML + CSS</h2>
+          <div class="prose">
+            <p>Let's build a real, well-structured component together. A content card — the kind you see on every blog, dashboard, and marketplace.</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__lang">HTML — Card component</span>
+              <div class="code-block__dots"><div class="code-block__dot"></div><div class="code-block__dot"></div><div class="code-block__dot"></div></div>
+            </div>
+            <pre><code>&lt;article class="card"&gt;
+  &lt;div class="card__image"&gt;
+    &lt;img src="cover.jpg" alt="Abstract geometric pattern"&gt;
+    &lt;span class="card__tag"&gt;Design Systems&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="card__body"&gt;
+    &lt;h3 class="card__title"&gt;How to build a design system that devs love&lt;/h3&gt;
+    &lt;p class="card__description"&gt;
+      A practical guide to tokens, components, and the conversations
+      that make handoffs actually work.
+    &lt;/p&gt;
+    &lt;footer class="card__footer"&gt;
+      &lt;span class="card__author"&gt;Rohan Boda&lt;/span&gt;
+      &lt;span class="card__reading-time"&gt;8 min read&lt;/span&gt;
+    &lt;/footer&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__lang">CSS — Card component styles</span>
+              <div class="code-block__dots"><div class="code-block__dot"></div><div class="code-block__dot"></div><div class="code-block__dot"></div></div>
+            </div>
+            <pre><code>.card {
+  background: #111111;
+  border: 1px solid #222222;
+  border-radius: 12px;
+  overflow: hidden;           /* Image doesn't spill outside rounded corners */
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: #f5e642;
+}
+
+.card__image {
+  position: relative;         /* So the tag can be positioned over the image */
+}
+
+.card__image img {
+  width: 100%;
+  aspect-ratio: 16/9;        /* Forces a consistent image ratio */
+  object-fit: cover;          /* Image fills its space without distorting */
+}
+
+.card__tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #f5e642;
+  color: #0a0a0a;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.card__body {
+  padding: 20px;
+}
+
+.card__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f0f0f0;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.card__description {
+  font-size: 14px;
+  color: #888888;
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #555555;
+  font-weight: 500;
+}</code></pre>
+          </div>
+          <div class="prose">
+            <p>Notice the naming pattern: every class starts with <code>card</code> — this is called BEM (Block Element Modifier) naming. <code>card</code> is the block. <code>card__title</code> is an element inside the card. <code>card--featured</code> would be a modifier (a variant). BEM keeps your CSS organized and prevents class name collisions in large projects. You don't need to follow it strictly, but namespacing by component is a great habit.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Component thinking in your Figma files</h2>
+          <div class="prose">
+            <p>For every component you design in Figma, ask these questions before you hand it off:</p>
+          </div>
+          <ul class="concept-list">
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>What are the variants/props?</strong> What changes between instances — label, icon, size, color, state?</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>What are all the states?</strong> Default, hover, active, focused, disabled, loading, error, success — have you designed all of them?</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>What content can change?</strong> What are the minimum and maximum lengths for text? Can the icon be removed? What happens with very long or very short content?</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Where does this appear in the product?</strong> If it's used in 20 places, it should be a component. If it's used once, it might not need to be.</div></li>
+          </ul>
+          <div class="callout callout--insight">
+            <div class="callout__label">🎯 The collaboration unlock</div>
+            <div class="callout__title">When your Figma variants match code props, magic happens</div>
+            <div class="callout__body">The moment a developer opens your Figma file and sees that your component variants exactly match how they think about building it — the same names, the same variations, the same states — they trust you immediately. You've shown them you understand their world. That trust is worth more than any design tool or plugin. It's built one well-structured component at a time.</div>
+          </div>
+        </section>
+
+        <div class="activity">
+          <div class="activity__header">
+            <div class="activity__icon">🔬</div>
+            <div class="activity__header-text">
+              <div class="activity__label">Hands-on activity</div>
+              <div class="activity__title">Find the components, build one of them</div>
+            </div>
+          </div>
+          <div class="activity__body">
+            <div class="activity__tools">
+              <span class="activity__tools-label">You need:</span>
+              <span class="tool-badge">Chrome browser</span>
+              <span class="tool-badge">VS Code</span>
+              <span class="tool-badge">GitHub (to publish your result)</span>
+            </div>
+            <ol class="activity__steps">
+              <li class="activity__step">
+                <div class="activity__step-number">1</div>
+                <div class="activity__step-text">Open a product you use regularly — Linear, Notion, Airbnb, Duolingo, Stripe. Spend 10 minutes looking for components. Make a list of at least 8 components you can identify (Button, Card, Badge, Avatar, Input, Tag, Tooltip, Nav item, etc.).</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">2</div>
+                <div class="activity__step-text">For each component, note its "props" — what changes between instances? A Badge might have: color (green/red/grey/yellow) and label (text). An Avatar might have: size (small/medium/large) and image (photo or initials fallback).</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">3</div>
+                <div class="activity__step-text">Pick one component — start with something small, like a Badge or a Tag. Build it in HTML and CSS. Try to make it work for at least 2 variants (e.g., green "Active" badge and red "Inactive" badge). Use class names that follow the BEM pattern: <code>.badge</code>, <code>.badge--active</code>, <code>.badge--inactive</code>.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">4</div>
+                <div class="activity__step-text">Put the file in a GitHub repo (using what you learned in Chapter 05). Share the GitHub Pages URL. You just built and shipped a real UI component.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">5</div>
+                <div class="activity__step-text"><strong>The challenge:</strong> Build one more component from your list. Then ask Claude: "I've built a Badge component in HTML/CSS. How would I build this as a reusable React component with props for color and label?" Read Claude's answer — you don't need to implement it, just understand the direction it's pointing.</div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="takeaways">
+          <div class="takeaways__title">Key takeaways</div>
+          <ul class="takeaways__list">
+            <li>Think in components, not screens — developers build products by assembling reusable pieces</li>
+            <li>A component has structure (HTML), style (CSS), and props (what changes between instances)</li>
+            <li>In Figma, your Variants = code component props — design them to match intentionally</li>
+            <li>Atomic Design: atoms → molecules → organisms → templates → pages — big things are made of small, reusable things</li>
+            <li>Design every state for every component: default, hover, loading, disabled, error, empty</li>
+            <li>When your Figma thinking aligns with how developers think, collaboration becomes frictionless</li>
+          </ul>
+        </div>
+
+        <hr class="divider">
+
+        <div class="callout callout--insight" style="margin-bottom: 0;">
+          <div class="callout__label">🎉 You finished the course</div>
+          <div class="callout__title">Now go build something real</div>
+          <div class="callout__body">The most valuable thing you can do after this course is build something and ship it. Start small — a personal portfolio page, a case study page, a landing page for a side project. Use Claude to write the code. Use Figma to design it first. Use GitHub Pages to host it. Share the URL. The act of shipping something real, even something imperfect, teaches you more than any course — including this one. You have everything you need. Go build.</div>
+        </div>
+
+      </article>
+      <nav class="chapter-nav">
+        <a class="chapter-nav__link" href="09-ai-design-workflow.html">
+          <span class="chapter-nav__direction">&larr; Previous</span>
+          <span class="chapter-nav__title">AI-Assisted Design Workflow</span>
+        </a>
+        <div style="padding: var(--space-4) var(--space-5); text-align: right;">
+          <div style="font-size: 11px; color: var(--color-text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px;">You made it</div>
+          <div style="font-family: var(--font-display); font-size: 20px; color: var(--color-accent); font-weight: 700; letter-spacing: -0.02em;">The Designer Who Codes</div>
+        </div>
+      </nav>
+    </main>
+  </div>
+  <script src="../scripts/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 02 — Reading & Writing HTML + CSS | The Designer Who Codes</title>
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+  <header class="mobile-header">
+    <span class="mobile-header__title">Ch. 02 — HTML + CSS</span>
+    <button class="mobile-hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand">
+        <div class="sidebar__brand-title">The Designer<br>Who Codes</div>
+        <div class="sidebar__brand-sub">A 10-chapter guidebook</div>
+      </div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__section-label">Start Here</div>
+        <a class="nav-item" href="../index.html"><span class="nav-item__number">00</span><div class="nav-item__text"><span class="nav-item__title">Introduction</span></div></a>
+        <div class="sidebar__section-label">The Course</div>
+        <a class="nav-item" href="01-how-web-works.html"><span class="nav-item__number">01</span><div class="nav-item__text"><span class="nav-item__title">How the Web Works</span><span class="nav-item__tag">45 min</span></div></a>
+        <a class="nav-item" href="02-html-css.html"><span class="nav-item__number">02</span><div class="nav-item__text"><span class="nav-item__title">Reading &amp; Writing HTML + CSS</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="03-building-with-claude.html"><span class="nav-item__number">03</span><div class="nav-item__text"><span class="nav-item__title">Building with Claude</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="04-figma-to-code.html"><span class="nav-item__number">04</span><div class="nav-item__text"><span class="nav-item__title">Figma to Code</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="05-git-github.html"><span class="nav-item__number">05</span><div class="nav-item__text"><span class="nav-item__title">Git &amp; GitHub</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="06-design-tokens.html"><span class="nav-item__number">06</span><div class="nav-item__text"><span class="nav-item__title">Design Tokens &amp; Systems</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="07-working-with-devs.html"><span class="nav-item__number">07</span><div class="nav-item__text"><span class="nav-item__title">Working with Developers</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="08-responsive-accessibility.html"><span class="nav-item__number">08</span><div class="nav-item__text"><span class="nav-item__title">Responsive &amp; Accessibility</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="09-ai-design-workflow.html"><span class="nav-item__number">09</span><div class="nav-item__text"><span class="nav-item__title">AI-Assisted Design</span><span class="nav-item__tag">45 min · Bonus</span></div></a>
+        <a class="nav-item" href="10-component-thinking.html"><span class="nav-item__number">10</span><div class="nav-item__text"><span class="nav-item__title">Component Thinking</span><span class="nav-item__tag">45 min · Bonus</span></div></a>
+      </nav>
+      <div class="sidebar__footer">
+        <div class="sidebar__progress-label">Your progress</div>
+        <div class="sidebar__progress-track">
+          <div class="sidebar__progress-fill" id="courseProgress" style="width: 0%"></div>
+        </div>
+        <div class="theme-toggle">
+          <div class="theme-toggle__icons">
+            <span class="theme-icon theme-icon--dark">🌙</span>
+            <span class="theme-icon theme-icon--light">☀️</span>
+          </div>
+          <button class="theme-toggle__btn" id="themeToggle" aria-label="Toggle light/dark mode"></button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="chapter-header">
+        <div class="chapter-header__eyebrow"><span class="chapter-header__number">Chapter 02</span></div>
+        <h1 class="chapter-header__title">Reading &amp; Writing HTML + CSS</h1>
+        <p class="chapter-header__tagline">You don't need to memorize everything. You need to know enough to read it and ask better questions.</p>
+        <div class="chapter-header__meta">
+          <span class="meta-badge meta-badge--time">⏱ 1.5 hours</span>
+          <span class="meta-badge meta-badge--tools">🛠 VS Code (free)</span>
+        </div>
+      </header>
+
+      <article class="chapter-body">
+
+        <section class="section">
+          <h2 class="section__title">You're not becoming a developer</h2>
+          <div class="prose">
+            <p>Let's be clear about what this chapter is. It's not "how to memorize HTML tags." It's more like learning enough Spanish to survive a trip to Madrid — you don't need to be fluent, you need to be functional. You need enough to understand what Claude generates, tweak it when something's off, and have a real conversation with a developer about what's going on.</p>
+            <p>The tags and rules in this chapter will make Claude's output feel readable instead of foreign. That's the goal. Bookmark this page — you'll come back to it as a reference, not memorize it all at once.</p>
+          </div>
+          <div class="callout callout--tip">
+            <div class="callout__label">💡 How to install VS Code</div>
+            <div class="callout__title">Your code editor — download before this chapter</div>
+            <div class="callout__body">VS Code (Visual Studio Code) is a free code editor made by Microsoft. Think of it as Google Docs, but for code — it color-codes everything and makes files easy to navigate. Download it at <strong>code.visualstudio.com</strong> (free, no account needed). Once installed, you can open any folder or file and start editing.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">The HTML tags you'll actually use</h2>
+          <div class="prose">
+            <p>HTML is written in "tags" — words wrapped in angle brackets. Most tags come in pairs: an opening tag and a closing tag, with the closing tag having a forward slash. Content goes between them.</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__lang">HTML</span>
+              <div class="code-block__dots"><div class="code-block__dot"></div><div class="code-block__dot"></div><div class="code-block__dot"></div></div>
+            </div>
+            <pre><code>&lt;!-- Headings: h1 is the biggest/most important, h6 is smallest --&gt;
+&lt;h1&gt;This is the main page title&lt;/h1&gt;
+&lt;h2&gt;This is a section heading&lt;/h2&gt;
+&lt;h3&gt;This is a sub-section heading&lt;/h3&gt;
+
+&lt;!-- Paragraphs --&gt;
+&lt;p&gt;This is a paragraph of body text.&lt;/p&gt;
+
+&lt;!-- Div: a generic box. The most common element in all of HTML. --&gt;
+&lt;div&gt;I'm just a container. I hold other things.&lt;/div&gt;
+
+&lt;!-- Links: href is where the link goes --&gt;
+&lt;a href="https://figma.com"&gt;Click here to go to Figma&lt;/a&gt;
+
+&lt;!-- Images: src is the image file path, alt describes the image --&gt;
+&lt;img src="photo.jpg" alt="A smiling person at a computer"&gt;
+
+&lt;!-- Bullet list --&gt;
+&lt;ul&gt;
+  &lt;li&gt;First item&lt;/li&gt;
+  &lt;li&gt;Second item&lt;/li&gt;
+  &lt;li&gt;Third item&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Button --&gt;
+&lt;button&gt;Click me&lt;/button&gt;</code></pre>
+          </div>
+          <div class="callout callout--jargon">
+            <div class="callout__label">📖 Jargon decoded</div>
+            <div class="callout__title">What's an "attribute"?</div>
+            <div class="callout__body">Attributes are extra information you add to an HTML tag. In <code>&lt;a href="figma.com"&gt;</code>, <code>href</code> is an attribute — it tells the browser where the link should go. In <code>&lt;img src="photo.jpg" alt="Description"&gt;</code>, both <code>src</code> and <code>alt</code> are attributes. They're always written inside the opening tag as <code>name="value"</code>.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">CSS: painting the structure</h2>
+          <div class="prose">
+            <p>CSS works by <em>selecting</em> HTML elements and then <em>styling</em> them. The selector is how you tell CSS which element you're talking about. The styles are what you want to do to it.</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__lang">CSS</span>
+              <div class="code-block__dots"><div class="code-block__dot"></div><div class="code-block__dot"></div><div class="code-block__dot"></div></div>
+            </div>
+            <pre><code>/* Element selector — targets ALL h1 tags on the page */
+h1 {
+  font-size: 48px;
+  color: #ffffff;
+}
+
+/* Class selector — targets any element with class="card" */
+/* A class is a nickname you give to an element so CSS can find it */
+.card {
+  background: #111111;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+/* ID selector — targets the ONE element with id="hero" */
+/* IDs should be unique — only one per page */
+#hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}</code></pre>
+          </div>
+          <div class="prose">
+            <p>In your HTML, you add a class like this: <code>&lt;div class="card"&gt;</code>. Then in your CSS, <code>.card { }</code> targets it. The dot before "card" in CSS means "look for an element with this class name." That's the connection.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">The box model — the most important concept in CSS</h2>
+          <div class="prose">
+            <p>Every HTML element — every heading, paragraph, div, image, button — is a rectangle. Always. Even if it looks circular on screen, the underlying structure is a box. Understanding this box is the key to understanding all of CSS layout.</p>
+            <p>The box has four layers, from inside out:</p>
+          </div>
+          <ul class="concept-list">
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Content</strong> — the actual stuff inside the element (your text, your image)</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Padding</strong> — breathing room between the content and the edge of the box. Makes the element feel less cramped inside.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Border</strong> — a line around the edge of the box. Can be solid, dashed, dotted — any color and thickness.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Margin</strong> — space outside the border, between this element and its neighbors.</div>
+            </li>
+          </ul>
+          <div class="callout callout--tip">
+            <div class="callout__label">💡 Analogy</div>
+            <div class="callout__title">Think of a framed photo on a wall</div>
+            <div class="callout__body">The photo itself = content. The white matting around the photo = padding. The picture frame = border. The space between this frame and the next frame on the wall = margin. When you want "more breathing room inside a button," you increase padding. When you want "more space between two buttons," you increase margin.</div>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__lang">CSS</span>
+              <div class="code-block__dots"><div class="code-block__dot"></div><div class="code-block__dot"></div><div class="code-block__dot"></div></div>
+            </div>
+            <pre><code>.card {
+  /* Content size */
+  width: 320px;
+
+  /* Padding: space inside the card (top/bottom left/right) */
+  padding: 24px 20px;
+
+  /* Border: 1px solid dark line around the card */
+  border: 1px solid #333333;
+
+  /* Border radius: rounds the corners */
+  border-radius: 12px;
+
+  /* Margin: space outside the card, pushing neighbors away */
+  margin-bottom: 16px;
+}</code></pre>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Flexbox — how modern layouts are built</h2>
+          <div class="prose">
+            <p>In the old days, web layouts were a nightmare. Today, almost everything is built with Flexbox — and once you understand it, you'll see it everywhere. The key insight: Flexbox is about the <em>relationship between a parent container and its children</em>.</p>
+            <p>You put <code>display: flex</code> on the parent, and that parent starts controlling how its children are arranged.</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__lang">CSS</span>
+              <div class="code-block__dots"><div class="code-block__dot"></div><div class="code-block__dot"></div><div class="code-block__dot"></div></div>
+            </div>
+            <pre><code>/* The PARENT container — this is what you put display: flex on */
+.nav {
+  display: flex;               /* Turns on flexbox */
+  justify-content: space-between; /* Spreads items across horizontal axis */
+  align-items: center;         /* Centers items on vertical axis */
+  gap: 16px;                   /* Space between items */
+  padding: 20px 40px;
+}
+
+/* The CHILDREN — these get arranged by the parent */
+.nav-logo { font-weight: 700; }
+.nav-links { display: flex; gap: 24px; }
+.nav-button { background: #f5e642; padding: 10px 20px; }</code></pre>
+          </div>
+          <ul class="concept-list">
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>justify-content</strong> — controls alignment along the main axis (horizontal by default): <code>flex-start</code> (left), <code>center</code>, <code>flex-end</code> (right), <code>space-between</code> (push to edges)</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>align-items</strong> — controls alignment on the cross axis (vertical by default): <code>flex-start</code> (top), <code>center</code> (middle), <code>flex-end</code> (bottom)</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>gap</strong> — sets the space between flex children without needing individual margins</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>flex-direction: column</strong> — stacks items vertically instead of horizontally (useful for mobile layouts)</div>
+            </li>
+          </ul>
+          <div class="callout callout--insight">
+            <div class="callout__label">🎯 The Figma connection</div>
+            <div class="callout__title">Auto Layout = Flexbox</div>
+            <div class="callout__body">If you use Auto Layout in Figma, you already understand Flexbox conceptually. The direction (horizontal/vertical), gap, padding, and alignment in Auto Layout map directly to Flexbox properties in CSS. You've been thinking in Flexbox this whole time without knowing it. Chapter 04 goes deeper on this mapping.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">How to see your changes live</h2>
+          <div class="prose">
+            <p>The simplest way: save your HTML file in VS Code, then drag it into Chrome. Every time you change something, save the file (<code>Cmd + S</code>) and reload Chrome (<code>Cmd + R</code>).</p>
+            <p>For a better experience, install the <strong>Live Server</strong> extension in VS Code (it's free). Right-click your HTML file → "Open with Live Server" — it opens a browser tab that auto-refreshes whenever you save. No manual reloading needed.</p>
+            <p>To install Live Server: open VS Code → click the Extensions icon in the left sidebar (looks like four squares) → search "Live Server" → click Install on the one by Ritwick Dey.</p>
+          </div>
+        </section>
+
+        <div class="activity">
+          <div class="activity__header">
+            <div class="activity__icon">🃏</div>
+            <div class="activity__header-text">
+              <div class="activity__label">Hands-on activity</div>
+              <div class="activity__title">Build your first card — then break it on purpose</div>
+            </div>
+          </div>
+          <div class="activity__body">
+            <div class="activity__tools">
+              <span class="activity__tools-label">You need:</span>
+              <span class="tool-badge">VS Code (free — code.visualstudio.com)</span>
+              <span class="tool-badge">Claude (free — claude.ai)</span>
+              <span class="tool-badge">Chrome browser</span>
+            </div>
+            <ol class="activity__steps">
+              <li class="activity__step">
+                <div class="activity__step-number">1</div>
+                <div class="activity__step-text">Create a new folder on your Desktop called <strong>my-card</strong>. Inside it, create a new file called <strong>index.html</strong> (you can do this in VS Code: File → New File → save it with that name).</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">2</div>
+                <div class="activity__step-text">Open Claude at <strong>claude.ai</strong> and paste this prompt: <em>"Write me a simple profile card in a single HTML file — name, a placeholder photo using a gradient background, and a two-sentence bio. Use a dark background (#0a0a0a), white text, Inter font from Google Fonts, and a yellow (#f5e642) accent color for the name. Include the CSS inside a &lt;style&gt; tag in the same file."</em></div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">3</div>
+                <div class="activity__step-text">Copy the code Claude gives you. Paste it into your <code>index.html</code> file in VS Code. Save it (<code>Cmd + S</code>). Drag the file into Chrome — you should see your card.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">4</div>
+                <div class="activity__step-text">Now make 3 manual changes yourself (don't ask Claude — try to find and change these yourself in the code): <strong>(a)</strong> Change the text color of the name, <strong>(b)</strong> Change the padding on the card, <strong>(c)</strong> Change the border-radius to make corners more or less rounded. Save after each change and reload Chrome.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">5</div>
+                <div class="activity__step-text"><strong>Break something on purpose:</strong> Delete one closing tag (like the <code>&lt;/div&gt;</code> at the end). Save and reload. See what happens. Then undo (<code>Cmd + Z</code>) and it'll recover. This teaches you what a broken HTML file looks like — it's usually not catastrophic, just weird-looking.</div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="takeaways">
+          <div class="takeaways__title">Key takeaways</div>
+          <ul class="takeaways__list">
+            <li><code>&lt;div&gt;</code> is the most common HTML element — it's just a generic box that holds other things</li>
+            <li>CSS selectors are addresses: <code>.class</code> targets all elements with that class name</li>
+            <li>The box model (content → padding → border → margin) is how all spacing works in CSS</li>
+            <li>Flexbox is how modern layouts are built — start with <code>display: flex</code> on the parent</li>
+            <li>You don't need to memorize this — you need to recognize it when Claude generates it and know how to tweak it</li>
+          </ul>
+        </div>
+
+      </article>
+      <nav class="chapter-nav">
+        <a class="chapter-nav__link" href="01-how-web-works.html">
+          <span class="chapter-nav__direction">&larr; Previous</span>
+          <span class="chapter-nav__title">How the Web Works</span>
+        </a>
+        <a class="chapter-nav__link chapter-nav__link--next" href="03-building-with-claude.html">
+          <span class="chapter-nav__direction">Next &rarr;</span>
+          <span class="chapter-nav__title">Building with Claude</span>
+        </a>
+      </nav>
+    </main>
+  </div>
+  <script src="../scripts/main.js"></script>
+</body>
+</html>

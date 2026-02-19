@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 09 — AI-Assisted Design Workflow | The Designer Who Codes</title>
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+  <header class="mobile-header">
+    <span class="mobile-header__title">Ch. 09 — AI Workflow</span>
+    <button class="mobile-hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand"><div class="sidebar__brand-title">The Designer<br>Who Codes</div><div class="sidebar__brand-sub">A 10-chapter guidebook</div></div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__section-label">Start Here</div>
+        <a class="nav-item" href="../index.html"><span class="nav-item__number">00</span><div class="nav-item__text"><span class="nav-item__title">Introduction</span></div></a>
+        <div class="sidebar__section-label">The Course</div>
+        <a class="nav-item" href="01-how-web-works.html"><span class="nav-item__number">01</span><div class="nav-item__text"><span class="nav-item__title">How the Web Works</span><span class="nav-item__tag">45 min</span></div></a>
+        <a class="nav-item" href="02-html-css.html"><span class="nav-item__number">02</span><div class="nav-item__text"><span class="nav-item__title">Reading &amp; Writing HTML + CSS</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="03-building-with-claude.html"><span class="nav-item__number">03</span><div class="nav-item__text"><span class="nav-item__title">Building with Claude</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="04-figma-to-code.html"><span class="nav-item__number">04</span><div class="nav-item__text"><span class="nav-item__title">Figma to Code</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="05-git-github.html"><span class="nav-item__number">05</span><div class="nav-item__text"><span class="nav-item__title">Git &amp; GitHub</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="06-design-tokens.html"><span class="nav-item__number">06</span><div class="nav-item__text"><span class="nav-item__title">Design Tokens &amp; Systems</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="07-working-with-devs.html"><span class="nav-item__number">07</span><div class="nav-item__text"><span class="nav-item__title">Working with Developers</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="08-responsive-accessibility.html"><span class="nav-item__number">08</span><div class="nav-item__text"><span class="nav-item__title">Responsive &amp; Accessibility</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="09-ai-design-workflow.html"><span class="nav-item__number">09</span><div class="nav-item__text"><span class="nav-item__title">AI-Assisted Design</span><span class="nav-item__tag">45 min · Bonus</span></div></a>
+        <a class="nav-item" href="10-component-thinking.html"><span class="nav-item__number">10</span><div class="nav-item__text"><span class="nav-item__title">Component Thinking</span><span class="nav-item__tag">45 min · Bonus</span></div></a>
+      </nav>
+      <div class="sidebar__footer">
+        <div class="sidebar__progress-label">Your progress</div>
+        <div class="sidebar__progress-track">
+          <div class="sidebar__progress-fill" id="courseProgress" style="width: 0%"></div>
+        </div>
+        <div class="theme-toggle">
+          <div class="theme-toggle__icons">
+            <span class="theme-icon theme-icon--dark">🌙</span>
+            <span class="theme-icon theme-icon--light">☀️</span>
+          </div>
+          <button class="theme-toggle__btn" id="themeToggle" aria-label="Toggle light/dark mode"></button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="chapter-header">
+        <div class="chapter-header__eyebrow"><span class="chapter-header__number">Chapter 09 — Bonus</span></div>
+        <h1 class="chapter-header__title">AI-Assisted Design Workflow</h1>
+        <p class="chapter-header__tagline">Every other designer is still moving pixels. You're moving fast.</p>
+        <div class="chapter-header__meta">
+          <span class="meta-badge meta-badge--time">⏱ 45 minutes</span>
+          <span class="meta-badge meta-badge--tools">🛠 Claude (free) · Figma</span>
+        </div>
+      </header>
+
+      <article class="chapter-body">
+
+        <div class="callout callout--tip">
+          <div class="callout__label">Bonus chapter</div>
+          <div class="callout__title">This chapter goes beyond the 8 core topics</div>
+          <div class="callout__body">Chapters 01–08 covered the foundations. This chapter and Chapter 10 are your competitive edge — the things that take you from "designer who can code" to "designer who thinks differently about the whole product."</div>
+        </div>
+
+        <section class="section">
+          <h2 class="section__title">The shift that's already happened</h2>
+          <div class="prose">
+            <p>AI isn't coming to design. It's already here, and it's already separating designers into two groups: those using it to move dramatically faster, and those who aren't. The designers who thrive aren't the ones with the most Figma plugins or the best UI library. They're the ones who've figured out how to use AI as a thinking partner — before, during, and after the design work.</p>
+            <p>This chapter isn't about replacing your judgment with AI. Your judgment, taste, and user empathy are still your edge — and AI can't replicate them. This chapter is about using AI to make everything around that judgment faster and cheaper, so you can spend more time on the parts only you can do.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Using Claude before you open Figma</h2>
+          <div class="prose">
+            <p>Most designers open Figma before they've really thought through what they're designing. They start moving boxes and picking colors before the problem is clear. The result: beautiful screens that solve the wrong thing, or screens that look great but have no coherent flow.</p>
+            <p>Claude is an excellent thinking partner for the messy, ambiguous early stage of design work. Try these before you open Figma:</p>
+          </div>
+          <ul class="concept-list">
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>User flows</strong> — describe the feature, get back an ordered list of screens. "I'm designing an onboarding flow for a budgeting app for Gen Z. List all the screens from app launch to completing their first budget."</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Content structure</strong> — "What sections should a landing page for a B2B SaaS product have? What goes above the fold? What goes below?" Get a structure first, then design it.</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Copy generation</strong> — "Write 5 headline options for a landing page for a personal finance app for Gen Z. Under 8 words each. Tone: confident and slightly irreverent." Pick the best, edit it, use it as your design content from day one.</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>User stories</strong> — "Write 5 user stories for this feature: [feature description]." These give you the acceptance criteria for your design before you start.</div></li>
+          </ul>
+          <div class="callout callout--insight">
+            <div class="callout__label">🎯 The real unlock</div>
+            <div class="callout__title">Spend 30 minutes with Claude before opening Figma</div>
+            <div class="callout__body">This one habit — using Claude to think through structure, content, and flow before touching Figma — has more impact on the quality of the final design than any UI pattern or component library. You show up to Figma with a clear problem, a clear flow, and real content. Everything you design is connected to something real from the start.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Prompt patterns that work for designers</h2>
+          <div class="prose">
+            <p>These are reusable templates. Copy them, fill in your specifics, and iterate.</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__lang">Prompt templates</span>
+              <div class="code-block__dots"><div class="code-block__dot"></div><div class="code-block__dot"></div><div class="code-block__dot"></div></div>
+            </div>
+            <pre><code>// USER FLOW
+"I'm designing [feature/product] for [user type].
+List all screens in the flow from [starting point] to [completion].
+For each screen, give it a short name and one sentence describing its purpose."
+
+// COPY OPTIONS
+"Write 5 options for the [headline/button/CTA] of [context].
+Tone: [confident/friendly/playful/direct].
+Character limit: [N] characters max.
+Do not use: [words/phrases to avoid]."
+
+// ERROR MESSAGES
+"Write error messages for these scenarios in [product]:
+- [scenario 1]
+- [scenario 2]
+- [scenario 3]
+Keep each under 15 words.
+Don't start with 'Error' or 'Invalid'.
+Be helpful, not robotic."
+
+// ACCESSIBILITY AUDIT
+"Here's my HTML: [paste code]
+What accessibility issues do you see?
+Which WCAG 2.1 AA guidelines does it violate?
+List each issue and how to fix it."
+
+// DESIGN CRITIQUE
+"Here's a screenshot of my design: [attach image]
+What UX issues do you see?
+What would confuse a first-time user?
+What's missing from the happy path?
+What edge cases haven't I designed for?"</code></pre>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">AI for micro-copy — the small words that matter most</h2>
+          <div class="prose">
+            <p>Micro-copy is all the small text in a product: button labels, placeholder text, empty states, error messages, tooltips, onboarding hints, success confirmations. It's often the last thing a designer thinks about and the first thing a user reads.</p>
+            <p>Bad micro-copy kills good design. "An error has occurred" tells the user nothing useful. "Submit" as a button label misses the opportunity to confirm what's happening. "No data available" as an empty state is a dead end.</p>
+            <p>Claude is excellent at micro-copy — especially when you give it context. The key variables: what's the product, who's the user, what's the tone, what are you trying to accomplish?</p>
+          </div>
+          <div class="callout callout--tip">
+            <div class="callout__label">💡 Micro-copy prompt formula</div>
+            <div class="callout__title">Context + constraint = useful output</div>
+            <div class="callout__body">"Write 3 options for the empty state of a saved items list in a recipe app for busy parents. The user has no saved recipes yet. Tone: warm and encouraging, not sterile. Under 20 words total (headline + subtext). Include a suggestion for what to do next." Give Claude context and constraints — then edit the best output into something exactly right.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">What AI can't do — and why that's your edge</h2>
+          <div class="prose">
+            <p>Here's the honest version: AI is good at generating options, synthesizing information, and working quickly with patterns. It is not good at — and cannot replace — the things that make design actually matter:</p>
+          </div>
+          <ul class="concept-list">
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>User research</strong> — listening to people, noticing what they don't say, building empathy for real human problems</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Strategic judgment</strong> — deciding what to build and why, navigating organizational constraints, knowing what to cut</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Visual taste</strong> — the accumulated sense of what feels right, built from years of studying design and the world</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>Contextual wisdom</strong> — understanding the company, the users, the history, the constraints that make a decision right for this specific situation</div></li>
+          </ul>
+          <div class="prose">
+            <p>AI makes the mechanical parts of design faster — generating options, writing copy, auditing code, producing documentation. That frees you to spend more time on the parts only you can do. The designers who understand this and act on it are the ones who will define the next decade of the profession.</p>
+          </div>
+        </section>
+
+        <div class="activity">
+          <div class="activity__header">
+            <div class="activity__icon">⚡</div>
+            <div class="activity__header-text">
+              <div class="activity__label">Hands-on activity</div>
+              <div class="activity__title">From brief to wireframe in under 30 minutes</div>
+            </div>
+          </div>
+          <div class="activity__body">
+            <div class="activity__tools">
+              <span class="activity__tools-label">You need:</span>
+              <span class="tool-badge">Claude (free — claude.ai)</span>
+              <span class="tool-badge">Figma (free account)</span>
+            </div>
+            <ol class="activity__steps">
+              <li class="activity__step">
+                <div class="activity__step-number">1</div>
+                <div class="activity__step-text">Pick a product idea — real or invented. Example: <em>"A budgeting app for Gen Z that makes saving feel less painful."</em> Keep the brief one sentence.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">2</div>
+                <div class="activity__step-text">Open Claude. First prompt: <em>"I'm designing an onboarding flow for [your product]. List all the screens from first app launch to completing their first main action. Give each screen a short name and one sentence purpose."</em></div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">3</div>
+                <div class="activity__step-text">Second prompt: <em>"For the first 3 screens of this flow, write the headline, subtitle, and primary CTA button label for each. Tone: [your tone]. Be specific to the product, not generic."</em></div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">4</div>
+                <div class="activity__step-text">Third prompt: <em>"Write error messages for these 3 scenarios in [product]: wrong password on login, email already in use on signup, payment failed on checkout. Under 15 words each. Don't start with 'Error'."</em></div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">5</div>
+                <div class="activity__step-text">Take Claude's outputs and build a Figma wireframe: create 3 frames at 390 × 844px (iPhone). Use rectangles for layout, use Claude's copy as the actual text. Aim to wireframe all 3 screens in under 20 minutes. When you're done, note how much faster this went versus starting with a blank Figma file and inventing the content as you go.</div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="takeaways">
+          <div class="takeaways__title">Key takeaways</div>
+          <ul class="takeaways__list">
+            <li>Use Claude before Figma to think through user flows, content structure, and copy — not just to write code</li>
+            <li>Spend 30 minutes with Claude before opening Figma and you'll design faster and more intentionally</li>
+            <li>Give Claude context and constraints — product, user, tone, character limits — and iterate on the outputs</li>
+            <li>AI is excellent for: copy, user flows, error messages, accessibility audits, design critiques</li>
+            <li>Your judgment, taste, and user empathy are your edge — AI makes everything around that faster</li>
+            <li>The designers who master this combination of AI + design thinking will define the next decade</li>
+          </ul>
+        </div>
+
+      </article>
+      <nav class="chapter-nav">
+        <a class="chapter-nav__link" href="08-responsive-accessibility.html">
+          <span class="chapter-nav__direction">&larr; Previous</span>
+          <span class="chapter-nav__title">Responsive &amp; Accessibility</span>
+        </a>
+        <a class="chapter-nav__link chapter-nav__link--next" href="10-component-thinking.html">
+          <span class="chapter-nav__direction">Next &rarr;</span>
+          <span class="chapter-nav__title">Component Thinking</span>
+        </a>
+      </nav>
+    </main>
+  </div>
+  <script src="../scripts/main.js"></script>
+</body>
+</html>

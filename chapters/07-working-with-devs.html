@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 07 — Working with Backend Developers | The Designer Who Codes</title>
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+  <header class="mobile-header">
+    <span class="mobile-header__title">Ch. 07 — Working with Devs</span>
+    <button class="mobile-hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand"><div class="sidebar__brand-title">The Designer<br>Who Codes</div><div class="sidebar__brand-sub">A 10-chapter guidebook</div></div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__section-label">Start Here</div>
+        <a class="nav-item" href="../index.html"><span class="nav-item__number">00</span><div class="nav-item__text"><span class="nav-item__title">Introduction</span></div></a>
+        <div class="sidebar__section-label">The Course</div>
+        <a class="nav-item" href="01-how-web-works.html"><span class="nav-item__number">01</span><div class="nav-item__text"><span class="nav-item__title">How the Web Works</span><span class="nav-item__tag">45 min</span></div></a>
+        <a class="nav-item" href="02-html-css.html"><span class="nav-item__number">02</span><div class="nav-item__text"><span class="nav-item__title">Reading &amp; Writing HTML + CSS</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="03-building-with-claude.html"><span class="nav-item__number">03</span><div class="nav-item__text"><span class="nav-item__title">Building with Claude</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="04-figma-to-code.html"><span class="nav-item__number">04</span><div class="nav-item__text"><span class="nav-item__title">Figma to Code</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="05-git-github.html"><span class="nav-item__number">05</span><div class="nav-item__text"><span class="nav-item__title">Git &amp; GitHub</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="06-design-tokens.html"><span class="nav-item__number">06</span><div class="nav-item__text"><span class="nav-item__title">Design Tokens &amp; Systems</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="07-working-with-devs.html"><span class="nav-item__number">07</span><div class="nav-item__text"><span class="nav-item__title">Working with Developers</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="08-responsive-accessibility.html"><span class="nav-item__number">08</span><div class="nav-item__text"><span class="nav-item__title">Responsive &amp; Accessibility</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="09-ai-design-workflow.html"><span class="nav-item__number">09</span><div class="nav-item__text"><span class="nav-item__title">AI-Assisted Design</span><span class="nav-item__tag">45 min · Bonus</span></div></a>
+        <a class="nav-item" href="10-component-thinking.html"><span class="nav-item__number">10</span><div class="nav-item__text"><span class="nav-item__title">Component Thinking</span><span class="nav-item__tag">45 min · Bonus</span></div></a>
+      </nav>
+      <div class="sidebar__footer">
+        <div class="sidebar__progress-label">Your progress</div>
+        <div class="sidebar__progress-track">
+          <div class="sidebar__progress-fill" id="courseProgress" style="width: 0%"></div>
+        </div>
+        <div class="theme-toggle">
+          <div class="theme-toggle__icons">
+            <span class="theme-icon theme-icon--dark">🌙</span>
+            <span class="theme-icon theme-icon--light">☀️</span>
+          </div>
+          <button class="theme-toggle__btn" id="themeToggle" aria-label="Toggle light/dark mode"></button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="chapter-header">
+        <div class="chapter-header__eyebrow"><span class="chapter-header__number">Chapter 07</span></div>
+        <h1 class="chapter-header__title">Working with Backend Developers</h1>
+        <p class="chapter-header__tagline">You don't need to build the backend. You need to speak its language.</p>
+        <div class="chapter-header__meta">
+          <span class="meta-badge meta-badge--time">⏱ 1 hour</span>
+          <span class="meta-badge meta-badge--tools">🛠 No installs — just a browser</span>
+        </div>
+      </header>
+
+      <article class="chapter-body">
+
+        <section class="section">
+          <h2 class="section__title">What a backend developer actually does</h2>
+          <div class="prose">
+            <p>You've been working in the frontend — the part of the product users can see and touch. The backend is everything that makes the data work: the servers, the databases, and the business logic that runs on them.</p>
+            <p>A backend developer builds: the server (a computer program that listens for requests and responds to them), the database (where all the permanent data lives — user accounts, posts, orders, products), and the logic that ties them together (what happens when someone signs up, buys something, or deletes their account).</p>
+            <p>As a designer, you're not building this. But you're designing for it — and your designs have to account for what the backend can and can't do. The moment you start asking the right questions and designing for real data, you become a fundamentally more valuable collaborator.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">APIs — the door between frontend and backend</h2>
+          <div class="prose">
+            <p>API stands for Application Programming Interface. That sounds intimidating but the idea is simple: an API is how two systems talk to each other.</p>
+            <p>The frontend (your website/app) doesn't have direct access to the database. Instead, it talks to the backend through the API. The frontend sends a request: "give me the user's recent orders." The API receives that request, asks the database, and sends back the data.</p>
+            <p>An everyday analogy: when you go to a restaurant, you don't walk into the kitchen and grab food. You tell the waiter what you want. The waiter (the API) goes to the kitchen (the backend) and comes back with your order. You never see the kitchen. The API is the waiter.</p>
+          </div>
+          <div class="callout callout--jargon">
+            <div class="callout__label">📖 Jargon decoded</div>
+            <div class="callout__title">What's a "REST API"?</div>
+            <div class="callout__body">REST is the most common style of API. It uses regular web URLs (called "endpoints") to define what data you're asking for. <code>/api/users</code> might return a list of users. <code>/api/users/123</code> might return the user with ID 123. You request these endpoints and get data back. You don't need to build REST APIs — you need to design around them.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">JSON — how data travels</h2>
+          <div class="prose">
+            <p>When the backend sends data to the frontend, it's usually formatted as JSON. JSON (JavaScript Object Notation — jargon for "a way to write structured data") looks like a labeled list. If the backend is sending you a user's information, it might look like this:</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__lang">JSON</span>
+              <div class="code-block__dots"><div class="code-block__dot"></div><div class="code-block__dot"></div><div class="code-block__dot"></div></div>
+            </div>
+            <pre><code>{
+  "user": {
+    "id": 1042,
+    "name": "Rohan Boda",
+    "email": "rohan@example.com",
+    "avatar_url": "https://example.com/avatars/1042.jpg",
+    "plan": "pro",
+    "joined_at": "2024-03-15",
+    "posts_count": 47
+  }
+}</code></pre>
+          </div>
+          <div class="prose">
+            <p>Everything has a key (in quotes on the left) and a value (on the right). This is the data your frontend has to work with. As a designer, when you design a user profile, <em>this is the data you're designing around</em>. Your design needs to handle:</p>
+          </div>
+          <ul class="concept-list">
+            <li><div class="concept-list__icon"></div><div class="concept-list__text">What if <code>avatar_url</code> is missing? (The user never uploaded a photo) → You need a default avatar or initials</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text">What if <code>name</code> is "Konstantinos Papadopoulos-Alexandridis"? (Very long name) → Your layout needs to handle it</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text">What if <code>posts_count</code> is 0? → You need an empty state design</div></li>
+          </ul>
+          <div class="callout callout--insight">
+            <div class="callout__label">🎯 The designer's job with JSON</div>
+            <div class="callout__title">Design for the data, not the ideal case</div>
+            <div class="callout__body">Most designers design for beautiful, complete, perfectly-formatted data. Reality is messier. Short names, long names, missing photos, zero counts, 10,000 items in a list. The best designers ask "what's the JSON structure for this?" and then design for every possible value — including missing, empty, and extreme cases. This is what makes engineering teams trust you.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Status codes — what the server is saying</h2>
+          <div class="prose">
+            <p>Every time the frontend talks to a backend API, the server responds with a status code — a number that tells you whether things went well or not. You'll see these in DevTools when you watch network requests. More importantly: your UI needs to handle every possible response.</p>
+          </div>
+          <ul class="concept-list">
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>200 OK</strong> — success, here's your data. Your UI shows the data.</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>201 Created</strong> — success, we created the thing you sent (like a new post or account)</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>400 Bad Request</strong> — you sent something wrong (a form with invalid data, a missing required field). UI shows a validation error.</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>401 Unauthorized</strong> — the user isn't logged in. UI redirects to login.</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>403 Forbidden</strong> — the user is logged in but doesn't have permission. UI shows a "you can't do that" message.</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>404 Not Found</strong> — the thing doesn't exist. UI shows a "page not found" or "item deleted" state.</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>500 Internal Server Error</strong> — the server broke. Not the user's fault. UI shows a generic "something went wrong, try again later."</div></li>
+          </ul>
+          <div class="callout callout--warning">
+            <div class="callout__label">⚠️ The designer's responsibility</div>
+            <div class="callout__title">Error states are design work</div>
+            <div class="callout__body">If you don't design the 400, 401, 403, 404, and 500 states — a developer will invent them. They'll usually do it quickly and without much thought for UX. "Something went wrong" in an ugly red banner is not a designed error state. It's what happens when a designer didn't do their job. Design every error state.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">How to talk to backend developers</h2>
+          <div class="prose">
+            <p>Knowing the vocabulary changes how developers perceive you. These are real questions you can ask in any meeting — and asking them will make people notice that you think differently from other designers.</p>
+          </div>
+          <ul class="concept-list">
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>"What does the API response look like for this?"</strong> — You're asking for the JSON structure, so you can design around real field names and real data shapes.</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>"What's the field name for the user's display name?"</strong> — You want to label your designs correctly, using the actual field name from the API (not an invented one that doesn't match).</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>"Is this list paginated?"</strong> — Will the API return 20 items at a time? 50? Does it have infinite scroll or a "load more" button? Your design depends on this.</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>"What are the character limits on these fields?"</strong> — How long can a username be? A post title? A bio? Your design needs to handle the maximum (without breaking) and the minimum (including empty).</div></li>
+            <li><div class="concept-list__icon"></div><div class="concept-list__text"><strong>"What are the possible error states for this action?"</strong> — Everything you can imagine going wrong needs a designed response in the UI.</div></li>
+          </ul>
+          <div class="callout callout--jargon">
+            <div class="callout__label">📖 Jargon decoded</div>
+            <div class="callout__title">What's "paginated"?</div>
+            <div class="callout__body">When a list has many items, the API doesn't return all of them at once (imagine loading 10,000 posts). Instead, it returns a "page" — say, 20 at a time. When you scroll or click "Load more," it fetches the next page. Your design needs a loading state for pagination, and an "end of list" state when there's nothing left to load.</div>
+          </div>
+        </section>
+
+        <div class="activity">
+          <div class="activity__header">
+            <div class="activity__icon">🔌</div>
+            <div class="activity__header-text">
+              <div class="activity__label">Hands-on activity</div>
+              <div class="activity__title">Call a real API, design for the data</div>
+            </div>
+          </div>
+          <div class="activity__body">
+            <div class="activity__tools">
+              <span class="activity__tools-label">You need:</span>
+              <span class="tool-badge">Chrome browser (DevTools)</span>
+              <span class="tool-badge">Figma (free account)</span>
+            </div>
+            <ol class="activity__steps">
+              <li class="activity__step">
+                <div class="activity__step-number">1</div>
+                <div class="activity__step-text">Open Chrome and go to <strong>jsonplaceholder.typicode.com</strong> — this is a free, fake API designed for practicing exactly this. Open DevTools (<code>Cmd + Option + I</code>) and click the <strong>Console</strong> tab.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">2</div>
+                <div class="activity__step-text">Type this exactly in the Console and press Enter: <code>fetch('https://jsonplaceholder.typicode.com/users/1').then(r => r.json()).then(console.log)</code>. You'll see a JSON object appear — a fake user with name, email, address, phone, company, and more.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">3</div>
+                <div class="activity__step-text">Look at the data structure. What fields are there? What might be missing in a real scenario? Note the nested objects (like <code>address.city</code> or <code>company.name</code>).</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">4</div>
+                <div class="activity__step-text">In Figma, design a user profile card that displays: the user's name, email, company name, and city. Design two versions: <strong>Version A</strong> — all data present and well-formatted. <strong>Version B</strong> — the avatar is missing (show initials instead), and the name is unusually long.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">5</div>
+                <div class="activity__step-text"><strong>Reflect:</strong> Notice how designing around real JSON data shapes every decision — what to show, what to hide, how to handle missing or extreme values. This is what "designing for real data" means.</div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="takeaways">
+          <div class="takeaways__title">Key takeaways</div>
+          <ul class="takeaways__list">
+            <li>The backend stores data and runs business logic. You design the UI that displays it — you don't build the backend.</li>
+            <li>An API is how the frontend requests data from the backend — like a waiter between you and the kitchen.</li>
+            <li>JSON is how data travels — learn to read it and design around real field names and edge cases.</li>
+            <li>Every status code needs a designed UI state: 400 = validation error, 404 = not found, 500 = server error.</li>
+            <li>Asking "what does the API response look like?" immediately signals that you think at a different level than most designers.</li>
+          </ul>
+        </div>
+
+      </article>
+      <nav class="chapter-nav">
+        <a class="chapter-nav__link" href="06-design-tokens.html">
+          <span class="chapter-nav__direction">&larr; Previous</span>
+          <span class="chapter-nav__title">Design Tokens &amp; Systems</span>
+        </a>
+        <a class="chapter-nav__link chapter-nav__link--next" href="08-responsive-accessibility.html">
+          <span class="chapter-nav__direction">Next &rarr;</span>
+          <span class="chapter-nav__title">Responsive &amp; Accessibility</span>
+        </a>
+      </nav>
+    </main>
+  </div>
+  <script src="../scripts/main.js"></script>
+</body>
+</html>
