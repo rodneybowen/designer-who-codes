@@ -73,6 +73,18 @@ document.addEventListener('DOMContentLoaded', function () {
     updateCourseProgress();
   }
 
+  function unmarkChapterCompleted(chapterFile) {
+    const completed = getCompleted();
+    const index = completed.indexOf(chapterFile);
+    if (index > -1) {
+      completed.splice(index, 1);
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(completed));
+      } catch (e) {}
+    }
+    updateCourseProgress();
+  }
+
   function updateCourseProgress() {
     const fill = document.getElementById('courseProgress');
     if (!fill) return;
@@ -95,6 +107,25 @@ document.addEventListener('DOMContentLoaded', function () {
           const currentFile = currentPath.split('/').pop() || 'index.html';
           if (currentFile !== 'index.html' && /^\d{2}-/.test(currentFile)) {
             markChapterCompleted(currentFile);
+          }
+        }
+      }
+    });
+  });
+
+  // Attach click handlers to "previous" buttons to unmark chapters
+  const prevLinks = document.querySelectorAll('.chapter-nav__link:not(.chapter-nav__link--next)');
+  prevLinks.forEach(function (link) {
+    link.addEventListener('click', function () {
+      const href = link.getAttribute('href');
+      if (href) {
+        // Extract filename from href (could be relative or absolute)
+        const prevChapter = href.split('/').pop();
+        if (prevChapter && /^\d{2}-/.test(prevChapter)) {
+          // Unmark the current chapter as completed when user clicks previous
+          const currentFile = currentPath.split('/').pop() || 'index.html';
+          if (currentFile !== 'index.html' && /^\d{2}-/.test(currentFile)) {
+            unmarkChapterCompleted(currentFile);
           }
         }
       }
