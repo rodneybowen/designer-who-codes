@@ -361,7 +361,24 @@ addBtn.addEventListener('click', function() {
           </div>
         </section>
 
-        <div class="activity">
+                <div class="callout callout--warning">
+          <div class="callout__label">&#9888; Error anatomy</div>
+          <div class="callout__title">What JavaScript errors actually look like</div>
+          <div class="callout__body">
+            Open DevTools (<code>Cmd + Option + I</code>) and click the <strong>Console</strong> tab. When something breaks:
+            <br><br>
+            <code>Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')</code><br>
+            &rarr; <code>querySelector()</code> found nothing. The selector is wrong or the element does not exist yet.
+            <br><br>
+            <code>Uncaught ReferenceError: addBtn is not defined</code><br>
+            &rarr; Variable used before it was declared. Check for a typo in the variable name.
+            <br><br>
+            <code>undefined</code> logged in the console<br>
+            &rarr; A variable exists but has no value, or you are reading a property that does not exist on an object.
+          </div>
+        </div>
+
+<div class="activity">
           <div class="activity__header">
             <div class="activity__icon">⚡</div>
             <div class="activity__header-text">
@@ -485,6 +502,102 @@ addBtn.addEventListener('click', function() {
 </body>
 </html></script>
         </div>
+
+                <div class="activity">
+          <div class="activity__header">
+            <div class="activity__icon">&#128165;</div>
+            <div class="activity__header-text">
+              <div class="activity__label">Break-it challenge</div>
+              <div class="activity__title">This to-do list is broken. Fix it using the console.</div>
+            </div>
+          </div>
+          <div class="activity__body">
+            <div class="activity__tools">
+              <span class="activity__tools-label">You need:</span>
+              <span class="tool-badge">The IDE below</span>
+              <span class="tool-badge">Chrome DevTools (Cmd + Option + I)</span>
+            </div>
+            <ol class="activity__steps">
+              <li class="activity__step">
+                <div class="activity__step-number">1</div>
+                <div class="activity__step-text">Click <strong>&#9654; Run</strong>. Try clicking Add. Nothing happens. There is a bug in the JavaScript.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">2</div>
+                <div class="activity__step-text">Open DevTools (<code>Cmd + Option + I</code>) &rarr; Console tab. Read the error. It tells you the error type and the line number.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">3</div>
+                <div class="activity__step-text">Find the mismatch between the JavaScript selector and the HTML. Fix it and re-run until the list works.</div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="ide" data-mode="html">
+          <div class="ide__header">
+            <div class="ide__icon">▶</div>
+            <div class="ide__header-text">
+              <div class="ide__label">Break-it challenge</div>
+              <div class="ide__title">Find the bug using the console</div>
+            </div>
+            <div class="ide__actions">
+              <button class="ide__btn ide__btn--reset">Reset</button>
+              <button class="ide__btn ide__btn--run">&#9654; Run</button>
+            </div>
+          </div>
+          <div class="ide__split">
+            <div class="ide__editor-pane"><div class="ide__editor"></div></div>
+            <div class="ide__preview-pane"><iframe class="ide__preview" sandbox="allow-scripts allow-forms"></iframe></div>
+          </div>
+          <script type="text/plain" class="ide__starter"><!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0a0a0a; font-family: 'Inter', sans-serif; padding: 32px; color: #f0f0f0; }
+    h2 { font-size: 20px; margin-bottom: 20px; color: #f5e642; }
+    .input-row { display: flex; gap: 10px; margin-bottom: 24px; }
+    input { flex: 1; background: #111; border: 1px solid #333; border-radius: 8px; padding: 10px 14px; color: #f0f0f0; font-size: 15px; font-family: inherit; outline: none; }
+    input:focus { border-color: #f5e642; }
+    button { background: #f5e642; color: #0a0a0a; border: none; border-radius: 8px; padding: 10px 18px; font-family: inherit; font-size: 15px; font-weight: 600; cursor: pointer; }
+    ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    li { background: #111; border: 1px solid #222; border-radius: 8px; padding: 12px 16px; font-size: 15px; }
+  </style>
+</head>
+<body>
+  <h2>My Tasks</h2>
+  <div class="input-row">
+    <input id="taskInput" type="text" placeholder="Add a task...">
+    <button id="addBtn">Add</button>
+  </div>
+  <ul id="taskList"></ul>
+  <script>
+    // One line below has a bug. Open DevTools → Console to find it.
+    const input = document.querySelector('#taskInput');
+    const addBtn = document.querySelector('#addButton');
+    const list  = document.querySelector('#taskList');
+
+    addBtn.addEventListener('click', function() {
+      const text = input.value.trim();
+      if (!text) return;
+      const item = document.createElement('li');
+      item.textContent = text;
+      list.appendChild(item);
+      input.value = '';
+      input.focus();
+    });
+  </script>
+</body>
+</html></script>
+        </div>
+
+        <div class="callout callout--insight">
+          <div class="callout__label">&#10022; Own your code</div>
+          <div class="callout__title">Can you explain every line?</div>
+          <div class="callout__body">Before moving on: pick any 5 lines from the code above and say out loud what each one does. Not the general idea — the specific line. If Claude ever gives you code like this, hold it to this standard before you use it. <strong>If you cannot explain a line, you cannot debug it.</strong></div>
+        </div>
+
 
         <div class="takeaways">
           <div class="takeaways__title">Key takeaways</div>

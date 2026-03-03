@@ -320,7 +320,33 @@ h1 {
           </div>
         </section>
 
-        <div class="activity">
+                <section class="section">
+          <h2 class="section__title">What CSS failures look like — and how to diagnose them</h2>
+          <div class="prose">
+            <p>CSS has a forgiving failure mode: when it does not understand something, it skips it silently. No red error in the console, no warning — it just does nothing. This is useful (a typo does not crash the page) but it means you have to know where to look.</p>
+          </div>
+          <ul class="concept-list">
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Wrong selector — nothing changes</strong><br>You wrote <code>.Card</code> in CSS but the HTML has <code>class="card"</code>. CSS is case-sensitive. The rule exists but matches nothing. In DevTools: right-click the element → Inspect → look at the Styles panel on the right. If your rule is absent entirely, the selector is not matching.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Property typo — silently ignored</strong><br>You wrote <code>colour: red</code> instead of <code>color: red</code>. The browser ignores it without complaint. In DevTools → Styles panel: invalid declarations appear with a yellow warning triangle or are struck through. That is your signal that the property name or value is wrong.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Specificity conflict — your rule loses</strong><br>You added a rule but another rule elsewhere is winning because it is more specific. An ID selector (<code>#hero</code>) always beats a class rule (<code>.card</code>). In DevTools → Styles panel: losing declarations appear struck through with the winning rule shown above them.</div>
+            </li>
+          </ul>
+          <div class="callout callout--tip">
+            <div class="callout__label">💡 DevTools as your CSS debugger</div>
+            <div class="callout__title">The Styles panel is your first stop</div>
+            <div class="callout__body">Open DevTools (<code>Cmd + Option + I</code>), click the Elements tab, then click any element on the page. The <strong>Styles panel</strong> on the right shows every CSS rule applying to it — including struck-through overridden rules and yellow-flagged invalid declarations. You can click any value and edit it live to test a fix. Changes here do not save to your file, but they let you experiment instantly.</div>
+          </div>
+        </section>
+
+<div class="activity">
           <div class="activity__header">
             <div class="activity__icon">🃏</div>
             <div class="activity__header-text">
@@ -438,6 +464,12 @@ h1 {
   </div>
 </body>
 </html></script>
+        </div>
+
+                <div class="callout callout--insight">
+          <div class="callout__label">&#10022; Own your code</div>
+          <div class="callout__title">Can you explain every line?</div>
+          <div class="callout__body">Before moving on: pick any 5 lines from the code above and say out loud what each one does. Not the general idea — the specific line. If Claude ever gives you code like this, hold it to this standard before you use it. <strong>If you cannot explain a line, you cannot debug it.</strong></div>
         </div>
 
         <div class="takeaways">

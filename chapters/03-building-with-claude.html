@@ -217,6 +217,125 @@
           </div>
         </section>
 
+                <div class="activity">
+          <div class="activity__header">
+            <div class="activity__icon">🐛</div>
+            <div class="activity__header-text">
+              <div class="activity__label">Debugging exercise</div>
+              <div class="activity__title">Debug This — 3 bugs, no hints</div>
+            </div>
+          </div>
+          <div class="activity__body">
+            <div class="activity__tools">
+              <span class="activity__tools-label">You need:</span>
+              <span class="tool-badge">The in-page IDE below</span>
+            </div>
+            <ol class="activity__steps">
+              <li class="activity__step">
+                <div class="activity__step-number">1</div>
+                <div class="activity__step-text">The code below has exactly <strong>3 bugs</strong>. Some are HTML mistakes. Some are CSS mistakes. None produce a loud red console error — they silently break the visual result.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">2</div>
+                <div class="activity__step-text">Click <strong>▶ Run</strong> to see the broken result. Then read the code carefully — line by line — and find what is wrong. Fix each bug and re-run until the card looks correct: yellow title, styled button, proper footer placement.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">3</div>
+                <div class="activity__step-text">No hints. This is the core skill — reading code and reasoning about why something is not working. You will use it every time Claude gives you code that does not look right.</div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="ide" data-mode="html">
+          <div class="ide__header">
+            <div class="ide__icon">▶</div>
+            <div class="ide__header-text">
+              <div class="ide__label">Debug exercise</div>
+              <div class="ide__title">Find and fix the 3 bugs</div>
+            </div>
+            <div class="ide__actions">
+              <button class="ide__btn ide__btn--reset">Reset</button>
+              <button class="ide__btn ide__btn--run">&#9654; Run</button>
+            </div>
+          </div>
+          <div class="ide__split">
+            <div class="ide__editor-pane"><div class="ide__editor"></div></div>
+            <div class="ide__preview-pane"><iframe class="ide__preview" sandbox="allow-scripts allow-forms"></iframe></div>
+          </div>
+          <script type="text/plain" class="ide__starter"><!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0a0a0a;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 32px;
+    }
+    .card {
+      background: #141414;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      width: 300px;
+      overflow: hidden;
+    }
+    .card-body { padding: 24px; }
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      colour: #f5e642;
+      margin-bottom: 8px;
+    }
+    .card-description {
+      font-size: 14px;
+      color: #999;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .cta_btn {
+      display: block;
+      width: 100%;
+      background: #f5e642;
+      color: #0a0a0a;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .card-footer {
+      border-top: 1px solid #2a2a2a;
+      padding: 12px 24px;
+      font-size: 12px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title">Design Systems</div>
+      <div class="card-description">A collection of reusable components guided by clear standards.</div>
+      <button class="cta-btn">Explore &rarr;</button>
+    <div class="card-footer">Posted 2 days ago</div>
+  </div>
+</body>
+</html></script>
+        </div>
+
+        <div class="callout callout--insight">
+          <div class="callout__label">&#10022; Own your code</div>
+          <div class="callout__title">Can you explain every line?</div>
+          <div class="callout__body">Before moving on: pick any 5 lines from the code above and say out loud what each one does. Not the general idea — the specific line. If Claude ever gives you code like this, hold it to this standard before you use it. <strong>If you cannot explain a line, you cannot debug it.</strong></div>
+        </div>
+
+
         <section class="section">
           <h2 class="section__title">Giving Claude the right context</h2>
           <div class="prose">
@@ -310,6 +429,8 @@ Please give me the updated full file.</code></pre>
     </main>
   </div>
   <canvas id="confettiCanvas"></canvas>
+  <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/src-min-noconflict/ace.js"></script>
+  <script src="../scripts/ide.js"></script>
   <script src="../scripts/main.js"></script>
 </body>
 </html>
