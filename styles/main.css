@@ -4,7 +4,7 @@
    ============================================ */
 
 /* --- Google Fonts --- */
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Nunito:wght@400;500;600;700&family=SUSE:wght@400;500;600&display=swap');
 
 /* --- Design Tokens (CSS Variables) --- */
 :root {
@@ -29,9 +29,9 @@
   --color-text-on-accent: #0a0a0a;
 
   /* Typography */
-  --font-display: 'Fraunces', Georgia, serif;
-  --font-body: 'Inter', -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  --font-display: 'Jersey 10', Georgia, serif;
+  --font-body: 'Nunito', -apple-system, sans-serif;
+  --font-mono: 'SUSE', 'Courier New', monospace;
 
   /* Layout */
   --sidebar-width: 272px;
