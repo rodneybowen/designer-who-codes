@@ -279,57 +279,67 @@ Hug contents                   →   (default — no width needed)</code></pre>
 <head>
   <style>
     body {
-      margin: 0;
       background: #0a0a0a;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      min-height: 100vh;
+      justify-content: center;
       gap: 16px;
-      flex-wrap: wrap;
+      min-height: 100vh;
+      margin: 0;
       font-family: 'Inter', sans-serif;
     }
-    /* Paste your Figma CSS values here and replace these defaults */
+
+    /* --- Base class — shared by ALL buttons --- */
     .btn {
-      display: inline-flex;
-      align-items: center;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 600;
       font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 24px;
+      border-radius: 8px;
       border: none;
       cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      text-decoration: none;
+      display: inline-block;
     }
-    .btn--primary {
-      background: #f5e642;
-      color: #0a0a0a;
-    }
-    .btn--primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(245, 230, 66, 0.3);
-    }
-    .btn--secondary {
-      background: transparent;
-      color: #f0f0f0;
-      border: 1.5px solid #333;
-    }
-    .btn--secondary:hover {
-      border-color: #f5e642;
-      color: #f5e642;
-    }
-    .btn--disabled {
-      background: #1a1a1a;
-      color: #333;
-      cursor: not-allowed;
-    }
+
+    /* ----------------------------------------
+       YOUR TASK: Write 3 variant classes.
+       Do NOT modify .btn above.
+
+       .btn--primary
+         Background: #f5e642 (yellow)
+         Text color: #0a0a0a (near-black)
+         On :hover → move up 2px (transform) + add a soft yellow glow (box-shadow)
+
+       .btn--secondary
+         Background: transparent
+         Text color: #f5f5f5
+         Border: 1px solid #3a3a3a
+         On :hover → border brightens to #f5f5f5
+
+       .btn--disabled
+         Background: #1a1a1a
+         Text color: #555
+         cursor: not-allowed
+         (disabled buttons don't get a hover state)
+    ---------------------------------------- */
+
+
+
+
   </style>
 </head>
 <body>
-  <button class="btn btn--primary">Get Started</button>
-  <button class="btn btn--secondary">Learn More</button>
-  <button class="btn btn--disabled" disabled>Unavailable</button>
+  <!-- Add each button below with the correct class combinations -->
+  <!-- Example structure: <button class="btn btn--primary">Label</button> -->
+
+  <!-- Primary button -->
+
+  <!-- Secondary button -->
+
+  <!-- Disabled button -->
+
 </body>
 </html></script>
         </div>

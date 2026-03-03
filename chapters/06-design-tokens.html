@@ -280,66 +280,104 @@
 <html>
 <head>
   <style>
-    /* 👇 Change just these variables — watch everything update */
-    :root {
-      --color-bg: #0a0a0a;
-      --color-surface: #111111;
-      --color-accent: #f5e642;
-      --color-text: #f0f0f0;
-      --color-text-secondary: #888;
-      --radius: 12px;
-      --spacing: 24px;
-      --font: 'Inter', sans-serif;
-    }
+    /*
+      PROBLEM: This card uses raw values scattered everywhere.
+      The accent color #f5e642 appears 4 times.
+      The border-radius 12px appears 3 times.
+      The surface color #141414 appears 2 times.
+
+      YOUR TASK:
+      1. Create a :root block above this CSS
+      2. Define at least these variables:
+            --color-bg, --color-surface, --color-accent,
+            --color-text, --color-text-secondary, --radius
+      3. Replace every raw value below with var(--variable-name)
+      4. Once done: change --color-accent in :root to any color.
+         Every element using it should update at once.
+    */
+
     body {
-      margin: 0;
-      background: var(--color-bg);
-      padding: 48px 24px;
-      font-family: var(--font);
-      color: var(--color-text);
+      background: #0a0a0a;
       display: flex;
+      align-items: center;
       justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Inter', sans-serif;
     }
+
     .card {
-      background: var(--color-surface);
-      border-radius: var(--radius);
-      padding: var(--spacing);
-      max-width: 340px;
-      width: 100%;
+      background: #141414;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 24px;
+      width: 280px;
     }
+
     .card__tag {
-      display: inline-block;
-      background: var(--color-accent);
-      color: #0a0a0a;
+      background: rgba(245, 230, 66, 0.15);
+      color: #f5e642;
       font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       padding: 4px 10px;
-      border-radius: calc(var(--radius) / 2);
+      border-radius: 12px;
+      display: inline-block;
       margin-bottom: 12px;
     }
-    h2 { font-size: 22px; margin-bottom: 8px; }
-    p { color: var(--color-text-secondary); font-size: 15px; line-height: 1.6; }
-    .btn {
-      margin-top: var(--spacing);
-      display: inline-block;
-      background: var(--color-accent);
-      color: #0a0a0a;
-      padding: 10px 20px;
-      border-radius: var(--radius);
+
+    .card__title {
+      color: #f5f5f5;
+      font-size: 18px;
       font-weight: 700;
+      margin: 0 0 8px;
+    }
+
+    .card__body {
+      color: #888;
       font-size: 14px;
+      line-height: 1.6;
+      margin: 0 0 20px;
+    }
+
+    .card__btn {
+      background: #f5e642;
+      color: #0a0a0a;
+      border: none;
+      border-radius: 12px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
       cursor: pointer;
+      width: 100%;
+    }
+
+    .card__footer {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid #2a2a2a;
+      color: #888;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .card__footer span {
+      color: #f5e642;
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <div class="card__tag">Design System</div>
-    <h2>One token to rule them all</h2>
-    <p>Change <code>--color-accent</code> above from yellow to any color. Watch the tag, button, and highlights all update at once.</p>
-    <div class="btn">Try clicking me</div>
+    <div class="card__tag">New</div>
+    <h2 class="card__title">Design Token Workshop</h2>
+    <p class="card__body">Replace all the raw values in the CSS with CSS variables. Then prove it works by changing just one variable.</p>
+    <button class="card__btn">Get started</button>
+    <div class="card__footer">
+      <span>2 tasks left</span>
+      <span>Due today</span>
+    </div>
   </div>
 </body>
 </html></script>

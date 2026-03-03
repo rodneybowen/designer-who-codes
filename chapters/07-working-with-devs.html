@@ -271,49 +271,80 @@
 <html>
 <head>
   <style>
-    body { margin: 0; background: #0a0a0a; font-family: 'Inter', sans-serif; padding: 32px; }
-    .status { color: #555; font-size: 14px; margin-bottom: 16px; }
+    body {
+      background: #0a0a0a;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
     .user-card {
-      background: #111;
-      border: 1px solid #222;
+      background: #141414;
+      border: 1px solid #2a2a2a;
       border-radius: 12px;
       padding: 24px;
-      max-width: 360px;
+      width: 300px;
     }
-    .user-card__name { color: #f5e642; font-size: 20px; font-weight: 700; margin-bottom: 4px; }
-    .user-card__username { color: #444; font-size: 13px; margin-bottom: 16px; }
-    .field { color: #999; font-size: 14px; margin-bottom: 8px; line-height: 1.4; }
-    .field strong { color: #f0f0f0; }
+    .field { margin-bottom: 12px; }
+    .field label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #555;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .field span {
+      font-size: 15px;
+      color: #f5f5f5;
+    }
+    #status { color: #888; font-size: 14px; }
   </style>
 </head>
 <body>
-  <div class="status" id="status">Fetching user from the API...</div>
-  <div class="user-card" id="card" style="display:none">
-    <div class="user-card__name" id="name"></div>
-    <div class="user-card__username" id="username"></div>
-    <div class="field"><strong>Email:</strong> <span id="email"></span></div>
-    <div class="field"><strong>City:</strong> <span id="city"></span></div>
-    <div class="field"><strong>Company:</strong> <span id="company"></span></div>
-    <div class="field"><strong>Website:</strong> <span id="website"></span></div>
+  <div class="user-card">
+    <p id="status">Loading user...</p>
+    <div id="card" style="display:none">
+      <div class="field">
+        <label>Name</label>
+        <span id="name"></span>
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <span id="email"></span>
+      </div>
+      <div class="field">
+        <label>Company</label>
+        <span id="company"></span>
+      </div>
+      <div class="field">
+        <label>City</label>
+        <span id="city"></span>
+      </div>
+    </div>
   </div>
+
   <script>
-    // Try changing the user ID (1-10) to fetch different people
-    fetch('https://jsonplaceholder.typicode.com/users/1')
-      .then(function(res) { return res.json(); })
-      .then(function(user) {
-        document.getElementById('status').style.display = 'none';
-        document.getElementById('card').style.display = 'block';
-        document.getElementById('name').textContent = user.name;
-        document.getElementById('username').textContent = '@' + user.username;
-        document.getElementById('email').textContent = user.email;
-        document.getElementById('city').textContent = user.address.city;
-        document.getElementById('company').textContent = user.company.name;
-        document.getElementById('website').textContent = user.website;
-      })
-      .catch(function() {
-        document.getElementById('status').textContent = 'Could not fetch data — check your internet connection.';
-      });
-  <\/script>
+    // YOUR TASK: Fetch a user from the API and display them.
+    // API endpoint: https://jsonplaceholder.typicode.com/users/1
+    // (try changing the user ID 1-10 once it's working)
+
+    // Step 1: Call fetch() with the URL above
+    // Step 2: In the first .then(), convert the response to JSON
+    // Step 3: In the second .then(), you have the user object — use it to:
+    //   a) Hide #status  (element.style.display = 'none')
+    //   b) Show #card    (element.style.display = 'block')
+    //   c) Set #name text to user.name
+    //   d) Set #email text to user.email
+    //   e) Set #company text to user.company.name
+    //   f) Set #city text to user.address.city
+    // Step 4: Add a .catch() that sets #status text to "Failed to load user."
+
+    // Hint: document.getElementById('name').textContent = ...
+
+  </script>
 </body>
 </html></script>
         </div>

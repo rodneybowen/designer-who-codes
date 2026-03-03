@@ -374,48 +374,65 @@
 <head>
   <style>
     body {
-      margin: 0;
       background: #0a0a0a;
       font-family: 'Inter', sans-serif;
-      padding: 32px;
       display: flex;
-      gap: 10px;
       flex-wrap: wrap;
       align-items: flex-start;
+      gap: 10px;
+      padding: 32px;
+      margin: 0;
     }
-    /* Badge component — one base class, multiple variant classes */
+
+    /* --- Base class — shared by ALL badges --- */
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 10px;
-      border-radius: 99px;
       font-size: 12px;
       font-weight: 600;
-      letter-spacing: 0.03em;
+      padding: 4px 10px;
+      border-radius: 99px;
+      line-height: 1;
     }
+
     .badge::before {
       content: '';
       width: 6px;
       height: 6px;
       border-radius: 50%;
       background: currentColor;
+      opacity: 0.8;
       flex-shrink: 0;
     }
-    /* Try adding a new variant below, like .badge--beta */
-    .badge--active   { background: rgba(77, 255, 154, 0.12); color: #4dff9a; }
-    .badge--inactive { background: rgba(255, 77, 77, 0.12);  color: #ff4d4d; }
-    .badge--pending  { background: rgba(245, 230, 66, 0.12); color: #f5e642; }
-    .badge--draft    { background: rgba(255,255,255,0.05);   color: #555; }
+
+    /* ----------------------------------------
+       YOUR TASK: Write 3 modifier classes.
+       Each badge shares the .badge base above.
+       BEM pattern: .badge--[variant]
+
+       Spec:
+       .badge--active    → green tint  (text: #4dff9a, bg: rgba of the same color at 12% opacity)
+       .badge--inactive  → red tint    (text: #ff4d4d, bg: rgba of the same color at 12% opacity)
+       .badge--pending   → yellow tint (text: #f5e642, bg: rgba of the same color at 12% opacity)
+
+       BONUS: Add a 4th variant of your own invention (.badge--[name]).
+              What color and label makes sense for a real product?
+    ---------------------------------------- */
+
+
+
+
+    /* ----------------------------------------
+       YOUR TASK (HTML): Add each badge to the body above.
+       Structure: <span class="badge badge--active">Active</span>
+                  <span class="badge badge--inactive">Inactive</span>
+                  <span class="badge badge--pending">Pending</span>
+    ---------------------------------------- */
   </style>
 </head>
 <body>
-  <span class="badge badge--active">Active</span>
-  <span class="badge badge--inactive">Inactive</span>
-  <span class="badge badge--pending">Pending</span>
-  <span class="badge badge--draft">Draft</span>
-  <!-- Try adding: <span class="badge badge--beta">Beta</span> -->
-  <!-- Then add the .badge--beta styles above -->
+  <!-- Add your badge elements here -->
 </body>
 </html></script>
         </div>

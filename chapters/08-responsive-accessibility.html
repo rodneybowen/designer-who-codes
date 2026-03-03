@@ -276,57 +276,80 @@
           <script type="text/plain" class="ide__starter"><!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      margin: 0;
       background: #0a0a0a;
       font-family: 'Inter', sans-serif;
-      color: #f0f0f0;
       padding: 24px;
+      margin: 0;
+      color: #f5f5f5;
     }
+
+    h2 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 16px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* The grid is currently rigid — cards always sit side-by-side.
+       On narrow screens they overflow and look broken. */
     .grid {
       display: flex;
       gap: 16px;
     }
+
     .card {
-      flex: 1;
-      background: #111;
-      border: 1px solid #222;
-      border-radius: 10px;
+      background: #141414;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
       padding: 20px;
-    }
-    .card__title {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: #f5e642;
-    }
-    .card__body {
-      font-size: 14px;
-      color: #888;
-      line-height: 1.5;
+      min-width: 220px;   /* ← this causes the overflow problem */
     }
 
-    /* 👇 Uncomment this media query to make cards stack on small screens */
-    /* @media (max-width: 600px) {
-      .grid { flex-direction: column; }
-    } */
+    .card__title {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0 0 8px;
+    }
+
+    .card__body {
+      font-size: 13px;
+      color: #888;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /*
+      YOUR TASK: Write a media query that fixes the layout on small screens.
+
+      Requirements:
+      - Breakpoint: 600px wide (narrow IDE preview = small screen)
+      - Stack the cards vertically (one per row)
+      - Remove the min-width constraint so cards fill the full width
+      - You decide the right CSS properties — nothing is pre-filled below
+
+      Hint: @media (max-width: 600px) { ... }
+    */
+
   </style>
 </head>
 <body>
+  <h2>Featured articles</h2>
   <div class="grid">
     <div class="card">
-      <div class="card__title">Card One</div>
-      <div class="card__body">Uncomment the media query to stack these on mobile.</div>
+      <p class="card__title">Grid systems in product design</p>
+      <p class="card__body">Why 8pt grids exist and how to use them without thinking about them.</p>
     </div>
     <div class="card">
-      <div class="card__title">Card Two</div>
-      <div class="card__body">Responsive design in practice — same HTML, different CSS rules.</div>
+      <p class="card__title">Writing component specs</p>
+      <p class="card__body">The spec format that engineers actually want to read.</p>
     </div>
     <div class="card">
-      <div class="card__title">Card Three</div>
-      <div class="card__body">Try resizing the preview panel to see the layout respond.</div>
+      <p class="card__title">Dark mode that works</p>
+      <p class="card__body">Semantic color tokens and why hex values in your Figma file are a trap.</p>
     </div>
   </div>
 </body>
