@@ -787,10 +787,11 @@ img { max-width: 100%; display: block; }
 }
 
 .callout__label {
-  font-size: 10px;
+  font-family: var(--font-display-accent);
+  font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   margin-bottom: var(--space-2);
 }
 
@@ -955,10 +956,11 @@ code:not(.code-block code) {
 .activity__header-text {}
 
 .activity__label {
-  font-size: 10px;
+  font-family: var(--font-display-accent);
+  font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   color: rgba(0,0,0,0.5);
 }
 
@@ -1422,10 +1424,11 @@ code:not(.code-block code) {
 }
 
 .ide__label {
-  font-size: 10px;
+  font-family: var(--font-display-accent);
+  font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   color: rgba(0,0,0,0.45);
 }
 
