@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A free course for UX designers who want to speak the language of code — and build with it.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/favicon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rodneybowen.github.io/designer-who-codes/chapters/15-shipping-products.html">
+  <meta property="og:title" content="Chapter 15 — Shipping Real Products | The Designer Who Codes">
+  <meta property="og:description" content="A free course for UX designers who want to speak the language of code — and build with it.">
+  <meta property="og:image" content="https://rodneybowen.github.io/designer-who-codes/assets/favicon.png">
+  <title>Chapter 15 — Shipping Real Products | The Designer Who Codes</title>
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+  <header class="mobile-header">
+    <span class="mobile-header__title">Ch. 15 — Shipping Products</span>
+    <button class="mobile-hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand">
+        <img class="sidebar__brand-logo" src="../assets/favicon.png" alt="The Designer Who Codes">
+        <div class="sidebar__brand-text">
+          <div class="sidebar__brand-title">The Designer<br>Who Codes</div>
+          <div class="sidebar__brand-sub">A 17-chapter course</div>
+        </div>
+      </div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__section-label">Start Here</div>
+        <a class="nav-item" href="../index.html"><span class="nav-item__number">00</span><div class="nav-item__text"><span class="nav-item__title">Introduction</span></div></a>
+        <div class="sidebar__section-label">Phase 1 — The Course</div>
+        <a class="nav-item" href="01-how-web-works.html"><span class="nav-item__number">01</span><div class="nav-item__text"><span class="nav-item__title">How the Web Works</span><span class="nav-item__tag">45 min</span></div></a>
+        <a class="nav-item" href="02-html-css.html"><span class="nav-item__number">02</span><div class="nav-item__text"><span class="nav-item__title">Reading &amp; Writing HTML + CSS</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="03-building-with-claude.html"><span class="nav-item__number">03</span><div class="nav-item__text"><span class="nav-item__title">Building with Claude</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="04-figma-to-code.html"><span class="nav-item__number">04</span><div class="nav-item__text"><span class="nav-item__title">Figma to Code</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="05-git-github.html"><span class="nav-item__number">05</span><div class="nav-item__text"><span class="nav-item__title">Git &amp; GitHub</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="06-design-tokens.html"><span class="nav-item__number">06</span><div class="nav-item__text"><span class="nav-item__title">Design Tokens &amp; Systems</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="07-working-with-devs.html"><span class="nav-item__number">07</span><div class="nav-item__text"><span class="nav-item__title">Working with Developers</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="08-responsive-accessibility.html"><span class="nav-item__number">08</span><div class="nav-item__text"><span class="nav-item__title">Responsive &amp; Accessibility</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="09-ai-design-workflow.html"><span class="nav-item__number">09</span><div class="nav-item__text"><span class="nav-item__title">AI-Assisted Design</span><span class="nav-item__tag">45 min</span></div></a>
+        <a class="nav-item" href="10-component-thinking.html"><span class="nav-item__number">10</span><div class="nav-item__text"><span class="nav-item__title">Component Thinking</span><span class="nav-item__tag">45 min</span></div></a>
+        <div class="nav-phase-divider"><span class="nav-phase-divider__label">Phase 2 — UX Engineer</span></div>
+        <a class="nav-item" href="11-javascript-dom.html"><span class="nav-item__number">11</span><div class="nav-item__text"><span class="nav-item__title">JavaScript DOM &amp; Events</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="12-css-grid-animations.html"><span class="nav-item__number">12</span><div class="nav-item__text"><span class="nav-item__title">CSS Grid &amp; Animations</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="13-react-with-claude.html"><span class="nav-item__number">13</span><div class="nav-item__text"><span class="nav-item__title">React with Claude</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="14-firebase-backend.html"><span class="nav-item__number">14</span><div class="nav-item__text"><span class="nav-item__title">Firebase — No Backend Needed</span><span class="nav-item__tag">2 hrs</span></div></a>
+        <a class="nav-item nav-item--active" href="15-shipping-products.html"><span class="nav-item__number">15</span><div class="nav-item__text"><span class="nav-item__title">Shipping Real Products</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="16-ai-api-integration.html"><span class="nav-item__number">16</span><div class="nav-item__text"><span class="nav-item__title">Building with AI APIs</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="17-capstone-full-product.html"><span class="nav-item__number">17</span><div class="nav-item__text"><span class="nav-item__title">Capstone: Ship Your Product</span><span class="nav-item__tag">3 hrs · Capstone</span></div></a>
+      </nav>
+      <div class="sidebar__footer">
+        <div class="sidebar__progress-section">
+          <div class="sidebar__progress-phase-label">Phase 1</div>
+          <div class="sidebar__progress-track"><div class="sidebar__progress-fill" id="courseProgress" style="width: 0%"></div></div>
+        </div>
+        <div class="sidebar__progress-section">
+          <div class="sidebar__progress-phase-label">Phase 2</div>
+          <div class="sidebar__progress-track"><div class="sidebar__progress-fill sidebar__progress-fill--p2" id="courseProgressP2" style="width: 0%"></div></div>
+        </div>
+        <div class="theme-toggle">
+          <button class="theme-toggle__btn" id="themeToggle" aria-label="Toggle light/dark mode">
+            <span class="theme-icon theme-icon--dark">🌙</span>
+            <span class="theme-icon theme-icon--light">☀️</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="chapter-header">
+        <div class="chapter-header__eyebrow">
+          <span class="chapter-header__number">Chapter 15</span>
+          <span class="chapter-header__phase">Phase 2 — UX Engineer</span>
+        </div>
+        <h1 class="chapter-header__title">Shipping Real Products</h1>
+        <p class="chapter-header__tagline">GitHub Pages was training wheels. Now ship like a professional.</p>
+        <div class="chapter-header__meta">
+          <span class="meta-badge meta-badge--time">⏱ 1 hour</span>
+          <span class="meta-badge meta-badge--tools">🛠 VS Code · Vercel account · GitHub</span>
+        </div>
+      </header>
+
+      <article class="chapter-body">
+
+        <section class="section">
+          <h2 class="section__title">Why Vercel beats GitHub Pages for real products</h2>
+          <div class="prose">
+            <p>GitHub Pages is great for static HTML/CSS/JS sites — and it still is for those. But when your product uses a build step (React, Next.js), environment variables, or serverless functions, you need something more capable.</p>
+          </div>
+          <ul class="concept-list">
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Automatic deploys</strong> — push to GitHub → Vercel builds and deploys in under 30 seconds. No manual steps.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Preview deployments</strong> — every pull request gets its own live URL. Share it for review before merging.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Environment variables</strong> — store API keys and secrets securely. They never appear in your code or GitHub.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Serverless functions</strong> — write backend logic (like making API calls with secret keys) without maintaining a server.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Custom domains</strong> — connect a domain in 2 minutes. Free SSL included.</div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Deploying to Vercel</h2>
+          <ol class="activity__steps" style="list-style:none;display:flex;flex-direction:column;gap:12px;padding:0">
+            <li style="display:flex;gap:12px;align-items:flex-start">
+              <div class="activity__step-number">1</div>
+              <div>Push your project to GitHub (you know how to do this from Chapter 5).</div>
+            </li>
+            <li style="display:flex;gap:12px;align-items:flex-start">
+              <div class="activity__step-number">2</div>
+              <div>Go to <strong>vercel.com</strong> → Sign up with GitHub → "New Project" → Import your GitHub repo.</div>
+            </li>
+            <li style="display:flex;gap:12px;align-items:flex-start">
+              <div class="activity__step-number">3</div>
+              <div>Vercel auto-detects your framework (React, Next.js, plain HTML, etc.) and sets the build command. Click <strong>Deploy</strong>.</div>
+            </li>
+            <li style="display:flex;gap:12px;align-items:flex-start">
+              <div class="activity__step-number">4</div>
+              <div>In 30 seconds you have a live URL: <code>your-project.vercel.app</code>. Share it. Every future push to <code>main</code> triggers a new deploy automatically.</div>
+            </li>
+          </ol>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Environment variables — keeping secrets secret</h2>
+          <div class="prose">
+            <p>API keys, database passwords, and secret tokens must NEVER go in your code. If they end up in your GitHub repository, they're public. Environment variables solve this — they're stored in Vercel (or locally in a <code>.env</code> file) and injected into your code at build time.</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <div class="code-block__dots"><span class="code-block__dot"></span><span class="code-block__dot"></span><span class="code-block__dot"></span></div>
+              <span class="code-block__lang">bash — .env file (local only, never commit)</span>
+            </div>
+            <pre><code># .env.local
+ANTHROPIC_API_KEY=sk-ant-api03-...
+FIREBASE_API_KEY=AIzaSy...
+DATABASE_URL=postgres://user:password@host/db</code></pre>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <div class="code-block__dots"><span class="code-block__dot"></span><span class="code-block__dot"></span><span class="code-block__dot"></span></div>
+              <span class="code-block__lang">javascript — using env vars in your code</span>
+            </div>
+            <pre><code>// In a Next.js API route or Vercel serverless function
+const apiKey = process.env.ANTHROPIC_API_KEY;
+
+// In client-side React (Vite), prefix with VITE_
+// Note: client-side env vars are public — only use for non-secret values
+const publicKey = import.meta.env.VITE_PUBLIC_KEY;</code></pre>
+          </div>
+          <div class="callout callout--warning">
+            <div class="callout__label">⚠️ Never expose API keys on the frontend</div>
+            <div class="callout__title">Client-side code is always visible to users</div>
+            <div class="callout__body">Anything in your React/JavaScript running in the browser is readable by anyone who opens DevTools. Keep secret keys on the server side — in Vercel serverless functions, not in your React components.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Serverless functions</h2>
+          <div class="prose">
+            <p>A serverless function is a small piece of backend code that runs on-demand. In Vercel, you create a file in the <code>/api</code> folder and it becomes an API endpoint — no server setup, no always-running process, no infrastructure to maintain.</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <div class="code-block__dots"><span class="code-block__dot"></span><span class="code-block__dot"></span><span class="code-block__dot"></span></div>
+              <span class="code-block__lang">javascript — api/chat.js (a serverless function)</span>
+            </div>
+            <pre><code>// This file lives at /api/chat.js
+// Vercel automatically makes it available at /api/chat
+// The API key stays on the server — never exposed to browsers
+
+export default async function handler(req, res) {
+  const { message } = req.body;
+
+  const response = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'x-api-key': process.env.ANTHROPIC_API_KEY, // secret, server-only
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'claude-opus-4-6',
+      max_tokens: 1024,
+      messages: [{ role: 'user', content: message }]
+    })
+  });
+
+  const data = await response.json();
+  res.json({ reply: data.content[0].text });
+}</code></pre>
+          </div>
+        </section>
+
+        <div class="activity">
+          <div class="activity__header">
+            <div class="activity__icon">🚀</div>
+            <div class="activity__header-text">
+              <div class="activity__label">Hands-on activity</div>
+              <div class="activity__title">Deploy your ideas board to Vercel</div>
+            </div>
+          </div>
+          <div class="activity__body">
+            <div class="activity__tools">
+              <span class="activity__tools-label">You need:</span>
+              <span class="tool-badge">GitHub account</span>
+              <span class="tool-badge">Vercel account (free)</span>
+              <span class="tool-badge">Your Firebase app from Ch. 14</span>
+            </div>
+            <ol class="activity__steps">
+              <li class="activity__step">
+                <div class="activity__step-number">1</div>
+                <div class="activity__step-text">Take the ideas board HTML file from Chapter 14. Create a new GitHub repo for it and push the file.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">2</div>
+                <div class="activity__step-text">Import the repo to Vercel. Deploy it. You now have a public URL for your app.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">3</div>
+                <div class="activity__step-text">In Firebase console, add your new Vercel domain to the authorized domains list (Authentication → Settings → Authorized domains → Add domain). This is required for Google sign-in to work on your production URL.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">4</div>
+                <div class="activity__step-text"><strong>Bonus:</strong> Buy a domain from Namecheap or Google Domains (~$10/yr). Add it to your Vercel project. In 2 minutes you have a professional domain. Share it with someone outside your network and ask them to try it.</div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="takeaways">
+          <div class="takeaways__title">Key takeaways</div>
+          <ul class="takeaways__list">
+            <li>Vercel = push to GitHub → instant production deploy. Zero-config for most frameworks</li>
+            <li>Environment variables store secrets safely. Never put API keys in code that goes to GitHub</li>
+            <li>Serverless functions (in <code>/api</code>) let you write backend logic without managing a server</li>
+            <li>Every push to <code>main</code> auto-deploys. Every pull request gets a preview URL for review</li>
+            <li>Custom domains take 2 minutes to configure. SSL is automatic and free</li>
+          </ul>
+        </div>
+
+      </article>
+
+      <nav class="chapter-nav">
+        <a class="chapter-nav__link" href="14-firebase-backend.html">
+          <span class="chapter-nav__dir">← Previous</span>
+          <span class="chapter-nav__title">Firebase — No Backend Needed</span>
+        </a>
+        <a class="chapter-nav__link chapter-nav__link--next" href="16-ai-api-integration.html">
+          <span class="chapter-nav__dir">Next →</span>
+          <span class="chapter-nav__title">Building with AI APIs</span>
+        </a>
+      </nav>
+    </main>
+  </div>
+
+  <canvas id="confettiCanvas"></canvas>
+  <script src="../scripts/main.js"></script>
+</body>
+</html>

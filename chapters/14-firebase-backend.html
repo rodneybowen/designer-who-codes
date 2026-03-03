@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A free course for UX designers who want to speak the language of code — and build with it.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/favicon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rodneybowen.github.io/designer-who-codes/chapters/14-firebase-backend.html">
+  <meta property="og:title" content="Chapter 14 — Firebase: No Backend Needed | The Designer Who Codes">
+  <meta property="og:description" content="A free course for UX designers who want to speak the language of code — and build with it.">
+  <meta property="og:image" content="https://rodneybowen.github.io/designer-who-codes/assets/favicon.png">
+  <title>Chapter 14 — Firebase: No Backend Needed | The Designer Who Codes</title>
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+  <header class="mobile-header">
+    <span class="mobile-header__title">Ch. 14 — Firebase</span>
+    <button class="mobile-hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand">
+        <img class="sidebar__brand-logo" src="../assets/favicon.png" alt="The Designer Who Codes">
+        <div class="sidebar__brand-text">
+          <div class="sidebar__brand-title">The Designer<br>Who Codes</div>
+          <div class="sidebar__brand-sub">A 17-chapter course</div>
+        </div>
+      </div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__section-label">Start Here</div>
+        <a class="nav-item" href="../index.html">
+          <span class="nav-item__number">00</span>
+          <div class="nav-item__text"><span class="nav-item__title">Introduction</span></div>
+        </a>
+        <div class="sidebar__section-label">Phase 1 — The Course</div>
+        <a class="nav-item" href="01-how-web-works.html"><span class="nav-item__number">01</span><div class="nav-item__text"><span class="nav-item__title">How the Web Works</span><span class="nav-item__tag">45 min</span></div></a>
+        <a class="nav-item" href="02-html-css.html"><span class="nav-item__number">02</span><div class="nav-item__text"><span class="nav-item__title">Reading &amp; Writing HTML + CSS</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="03-building-with-claude.html"><span class="nav-item__number">03</span><div class="nav-item__text"><span class="nav-item__title">Building with Claude</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="04-figma-to-code.html"><span class="nav-item__number">04</span><div class="nav-item__text"><span class="nav-item__title">Figma to Code</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="05-git-github.html"><span class="nav-item__number">05</span><div class="nav-item__text"><span class="nav-item__title">Git &amp; GitHub</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="06-design-tokens.html"><span class="nav-item__number">06</span><div class="nav-item__text"><span class="nav-item__title">Design Tokens &amp; Systems</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="07-working-with-devs.html"><span class="nav-item__number">07</span><div class="nav-item__text"><span class="nav-item__title">Working with Developers</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="08-responsive-accessibility.html"><span class="nav-item__number">08</span><div class="nav-item__text"><span class="nav-item__title">Responsive &amp; Accessibility</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="09-ai-design-workflow.html"><span class="nav-item__number">09</span><div class="nav-item__text"><span class="nav-item__title">AI-Assisted Design</span><span class="nav-item__tag">45 min</span></div></a>
+        <a class="nav-item" href="10-component-thinking.html"><span class="nav-item__number">10</span><div class="nav-item__text"><span class="nav-item__title">Component Thinking</span><span class="nav-item__tag">45 min</span></div></a>
+        <div class="nav-phase-divider">
+          <span class="nav-phase-divider__label">Phase 2 — UX Engineer</span>
+        </div>
+        <a class="nav-item" href="11-javascript-dom.html"><span class="nav-item__number">11</span><div class="nav-item__text"><span class="nav-item__title">JavaScript DOM &amp; Events</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="12-css-grid-animations.html"><span class="nav-item__number">12</span><div class="nav-item__text"><span class="nav-item__title">CSS Grid &amp; Animations</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="13-react-with-claude.html"><span class="nav-item__number">13</span><div class="nav-item__text"><span class="nav-item__title">React with Claude</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item nav-item--active" href="14-firebase-backend.html"><span class="nav-item__number">14</span><div class="nav-item__text"><span class="nav-item__title">Firebase — No Backend Needed</span><span class="nav-item__tag">2 hrs</span></div></a>
+        <a class="nav-item" href="15-shipping-products.html"><span class="nav-item__number">15</span><div class="nav-item__text"><span class="nav-item__title">Shipping Real Products</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="16-ai-api-integration.html"><span class="nav-item__number">16</span><div class="nav-item__text"><span class="nav-item__title">Building with AI APIs</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="17-capstone-full-product.html"><span class="nav-item__number">17</span><div class="nav-item__text"><span class="nav-item__title">Capstone: Ship Your Product</span><span class="nav-item__tag">3 hrs · Capstone</span></div></a>
+      </nav>
+      <div class="sidebar__footer">
+        <div class="sidebar__progress-section">
+          <div class="sidebar__progress-phase-label">Phase 1</div>
+          <div class="sidebar__progress-track">
+            <div class="sidebar__progress-fill" id="courseProgress" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="sidebar__progress-section">
+          <div class="sidebar__progress-phase-label">Phase 2</div>
+          <div class="sidebar__progress-track">
+            <div class="sidebar__progress-fill sidebar__progress-fill--p2" id="courseProgressP2" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="theme-toggle">
+          <button class="theme-toggle__btn" id="themeToggle" aria-label="Toggle light/dark mode">
+            <span class="theme-icon theme-icon--dark">🌙</span>
+            <span class="theme-icon theme-icon--light">☀️</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="chapter-header">
+        <div class="chapter-header__eyebrow">
+          <span class="chapter-header__number">Chapter 14</span>
+          <span class="chapter-header__phase">Phase 2 — UX Engineer</span>
+        </div>
+        <h1 class="chapter-header__title">Firebase — Your Backend Without a Backend Dev</h1>
+        <p class="chapter-header__tagline">User auth, a real database, file uploads — without writing a single server.</p>
+        <div class="chapter-header__meta">
+          <span class="meta-badge meta-badge--time">⏱ 2 hours</span>
+          <span class="meta-badge meta-badge--tools">🛠 VS Code · Google account · Firebase</span>
+        </div>
+      </header>
+
+      <article class="chapter-body">
+
+        <section class="section">
+          <h2 class="section__title">What a backend actually does</h2>
+          <div class="prose">
+            <p>Every app that persists data — saves a user's preferences, stores their posts, remembers their cart — needs a backend: a server that runs code and a database that stores data. Traditionally, this meant a backend developer who knows Node.js, Python, or Go, plus a database (PostgreSQL, MySQL, MongoDB), plus deployment infrastructure.</p>
+            <p>Firebase removes all of that. It's a set of backend services provided by Google. You connect to them directly from your frontend code. No server to maintain, no database to configure, no backend developer needed for most product use cases.</p>
+          </div>
+          <ul class="concept-list">
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Firestore</strong> — a real-time NoSQL database. Store and sync data in milliseconds across all connected users.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Firebase Auth</strong> — handle user sign-up, sign-in, and sessions. Supports Google, Apple, GitHub, email/password, and more.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Firebase Storage</strong> — store and serve user-uploaded files: images, documents, videos.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Firebase Hosting</strong> — deploy your site to a CDN globally. Free tier included.</div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Setting up Firebase</h2>
+          <ol class="activity__steps" style="list-style:none;display:flex;flex-direction:column;gap:12px;padding:0">
+            <li style="display:flex;gap:12px;align-items:flex-start">
+              <div class="activity__step-number">1</div>
+              <div>Go to <strong>console.firebase.google.com</strong> and sign in with your Google account.</div>
+            </li>
+            <li style="display:flex;gap:12px;align-items:flex-start">
+              <div class="activity__step-number">2</div>
+              <div>Click <strong>"Create a project"</strong>. Name it something like "my-ideas-board". Disable Google Analytics (not needed).</div>
+            </li>
+            <li style="display:flex;gap:12px;align-items:flex-start">
+              <div class="activity__step-number">3</div>
+              <div>In the project dashboard, click the <strong>web icon (&lt;/&gt;)</strong> to add a web app. Register it with a nickname. You'll get a config object — this is your connection credentials.</div>
+            </li>
+            <li style="display:flex;gap:12px;align-items:flex-start">
+              <div class="activity__step-number">4</div>
+              <div>Enable <strong>Firestore Database</strong> (Build menu → Firestore Database → Create database → Start in test mode).</div>
+            </li>
+            <li style="display:flex;gap:12px;align-items:flex-start">
+              <div class="activity__step-number">5</div>
+              <div>Enable <strong>Authentication</strong> (Build menu → Authentication → Get started → Sign-in method → Google → Enable).</div>
+            </li>
+          </ol>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Connecting Firebase to your app</h2>
+          <div class="code-block">
+            <div class="code-block__header">
+              <div class="code-block__dots"><span class="code-block__dot"></span><span class="code-block__dot"></span><span class="code-block__dot"></span></div>
+              <span class="code-block__lang">javascript</span>
+            </div>
+            <pre><code>// Install via npm: npm install firebase
+// Or use CDN in HTML (shown here for simplicity)
+
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
+
+// Paste your config from the Firebase console
+const firebaseConfig = {
+  apiKey: "AIzaSy...",
+  authDomain: "my-app.firebaseapp.com",
+  projectId: "my-app",
+  storageBucket: "my-app.appspot.com",
+  messagingSenderId: "1234567890",
+  appId: "1:1234567890:web:abc123"
+};
+
+// Initialize
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);</code></pre>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Firestore — reading and writing data</h2>
+          <div class="code-block">
+            <div class="code-block__header">
+              <div class="code-block__dots"><span class="code-block__dot"></span><span class="code-block__dot"></span><span class="code-block__dot"></span></div>
+              <span class="code-block__lang">javascript</span>
+            </div>
+            <pre><code>import { collection, addDoc, getDocs, onSnapshot, serverTimestamp } from 'firebase/firestore';
+
+// WRITE: Add a document to a collection
+async function addIdea(text) {
+  await addDoc(collection(db, 'ideas'), {
+    text: text,
+    author: auth.currentUser.displayName,
+    createdAt: serverTimestamp()
+  });
+}
+
+// READ ONCE: Get all documents from a collection
+async function getIdeas() {
+  const snapshot = await getDocs(collection(db, 'ideas'));
+  snapshot.forEach(doc => {
+    console.log(doc.id, doc.data());
+  });
+}
+
+// REAL-TIME: Listen for changes (updates instantly when data changes)
+const unsubscribe = onSnapshot(collection(db, 'ideas'), (snapshot) => {
+  snapshot.docChanges().forEach(change => {
+    if (change.type === 'added') {
+      renderIdea(change.doc.id, change.doc.data());
+    }
+  });
+});</code></pre>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Firebase Auth — "Sign in with Google" in 10 lines</h2>
+          <div class="code-block">
+            <div class="code-block__header">
+              <div class="code-block__dots"><span class="code-block__dot"></span><span class="code-block__dot"></span><span class="code-block__dot"></span></div>
+              <span class="code-block__lang">javascript</span>
+            </div>
+            <pre><code>import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth';
+
+const provider = new GoogleAuthProvider();
+
+// Sign in
+async function signIn() {
+  await signInWithPopup(auth, provider);
+}
+
+// Sign out
+async function signOutUser() {
+  await signOut(auth);
+}
+
+// Listen for auth state changes (user logged in or out)
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in
+    console.log('Welcome,', user.displayName);
+    console.log('Photo:', user.photoURL);
+    showApp();
+  } else {
+    // User is signed out
+    showSignInScreen();
+  }
+});</code></pre>
+          </div>
+        </section>
+
+        <div class="activity">
+          <div class="activity__header">
+            <div class="activity__icon">🔥</div>
+            <div class="activity__header-text">
+              <div class="activity__label">Hands-on activity</div>
+              <div class="activity__title">Build a real-time ideas board</div>
+            </div>
+          </div>
+          <div class="activity__body">
+            <div class="activity__tools">
+              <span class="activity__tools-label">You need:</span>
+              <span class="tool-badge">VS Code</span>
+              <span class="tool-badge">Firebase account (free)</span>
+              <span class="tool-badge">Claude (for code generation)</span>
+            </div>
+            <ol class="activity__steps">
+              <li class="activity__step">
+                <div class="activity__step-number">1</div>
+                <div class="activity__step-text">Create a Firebase project and enable Firestore (test mode) and Google Auth following the setup steps above.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">2</div>
+                <div class="activity__step-text">Ask Claude: <em>"Build a single-HTML-file ideas board using Firebase. Users click 'Sign in with Google' to authenticate. Authenticated users see a text input + 'Post idea' button. All posted ideas appear in real-time (using onSnapshot) visible to all signed-in users. Show the author name and timestamp with each idea. Style it dark with yellow accents. Include all Firebase imports from CDN. I'll replace the firebaseConfig object with my own."</em></div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">3</div>
+                <div class="activity__step-text">Replace the placeholder <code>firebaseConfig</code> in Claude's output with your actual config from the Firebase console. Open the file in a browser — you should be able to sign in and post ideas.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">4</div>
+                <div class="activity__step-text">Open the same URL in a second browser window. Post an idea in one — watch it appear instantly in the other. That's real-time data. No backend developer wrote a single line of server code.</div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="takeaways">
+          <div class="takeaways__title">Key takeaways</div>
+          <ul class="takeaways__list">
+            <li>Firebase gives you auth, database, file storage, and hosting — all managed by Google, no server setup required</li>
+            <li>Firestore is a document-based NoSQL database. Data is organized as collections of documents</li>
+            <li><code>onSnapshot</code> subscribes to real-time updates — your UI automatically reflects changes the moment they happen</li>
+            <li>Firebase Auth handles the hard parts of identity (sessions, tokens, security) in a few lines of code</li>
+            <li>The free "Spark" plan is generous enough for most side projects and MVPs</li>
+          </ul>
+        </div>
+
+      </article>
+
+      <nav class="chapter-nav">
+        <a class="chapter-nav__link" href="13-react-with-claude.html">
+          <span class="chapter-nav__dir">← Previous</span>
+          <span class="chapter-nav__title">React with Claude</span>
+        </a>
+        <a class="chapter-nav__link chapter-nav__link--next" href="15-shipping-products.html">
+          <span class="chapter-nav__dir">Next →</span>
+          <span class="chapter-nav__title">Shipping Real Products</span>
+        </a>
+      </nav>
+    </main>
+  </div>
+
+  <canvas id="confettiCanvas"></canvas>
+  <script src="../scripts/main.js"></script>
+</body>
+</html>

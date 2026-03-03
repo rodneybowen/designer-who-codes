@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A free course for UX designers who want to speak the language of code — and build with it.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/favicon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rodneybowen.github.io/designer-who-codes/chapters/16-ai-api-integration.html">
+  <meta property="og:title" content="Chapter 16 — Building with AI APIs | The Designer Who Codes">
+  <meta property="og:description" content="A free course for UX designers who want to speak the language of code — and build with it.">
+  <meta property="og:image" content="https://rodneybowen.github.io/designer-who-codes/assets/favicon.png">
+  <title>Chapter 16 — Building with AI APIs | The Designer Who Codes</title>
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+  <header class="mobile-header">
+    <span class="mobile-header__title">Ch. 16 — AI API Integration</span>
+    <button class="mobile-hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand">
+        <img class="sidebar__brand-logo" src="../assets/favicon.png" alt="The Designer Who Codes">
+        <div class="sidebar__brand-text">
+          <div class="sidebar__brand-title">The Designer<br>Who Codes</div>
+          <div class="sidebar__brand-sub">A 17-chapter course</div>
+        </div>
+      </div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__section-label">Start Here</div>
+        <a class="nav-item" href="../index.html"><span class="nav-item__number">00</span><div class="nav-item__text"><span class="nav-item__title">Introduction</span></div></a>
+        <div class="sidebar__section-label">Phase 1 — The Course</div>
+        <a class="nav-item" href="01-how-web-works.html"><span class="nav-item__number">01</span><div class="nav-item__text"><span class="nav-item__title">How the Web Works</span><span class="nav-item__tag">45 min</span></div></a>
+        <a class="nav-item" href="02-html-css.html"><span class="nav-item__number">02</span><div class="nav-item__text"><span class="nav-item__title">Reading &amp; Writing HTML + CSS</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="03-building-with-claude.html"><span class="nav-item__number">03</span><div class="nav-item__text"><span class="nav-item__title">Building with Claude</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="04-figma-to-code.html"><span class="nav-item__number">04</span><div class="nav-item__text"><span class="nav-item__title">Figma to Code</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="05-git-github.html"><span class="nav-item__number">05</span><div class="nav-item__text"><span class="nav-item__title">Git &amp; GitHub</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="06-design-tokens.html"><span class="nav-item__number">06</span><div class="nav-item__text"><span class="nav-item__title">Design Tokens &amp; Systems</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="07-working-with-devs.html"><span class="nav-item__number">07</span><div class="nav-item__text"><span class="nav-item__title">Working with Developers</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="08-responsive-accessibility.html"><span class="nav-item__number">08</span><div class="nav-item__text"><span class="nav-item__title">Responsive &amp; Accessibility</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="09-ai-design-workflow.html"><span class="nav-item__number">09</span><div class="nav-item__text"><span class="nav-item__title">AI-Assisted Design</span><span class="nav-item__tag">45 min</span></div></a>
+        <a class="nav-item" href="10-component-thinking.html"><span class="nav-item__number">10</span><div class="nav-item__text"><span class="nav-item__title">Component Thinking</span><span class="nav-item__tag">45 min</span></div></a>
+        <div class="nav-phase-divider"><span class="nav-phase-divider__label">Phase 2 — UX Engineer</span></div>
+        <a class="nav-item" href="11-javascript-dom.html"><span class="nav-item__number">11</span><div class="nav-item__text"><span class="nav-item__title">JavaScript DOM &amp; Events</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="12-css-grid-animations.html"><span class="nav-item__number">12</span><div class="nav-item__text"><span class="nav-item__title">CSS Grid &amp; Animations</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="13-react-with-claude.html"><span class="nav-item__number">13</span><div class="nav-item__text"><span class="nav-item__title">React with Claude</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="14-firebase-backend.html"><span class="nav-item__number">14</span><div class="nav-item__text"><span class="nav-item__title">Firebase — No Backend Needed</span><span class="nav-item__tag">2 hrs</span></div></a>
+        <a class="nav-item" href="15-shipping-products.html"><span class="nav-item__number">15</span><div class="nav-item__text"><span class="nav-item__title">Shipping Real Products</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item nav-item--active" href="16-ai-api-integration.html"><span class="nav-item__number">16</span><div class="nav-item__text"><span class="nav-item__title">Building with AI APIs</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="17-capstone-full-product.html"><span class="nav-item__number">17</span><div class="nav-item__text"><span class="nav-item__title">Capstone: Ship Your Product</span><span class="nav-item__tag">3 hrs · Capstone</span></div></a>
+      </nav>
+      <div class="sidebar__footer">
+        <div class="sidebar__progress-section">
+          <div class="sidebar__progress-phase-label">Phase 1</div>
+          <div class="sidebar__progress-track"><div class="sidebar__progress-fill" id="courseProgress" style="width: 0%"></div></div>
+        </div>
+        <div class="sidebar__progress-section">
+          <div class="sidebar__progress-phase-label">Phase 2</div>
+          <div class="sidebar__progress-track"><div class="sidebar__progress-fill sidebar__progress-fill--p2" id="courseProgressP2" style="width: 0%"></div></div>
+        </div>
+        <div class="theme-toggle">
+          <button class="theme-toggle__btn" id="themeToggle" aria-label="Toggle light/dark mode">
+            <span class="theme-icon theme-icon--dark">🌙</span>
+            <span class="theme-icon theme-icon--light">☀️</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="chapter-header">
+        <div class="chapter-header__eyebrow">
+          <span class="chapter-header__number">Chapter 16</span>
+          <span class="chapter-header__phase">Phase 2 — UX Engineer</span>
+        </div>
+        <h1 class="chapter-header__title">Building with AI APIs</h1>
+        <p class="chapter-header__tagline">You&#39;ve been using Claude. Now wire it into your own product.</p>
+        <div class="chapter-header__meta">
+          <span class="meta-badge meta-badge--time">⏱ 1.5 hours</span>
+          <span class="meta-badge meta-badge--tools">🛠 VS Code · Anthropic account · Vercel</span>
+        </div>
+      </header>
+
+      <article class="chapter-body">
+
+        <section class="section">
+          <h2 class="section__title">From user to builder</h2>
+          <div class="prose">
+            <p>You&#39;ve been using Claude as a tool — ask a question, get an answer. This chapter is about a different relationship: you&#39;re building a product and Claude is a feature inside it. Your users will interact with AI without knowing they&#39;re talking to Claude.</p>
+            <p>This is what the next generation of software looks like. Not just AI-assisted development, but AI-powered products. And as a UX Engineer, you&#39;re positioned to build them.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">API keys — what they are and how to keep them safe</h2>
+          <div class="prose">
+            <p>An API key is a secret credential that authenticates your requests to a service. Think of it as a password for your application. The Anthropic API key looks like <code>sk-ant-api03-...</code></p>
+          </div>
+          <div class="callout callout--warning">
+            <div class="callout__label">⚠️ Critical</div>
+            <div class="callout__title">Never put your API key in client-side JavaScript</div>
+            <div class="callout__body">If your API key is in your React component or frontend JavaScript, anyone can open DevTools, find it, and use it on your bill. Always make API calls from a serverless function (like the one you learned in Chapter 15). The key lives on the server, never in the browser.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">The Claude API — messages and responses</h2>
+          <div class="prose">
+            <p>The Anthropic API is simple. You send an array of messages (just like a conversation), and you get a response. Here&#39;s the minimal request:</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <div class="code-block__dots"><span class="code-block__dot"></span><span class="code-block__dot"></span><span class="code-block__dot"></span></div>
+              <span class="code-block__lang">javascript — serverless function (api/ask.js)</span>
+            </div>
+            <pre><code>export default async function handler(req, res) {
+  const { userMessage } = req.body;
+
+  const response = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'x-api-key': process.env.ANTHROPIC_API_KEY,
+      'anthropic-version': '2023-06-01',
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'claude-opus-4-6',          // the model to use
+      max_tokens: 1024,                   // max response length
+      system: 'You are a helpful product design assistant. Be concise.',
+      messages: [
+        { role: 'user', content: userMessage }
+      ]
+    })
+  });
+
+  const data = await response.json();
+  const reply = data.content[0].text;
+  res.json({ reply });
+}</code></pre>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <div class="code-block__dots"><span class="code-block__dot"></span><span class="code-block__dot"></span><span class="code-block__dot"></span></div>
+              <span class="code-block__lang">javascript — frontend calling the API route</span>
+            </div>
+            <pre><code>// In your React component or vanilla JS
+async function askClaude(question) {
+  const response = await fetch('/api/ask', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ userMessage: question })
+  });
+  const data = await response.json();
+  return data.reply;
+}</code></pre>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">System prompts — giving Claude a job</h2>
+          <div class="prose">
+            <p>The <code>system</code> parameter lets you define Claude&#39;s role before the conversation starts. This is where you give it a persona, constraints, and context. It&#39;s the most powerful tool for shaping AI behavior in your product.</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <div class="code-block__dots"><span class="code-block__dot"></span><span class="code-block__dot"></span><span class="code-block__dot"></span></div>
+              <span class="code-block__lang">javascript — system prompt examples</span>
+            </div>
+            <pre><code>// For a writing feedback tool
+system: `You are a UX writing expert. Review the user-submitted copy and give
+concise feedback on: clarity, action orientation, tone, and length.
+Format your response as 3-5 bullet points. Be direct, not fluffy.`
+
+// For an onboarding assistant
+system: `You are an onboarding guide for a project management tool.
+Help new users understand features. Keep responses under 100 words.
+If asked about something unrelated to project management, politely redirect.`
+
+// For an ideas board
+system: `You are a product thinking partner. The user will share a product idea.
+Respond with: one strength, one potential user problem, and one next step to validate.
+Keep the whole response under 80 words.`</code></pre>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Cost considerations</h2>
+          <div class="prose">
+            <p>The Claude API is priced per token (roughly per word). For small hobby projects, costs are negligible — a few cents per day of active usage. For products with real users, set a budget and monitor your dashboard.</p>
+          </div>
+          <ul class="concept-list">
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>claude-haiku-4-5</strong> — fastest and cheapest. Great for high-volume, shorter tasks (classification, summaries, quick answers).</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>claude-sonnet-4-6</strong> — balanced speed and capability. Best for most product features.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>claude-opus-4-6</strong> — most capable. Best for complex reasoning tasks where quality matters most.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text">Set <code>max_tokens</code> appropriately — don&#39;t leave it at 4096 if you only need 200-word responses.</div>
+            </li>
+          </ul>
+        </section>
+
+        <div class="activity">
+          <div class="activity__header">
+            <div class="activity__icon">🤖</div>
+            <div class="activity__header-text">
+              <div class="activity__label">Hands-on activity</div>
+              <div class="activity__title">Add AI feedback to your ideas board</div>
+            </div>
+          </div>
+          <div class="activity__body">
+            <div class="activity__tools">
+              <span class="activity__tools-label">You need:</span>
+              <span class="tool-badge">VS Code</span>
+              <span class="tool-badge">Anthropic API key (console.anthropic.com)</span>
+              <span class="tool-badge">Vercel project from Ch. 15</span>
+              <span class="tool-badge">Claude (for code generation)</span>
+            </div>
+            <ol class="activity__steps">
+              <li class="activity__step">
+                <div class="activity__step-number">1</div>
+                <div class="activity__step-text">Get an Anthropic API key from <strong>console.anthropic.com</strong>. Add it as an environment variable in your Vercel project: Settings → Environment Variables → <code>ANTHROPIC_API_KEY</code>.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">2</div>
+                <div class="activity__step-text">Ask Claude: <em>"Create a Vercel serverless function at api/feedback.js that takes a POST request with a JSON body {idea: string}. It calls the Anthropic API using the model claude-haiku-4-5-20251001, with a system prompt that says you are a product thinking partner who gives 3-bullet feedback on ideas (one strength, one risk, one next step). Return the reply as JSON {feedback: string}."</em></div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">3</div>
+                <div class="activity__step-text">Add a "Get AI feedback" button to each idea card in your HTML. When clicked, POST the idea text to <code>/api/feedback</code> and display the response below the idea.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">4</div>
+                <div class="activity__step-text">Deploy the updated code to Vercel. Test it in production. You&#39;ve shipped a real AI-powered feature.</div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="takeaways">
+          <div class="takeaways__title">Key takeaways</div>
+          <ul class="takeaways__list">
+            <li>Never put API keys in client-side JavaScript. Always call AI APIs from serverless functions</li>
+            <li>The Claude API is a simple POST request: send messages, get a response</li>
+            <li>System prompts define Claude&#39;s role, constraints, and output format — craft them carefully</li>
+            <li>Use <code>claude-haiku-4-5</code> for high-volume tasks, <code>claude-sonnet-4-6</code> for balanced quality/cost</li>
+            <li>Set <code>max_tokens</code> intentionally to control response length and cost</li>
+          </ul>
+        </div>
+
+      </article>
+
+      <nav class="chapter-nav">
+        <a class="chapter-nav__link" href="15-shipping-products.html">
+          <span class="chapter-nav__dir">← Previous</span>
+          <span class="chapter-nav__title">Shipping Real Products</span>
+        </a>
+        <a class="chapter-nav__link chapter-nav__link--next" href="17-capstone-full-product.html">
+          <span class="chapter-nav__dir">Next →</span>
+          <span class="chapter-nav__title">Capstone: Ship Your Product</span>
+        </a>
+      </nav>
+    </main>
+  </div>
+
+  <canvas id="confettiCanvas"></canvas>
+  <script src="../scripts/main.js"></script>
+</body>
+</html>

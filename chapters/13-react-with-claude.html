@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A free course for UX designers who want to speak the language of code — and build with it.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/favicon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rodneybowen.github.io/designer-who-codes/chapters/13-react-with-claude.html">
+  <meta property="og:title" content="Chapter 13 — React with Claude | The Designer Who Codes">
+  <meta property="og:description" content="A free course for UX designers who want to speak the language of code — and build with it.">
+  <meta property="og:image" content="https://rodneybowen.github.io/designer-who-codes/assets/favicon.png">
+  <title>Chapter 13 — React with Claude | The Designer Who Codes</title>
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+  <header class="mobile-header">
+    <span class="mobile-header__title">Ch. 13 — React with Claude</span>
+    <button class="mobile-hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand">
+        <img class="sidebar__brand-logo" src="../assets/favicon.png" alt="The Designer Who Codes">
+        <div class="sidebar__brand-text">
+          <div class="sidebar__brand-title">The Designer<br>Who Codes</div>
+          <div class="sidebar__brand-sub">A 17-chapter course</div>
+        </div>
+      </div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__section-label">Start Here</div>
+        <a class="nav-item" href="../index.html">
+          <span class="nav-item__number">00</span>
+          <div class="nav-item__text"><span class="nav-item__title">Introduction</span></div>
+        </a>
+        <div class="sidebar__section-label">Phase 1 — The Course</div>
+        <a class="nav-item" href="01-how-web-works.html"><span class="nav-item__number">01</span><div class="nav-item__text"><span class="nav-item__title">How the Web Works</span><span class="nav-item__tag">45 min</span></div></a>
+        <a class="nav-item" href="02-html-css.html"><span class="nav-item__number">02</span><div class="nav-item__text"><span class="nav-item__title">Reading &amp; Writing HTML + CSS</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="03-building-with-claude.html"><span class="nav-item__number">03</span><div class="nav-item__text"><span class="nav-item__title">Building with Claude</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="04-figma-to-code.html"><span class="nav-item__number">04</span><div class="nav-item__text"><span class="nav-item__title">Figma to Code</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="05-git-github.html"><span class="nav-item__number">05</span><div class="nav-item__text"><span class="nav-item__title">Git &amp; GitHub</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="06-design-tokens.html"><span class="nav-item__number">06</span><div class="nav-item__text"><span class="nav-item__title">Design Tokens &amp; Systems</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="07-working-with-devs.html"><span class="nav-item__number">07</span><div class="nav-item__text"><span class="nav-item__title">Working with Developers</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="08-responsive-accessibility.html"><span class="nav-item__number">08</span><div class="nav-item__text"><span class="nav-item__title">Responsive &amp; Accessibility</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="09-ai-design-workflow.html"><span class="nav-item__number">09</span><div class="nav-item__text"><span class="nav-item__title">AI-Assisted Design</span><span class="nav-item__tag">45 min</span></div></a>
+        <a class="nav-item" href="10-component-thinking.html"><span class="nav-item__number">10</span><div class="nav-item__text"><span class="nav-item__title">Component Thinking</span><span class="nav-item__tag">45 min</span></div></a>
+        <div class="nav-phase-divider">
+          <span class="nav-phase-divider__label">Phase 2 — UX Engineer</span>
+        </div>
+        <a class="nav-item" href="11-javascript-dom.html"><span class="nav-item__number">11</span><div class="nav-item__text"><span class="nav-item__title">JavaScript DOM &amp; Events</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="12-css-grid-animations.html"><span class="nav-item__number">12</span><div class="nav-item__text"><span class="nav-item__title">CSS Grid &amp; Animations</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item nav-item--active" href="13-react-with-claude.html"><span class="nav-item__number">13</span><div class="nav-item__text"><span class="nav-item__title">React with Claude</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="14-firebase-backend.html"><span class="nav-item__number">14</span><div class="nav-item__text"><span class="nav-item__title">Firebase — No Backend Needed</span><span class="nav-item__tag">2 hrs</span></div></a>
+        <a class="nav-item" href="15-shipping-products.html"><span class="nav-item__number">15</span><div class="nav-item__text"><span class="nav-item__title">Shipping Real Products</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="16-ai-api-integration.html"><span class="nav-item__number">16</span><div class="nav-item__text"><span class="nav-item__title">Building with AI APIs</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="17-capstone-full-product.html"><span class="nav-item__number">17</span><div class="nav-item__text"><span class="nav-item__title">Capstone: Ship Your Product</span><span class="nav-item__tag">3 hrs · Capstone</span></div></a>
+      </nav>
+      <div class="sidebar__footer">
+        <div class="sidebar__progress-section">
+          <div class="sidebar__progress-phase-label">Phase 1</div>
+          <div class="sidebar__progress-track">
+            <div class="sidebar__progress-fill" id="courseProgress" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="sidebar__progress-section">
+          <div class="sidebar__progress-phase-label">Phase 2</div>
+          <div class="sidebar__progress-track">
+            <div class="sidebar__progress-fill sidebar__progress-fill--p2" id="courseProgressP2" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="theme-toggle">
+          <button class="theme-toggle__btn" id="themeToggle" aria-label="Toggle light/dark mode">
+            <span class="theme-icon theme-icon--dark">🌙</span>
+            <span class="theme-icon theme-icon--light">☀️</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="chapter-header">
+        <div class="chapter-header__eyebrow">
+          <span class="chapter-header__number">Chapter 13</span>
+          <span class="chapter-header__phase">Phase 2 — UX Engineer</span>
+        </div>
+        <h1 class="chapter-header__title">React with Claude</h1>
+        <p class="chapter-header__tagline">You already think in components. Now write them as code — with Claude as your co-pilot.</p>
+        <div class="chapter-header__meta">
+          <span class="meta-badge meta-badge--time">⏱ 1.5 hours</span>
+          <span class="meta-badge meta-badge--tools">🛠 VS Code · Node.js · Claude</span>
+        </div>
+      </header>
+
+      <article class="chapter-body">
+
+        <section class="section">
+          <h2 class="section__title">What React actually is — and what it isn't</h2>
+          <div class="prose">
+            <p>React is a JavaScript library for building user interfaces. That's all. It's not a full framework (though it has an ecosystem around it). It's not magic. It's a way of writing UI as a tree of components, each of which manages its own state.</p>
+            <p>Everything you've learned still applies. HTML structure, CSS styling, JavaScript events — React just organizes them differently. And because it's so widely used, Claude is extremely good at writing React code. This chapter is about understanding React well enough to direct it.</p>
+          </div>
+          <div class="callout callout--tip">
+            <div class="callout__label">💡 When to use React</div>
+            <div class="callout__title">Not everything needs React</div>
+            <div class="callout__body">A marketing site, a portfolio, a course website — plain HTML/CSS/JS is faster to build and simpler to maintain. Use React when you have complex interactive state: a dashboard, a multi-step form, a data-driven app where the UI needs to update frequently based on changing data.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">JSX — HTML inside JavaScript</h2>
+          <div class="prose">
+            <p>React uses JSX — a syntax extension that lets you write HTML-like code inside JavaScript. It looks strange at first, but it clicks quickly.</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <div class="code-block__dots"><span class="code-block__dot"></span><span class="code-block__dot"></span><span class="code-block__dot"></span></div>
+              <span class="code-block__lang">jsx</span>
+            </div>
+            <pre><code>// Plain HTML
+&lt;div class="card"&gt;
+  &lt;h2&gt;Hello World&lt;/h2&gt;
+&lt;/div&gt;
+
+// The same thing in JSX (inside a React component)
+function Card() {
+  return (
+    &lt;div className="card"&gt;  {/* "class" becomes "className" in JSX */}
+      &lt;h2&gt;Hello World&lt;/h2&gt;
+    &lt;/div&gt;
+  );
+}
+
+// JSX lets you mix JavaScript expressions using {}
+function Greeting({ name }) {
+  return &lt;h1&gt;Hello, {name}!&lt;/h1&gt;;  // outputs: Hello, Alex!
+}
+
+// You can't return multiple elements without a wrapper
+// Use a Fragment (&lt;&gt;&lt;/&gt;) to avoid adding unnecessary divs
+function TwoThings() {
+  return (
+    &lt;&gt;
+      &lt;p&gt;First thing&lt;/p&gt;
+      &lt;p&gt;Second thing&lt;/p&gt;
+    &lt;/&gt;
+  );
+}</code></pre>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Components — the thing you already know</h2>
+          <div class="prose">
+            <p>A React component is just a JavaScript function that returns JSX. It's the same concept as a Figma component or a CSS BEM block — a reusable, self-contained piece of UI.</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <div class="code-block__dots"><span class="code-block__dot"></span><span class="code-block__dot"></span><span class="code-block__dot"></span></div>
+              <span class="code-block__lang">jsx</span>
+            </div>
+            <pre><code>// A simple Button component
+function Button({ label, onClick, variant = 'primary' }) {
+  return (
+    &lt;button
+      className={`btn btn--${variant}`}
+      onClick={onClick}
+    &gt;
+      {label}
+    &lt;/button&gt;
+  );
+}
+
+// Using it — pass values as "props" (like Figma properties)
+function App() {
+  return (
+    &lt;div&gt;
+      &lt;Button label="Get Started" variant="primary" onClick={() =&gt; alert('clicked!')} /&gt;
+      &lt;Button label="Learn More" variant="secondary" /&gt;
+      &lt;Button label="Unavailable" variant="disabled" /&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+          </div>
+          <div class="callout callout--insight">
+            <div class="callout__label">💚 The big click</div>
+            <div class="callout__title">Props are Figma component properties</div>
+            <div class="callout__body">In Figma you have a Button component with a "variant" property (primary/secondary/disabled). In React you have a Button component with a <code>variant</code> prop. It's literally the same concept. If you've been designing with component variants, you already understand how props work.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">State — what makes UIs interactive</h2>
+          <div class="prose">
+            <p>State is data that can change — and when it changes, the UI updates to reflect it. React's <code>useState</code> hook is how you define and update state inside a component.</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <div class="code-block__dots"><span class="code-block__dot"></span><span class="code-block__dot"></span><span class="code-block__dot"></span></div>
+              <span class="code-block__lang">jsx</span>
+            </div>
+            <pre><code>import { useState } from 'react';
+
+function Counter() {
+  // useState returns: [current value, function to update it]
+  const [count, setCount] = useState(0); // starts at 0
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;+&lt;/button&gt;
+      &lt;button onClick={() =&gt; setCount(count - 1)}&gt;-&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+
+// A toggle — very common pattern
+function ThemeToggle() {
+  const [isDark, setIsDark] = useState(true);
+
+  return (
+    &lt;button onClick={() =&gt; setIsDark(!isDark)}&gt;
+      {isDark ? '🌙 Dark' : '☀️ Light'}
+    &lt;/button&gt;
+  );
+}</code></pre>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Working with Claude on React</h2>
+          <div class="prose">
+            <p>Here's the key insight: you don't need to memorize React's API. You need to understand it well enough to describe what you want to Claude clearly, and to read what it gives back.</p>
+          </div>
+          <div class="callout callout--tip">
+            <div class="callout__label">💡 Prompt formula</div>
+            <div class="callout__title">How to ask Claude for React components</div>
+            <div class="callout__body">"Build a React component called [Name] that takes these props: [list them]. It should [describe behavior]. Use TypeScript. Use Tailwind for styling. It should have these states: [default/hover/loading/error/empty]. Include an example of how to use it."</div>
+          </div>
+          <div class="callout callout--warning">
+            <div class="callout__label">⚠️ Important</div>
+            <div class="callout__title">React needs a build step — you can't just open it in a browser</div>
+            <div class="callout__body">Unlike plain HTML/CSS/JS, React requires a build tool to compile the JSX syntax into JavaScript that browsers understand. Use <strong>Create React App</strong>, <strong>Vite</strong>, or <strong>Next.js</strong> to set up your project, or use <strong>StackBlitz</strong> in your browser for instant React environments — no install needed.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Getting started: StackBlitz</h2>
+          <div class="prose">
+            <p>StackBlitz is a browser-based development environment. Visit <strong>stackblitz.com/edit/react</strong> and you get an instant React environment — no install, no setup. Perfect for practicing.</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <div class="code-block__dots"><span class="code-block__dot"></span><span class="code-block__dot"></span><span class="code-block__dot"></span></div>
+              <span class="code-block__lang">jsx — try this in StackBlitz</span>
+            </div>
+            <pre><code>import { useState } from 'react';
+import './styles.css';
+
+// Badge component with variants (like our HTML/CSS version from Ch.10)
+function Badge({ label, variant = 'default' }) {
+  return &lt;span className={`badge badge--${variant}`}&gt;{label}&lt;/span&gt;;
+}
+
+// Card component
+function ProductCard({ title, price, badge }) {
+  const [saved, setSaved] = useState(false);
+
+  return (
+    &lt;div className="card"&gt;
+      {badge &amp;&amp; &lt;Badge label={badge} variant="active" /&gt;}
+      &lt;h3 className="card__title"&gt;{title}&lt;/h3&gt;
+      &lt;div className="card__footer"&gt;
+        &lt;span className="card__price"&gt;${price}&lt;/span&gt;
+        &lt;button
+          className={`btn ${saved ? 'btn--saved' : ''}`}
+          onClick={() =&gt; setSaved(!saved)}
+        &gt;
+          {saved ? '✓ Saved' : 'Save'}
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default function App() {
+  return (
+    &lt;div className="grid"&gt;
+      &lt;ProductCard title="Design System Kit" price={49} badge="New" /&gt;
+      &lt;ProductCard title="UI Component Pack" price={79} /&gt;
+      &lt;ProductCard title="Icon Library" price={29} badge="Sale" /&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+          </div>
+        </section>
+
+        <div class="activity">
+          <div class="activity__header">
+            <div class="activity__icon">⚛️</div>
+            <div class="activity__header-text">
+              <div class="activity__label">Hands-on activity</div>
+              <div class="activity__title">Build a React component with Claude</div>
+            </div>
+          </div>
+          <div class="activity__body">
+            <div class="activity__tools">
+              <span class="activity__tools-label">You need:</span>
+              <span class="tool-badge">StackBlitz (stackblitz.com)</span>
+              <span class="tool-badge">Claude (claude.ai)</span>
+            </div>
+            <ol class="activity__steps">
+              <li class="activity__step">
+                <div class="activity__step-number">1</div>
+                <div class="activity__step-text">Go to <strong>stackblitz.com/edit/react</strong>. You'll see a React app ready to edit. Delete everything in <code>App.js</code> — start fresh.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">2</div>
+                <div class="activity__step-text">Ask Claude: <em>"Build a React Tabs component with these props: tabs (array of {'{'}id, label, content{'}'}), and defaultTab (id of the tab open by default). Clicking a tab should show its content. Style it with inline CSS — dark background (#0a0a0a), yellow (#f5e642) accent on active tab, Inter font."</em></div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">3</div>
+                <div class="activity__step-text">Paste the component into StackBlitz. Create 3 tabs: "Design", "Code", "Deploy". Verify they all switch correctly.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">4</div>
+                <div class="activity__step-text"><strong>Then ask Claude</strong>: "Add a red notification badge dot to any tab that has the property <code>hasNotification: true</code>." Implement that change yourself based on Claude's answer.</div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="takeaways">
+          <div class="takeaways__title">Key takeaways</div>
+          <ul class="takeaways__list">
+            <li>React is JavaScript + JSX — it's not magic, it's just a way of organizing UI into reusable components</li>
+            <li>Props = Figma component properties. State = data that changes and triggers UI updates</li>
+            <li><code>useState(initialValue)</code> returns <code>[value, setValue]</code>. Calling <code>setValue</code> re-renders the component</li>
+            <li>You don't need to memorize React — you need to understand it well enough to direct Claude and read the output</li>
+            <li>Use StackBlitz for instant React environments; use Vite or Next.js for local development</li>
+          </ul>
+        </div>
+
+      </article>
+
+      <nav class="chapter-nav">
+        <a class="chapter-nav__link" href="12-css-grid-animations.html">
+          <span class="chapter-nav__dir">← Previous</span>
+          <span class="chapter-nav__title">CSS Grid &amp; Animations</span>
+        </a>
+        <a class="chapter-nav__link chapter-nav__link--next" href="14-firebase-backend.html">
+          <span class="chapter-nav__dir">Next →</span>
+          <span class="chapter-nav__title">Firebase — No Backend Needed</span>
+        </a>
+      </nav>
+    </main>
+  </div>
+
+  <canvas id="confettiCanvas"></canvas>
+  <script src="../scripts/main.js"></script>
+</body>
+</html>

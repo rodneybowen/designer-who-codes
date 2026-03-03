@@ -28,13 +28,13 @@
         <img class="sidebar__brand-logo" src="../assets/favicon.png" alt="The Designer Who Codes">
         <div class="sidebar__brand-text">
           <div class="sidebar__brand-title">The Designer<br>Who Codes</div>
-          <div class="sidebar__brand-sub">A 10-chapter guidebook</div>
+          <div class="sidebar__brand-sub">A 17-chapter course</div>
         </div>
       </div>
       <nav class="sidebar__nav">
         <div class="sidebar__section-label">Start Here</div>
         <a class="nav-item" href="../index.html"><span class="nav-item__number">00</span><div class="nav-item__text"><span class="nav-item__title">Introduction</span></div></a>
-        <div class="sidebar__section-label">The Course</div>
+        <div class="sidebar__section-label">Phase 1 — The Course</div>
         <a class="nav-item" href="01-how-web-works.html"><span class="nav-item__number">01</span><div class="nav-item__text"><span class="nav-item__title">How the Web Works</span><span class="nav-item__tag">45 min</span></div></a>
         <a class="nav-item" href="02-html-css.html"><span class="nav-item__number">02</span><div class="nav-item__text"><span class="nav-item__title">Reading &amp; Writing HTML + CSS</span><span class="nav-item__tag">1.5 hrs</span></div></a>
         <a class="nav-item" href="03-building-with-claude.html"><span class="nav-item__number">03</span><div class="nav-item__text"><span class="nav-item__title">Building with Claude</span><span class="nav-item__tag">1 hr</span></div></a>
@@ -45,11 +45,50 @@
         <a class="nav-item" href="08-responsive-accessibility.html"><span class="nav-item__number">08</span><div class="nav-item__text"><span class="nav-item__title">Responsive &amp; Accessibility</span><span class="nav-item__tag">1 hr</span></div></a>
         <a class="nav-item" href="09-ai-design-workflow.html"><span class="nav-item__number">09</span><div class="nav-item__text"><span class="nav-item__title">AI-Assisted Design</span><span class="nav-item__tag">45 min · Bonus</span></div></a>
         <a class="nav-item" href="10-component-thinking.html"><span class="nav-item__number">10</span><div class="nav-item__text"><span class="nav-item__title">Component Thinking</span><span class="nav-item__tag">45 min · Bonus</span></div></a>
+        <div class="nav-phase-divider">
+          <span class="nav-phase-divider__label">Phase 2 — UX Engineer</span>
+        </div>
+        <a class="nav-item" href="11-javascript-dom.html">
+          <span class="nav-item__number">11</span>
+          <div class="nav-item__text"><span class="nav-item__title">JavaScript DOM &amp; Events</span><span class="nav-item__tag">1.5 hrs</span></div>
+        </a>
+        <a class="nav-item" href="12-css-grid-animations.html">
+          <span class="nav-item__number">12</span>
+          <div class="nav-item__text"><span class="nav-item__title">CSS Grid &amp; Animations</span><span class="nav-item__tag">1 hr</span></div>
+        </a>
+        <a class="nav-item" href="13-react-with-claude.html">
+          <span class="nav-item__number">13</span>
+          <div class="nav-item__text"><span class="nav-item__title">React with Claude</span><span class="nav-item__tag">1.5 hrs</span></div>
+        </a>
+        <a class="nav-item" href="14-firebase-backend.html">
+          <span class="nav-item__number">14</span>
+          <div class="nav-item__text"><span class="nav-item__title">Firebase — No Backend Needed</span><span class="nav-item__tag">2 hrs</span></div>
+        </a>
+        <a class="nav-item" href="15-shipping-products.html">
+          <span class="nav-item__number">15</span>
+          <div class="nav-item__text"><span class="nav-item__title">Shipping Real Products</span><span class="nav-item__tag">1 hr</span></div>
+        </a>
+        <a class="nav-item" href="16-ai-api-integration.html">
+          <span class="nav-item__number">16</span>
+          <div class="nav-item__text"><span class="nav-item__title">Building with AI APIs</span><span class="nav-item__tag">1.5 hrs</span></div>
+        </a>
+        <a class="nav-item" href="17-capstone-full-product.html">
+          <span class="nav-item__number">17</span>
+          <div class="nav-item__text"><span class="nav-item__title">Capstone: Ship Your Product</span><span class="nav-item__tag">3 hrs · Capstone</span></div>
+        </a>
       </nav>
       <div class="sidebar__footer">
-        <div class="sidebar__progress-label">Your progress</div>
-        <div class="sidebar__progress-track">
-          <div class="sidebar__progress-fill" id="courseProgress" style="width: 0%"></div>
+        <div class="sidebar__progress-section">
+          <div class="sidebar__progress-phase-label">Phase 1</div>
+          <div class="sidebar__progress-track">
+            <div class="sidebar__progress-fill" id="courseProgress" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="sidebar__progress-section">
+          <div class="sidebar__progress-phase-label">Phase 2</div>
+          <div class="sidebar__progress-track">
+            <div class="sidebar__progress-fill sidebar__progress-fill--p2" id="courseProgressP2" style="width: 0%"></div>
+          </div>
         </div>
         <div class="theme-toggle">
           <button class="theme-toggle__btn" id="themeToggle" aria-label="Toggle light/dark mode">
@@ -314,6 +353,73 @@
           </div>
         </div>
 
+        <div class="ide" data-mode="html" id="ide-ch10">
+          <div class="ide__header">
+            <div class="ide__icon">▶</div>
+            <div class="ide__header-text">
+              <div class="ide__label">Try it right here</div>
+              <div class="ide__title">Build a Badge component with variants</div>
+            </div>
+            <div class="ide__actions">
+              <button class="ide__btn ide__btn--reset">Reset</button>
+              <button class="ide__btn ide__btn--run">▶ Run</button>
+            </div>
+          </div>
+          <div class="ide__split">
+            <div class="ide__editor-pane"><div class="ide__editor" id="ace-ch10"></div></div>
+            <div class="ide__preview-pane"><iframe class="ide__preview" id="preview-ch10" sandbox="allow-scripts allow-forms"></iframe></div>
+          </div>
+          <script type="text/plain" class="ide__starter"><!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      background: #0a0a0a;
+      font-family: 'Inter', sans-serif;
+      padding: 32px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    /* Badge component — one base class, multiple variant classes */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 99px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+    .badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+    /* Try adding a new variant below, like .badge--beta */
+    .badge--active   { background: rgba(77, 255, 154, 0.12); color: #4dff9a; }
+    .badge--inactive { background: rgba(255, 77, 77, 0.12);  color: #ff4d4d; }
+    .badge--pending  { background: rgba(245, 230, 66, 0.12); color: #f5e642; }
+    .badge--draft    { background: rgba(255,255,255,0.05);   color: #555; }
+  </style>
+</head>
+<body>
+  <span class="badge badge--active">Active</span>
+  <span class="badge badge--inactive">Inactive</span>
+  <span class="badge badge--pending">Pending</span>
+  <span class="badge badge--draft">Draft</span>
+  <!-- Try adding: <span class="badge badge--beta">Beta</span> -->
+  <!-- Then add the .badge--beta styles above -->
+</body>
+</html></script>
+        </div>
+
         <div class="takeaways">
           <div class="takeaways__title">Key takeaways</div>
           <ul class="takeaways__list">
@@ -347,9 +453,10 @@
       <div class="graduate-modal" id="graduateModal" role="dialog" aria-modal="true" aria-label="Graduation celebration">
         <div class="graduate-modal__card">
           <span class="graduate-modal__emoji">🎓</span>
-          <div class="graduate-modal__title">You did it.</div>
-          <div class="graduate-modal__sub">You're now a designer who codes. Go build something real, ship it, and share it with the world.</div>
-          <button class="graduate-modal__close" id="graduateClose">Close & keep building →</button>
+          <div class="graduate-modal__title">Phase 1 complete.</div>
+          <div class="graduate-modal__sub">You can read code, write it, ship to GitHub, and collaborate with developers. That's real. Ready to level up to UX Engineer?</div>
+          <a class="graduate-modal__close" href="11-javascript-dom.html" style="display:block;">Start Phase 2 →</a>
+          <button class="graduate-modal__close" id="graduateClose" style="margin-top:8px;background:transparent;border:1px solid var(--color-border);color:var(--color-text-secondary);">Maybe later</button>
         </div>
       </div>
 
@@ -357,6 +464,8 @@
       <canvas id="confettiCanvas"></canvas>
     </main>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/src-min-noconflict/ace.js"></script>
+  <script src="../scripts/ide.js"></script>
   <script src="../scripts/main.js"></script>
 </body>
 </html>

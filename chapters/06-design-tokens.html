@@ -28,13 +28,13 @@
         <img class="sidebar__brand-logo" src="../assets/favicon.png" alt="The Designer Who Codes">
         <div class="sidebar__brand-text">
           <div class="sidebar__brand-title">The Designer<br>Who Codes</div>
-          <div class="sidebar__brand-sub">A 10-chapter guidebook</div>
+          <div class="sidebar__brand-sub">A 17-chapter course</div>
         </div>
       </div>
       <nav class="sidebar__nav">
         <div class="sidebar__section-label">Start Here</div>
         <a class="nav-item" href="../index.html"><span class="nav-item__number">00</span><div class="nav-item__text"><span class="nav-item__title">Introduction</span></div></a>
-        <div class="sidebar__section-label">The Course</div>
+        <div class="sidebar__section-label">Phase 1 — The Course</div>
         <a class="nav-item" href="01-how-web-works.html"><span class="nav-item__number">01</span><div class="nav-item__text"><span class="nav-item__title">How the Web Works</span><span class="nav-item__tag">45 min</span></div></a>
         <a class="nav-item" href="02-html-css.html"><span class="nav-item__number">02</span><div class="nav-item__text"><span class="nav-item__title">Reading &amp; Writing HTML + CSS</span><span class="nav-item__tag">1.5 hrs</span></div></a>
         <a class="nav-item" href="03-building-with-claude.html"><span class="nav-item__number">03</span><div class="nav-item__text"><span class="nav-item__title">Building with Claude</span><span class="nav-item__tag">1 hr</span></div></a>
@@ -45,11 +45,50 @@
         <a class="nav-item" href="08-responsive-accessibility.html"><span class="nav-item__number">08</span><div class="nav-item__text"><span class="nav-item__title">Responsive &amp; Accessibility</span><span class="nav-item__tag">1 hr</span></div></a>
         <a class="nav-item" href="09-ai-design-workflow.html"><span class="nav-item__number">09</span><div class="nav-item__text"><span class="nav-item__title">AI-Assisted Design</span><span class="nav-item__tag">45 min · Bonus</span></div></a>
         <a class="nav-item" href="10-component-thinking.html"><span class="nav-item__number">10</span><div class="nav-item__text"><span class="nav-item__title">Component Thinking</span><span class="nav-item__tag">45 min · Bonus</span></div></a>
+        <div class="nav-phase-divider">
+          <span class="nav-phase-divider__label">Phase 2 — UX Engineer</span>
+        </div>
+        <a class="nav-item" href="11-javascript-dom.html">
+          <span class="nav-item__number">11</span>
+          <div class="nav-item__text"><span class="nav-item__title">JavaScript DOM &amp; Events</span><span class="nav-item__tag">1.5 hrs</span></div>
+        </a>
+        <a class="nav-item" href="12-css-grid-animations.html">
+          <span class="nav-item__number">12</span>
+          <div class="nav-item__text"><span class="nav-item__title">CSS Grid &amp; Animations</span><span class="nav-item__tag">1 hr</span></div>
+        </a>
+        <a class="nav-item" href="13-react-with-claude.html">
+          <span class="nav-item__number">13</span>
+          <div class="nav-item__text"><span class="nav-item__title">React with Claude</span><span class="nav-item__tag">1.5 hrs</span></div>
+        </a>
+        <a class="nav-item" href="14-firebase-backend.html">
+          <span class="nav-item__number">14</span>
+          <div class="nav-item__text"><span class="nav-item__title">Firebase — No Backend Needed</span><span class="nav-item__tag">2 hrs</span></div>
+        </a>
+        <a class="nav-item" href="15-shipping-products.html">
+          <span class="nav-item__number">15</span>
+          <div class="nav-item__text"><span class="nav-item__title">Shipping Real Products</span><span class="nav-item__tag">1 hr</span></div>
+        </a>
+        <a class="nav-item" href="16-ai-api-integration.html">
+          <span class="nav-item__number">16</span>
+          <div class="nav-item__text"><span class="nav-item__title">Building with AI APIs</span><span class="nav-item__tag">1.5 hrs</span></div>
+        </a>
+        <a class="nav-item" href="17-capstone-full-product.html">
+          <span class="nav-item__number">17</span>
+          <div class="nav-item__text"><span class="nav-item__title">Capstone: Ship Your Product</span><span class="nav-item__tag">3 hrs · Capstone</span></div>
+        </a>
       </nav>
       <div class="sidebar__footer">
-        <div class="sidebar__progress-label">Your progress</div>
-        <div class="sidebar__progress-track">
-          <div class="sidebar__progress-fill" id="courseProgress" style="width: 0%"></div>
+        <div class="sidebar__progress-section">
+          <div class="sidebar__progress-phase-label">Phase 1</div>
+          <div class="sidebar__progress-track">
+            <div class="sidebar__progress-fill" id="courseProgress" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="sidebar__progress-section">
+          <div class="sidebar__progress-phase-label">Phase 2</div>
+          <div class="sidebar__progress-track">
+            <div class="sidebar__progress-fill sidebar__progress-fill--p2" id="courseProgressP2" style="width: 0%"></div>
+          </div>
         </div>
         <div class="theme-toggle">
           <button class="theme-toggle__btn" id="themeToggle" aria-label="Toggle light/dark mode">
@@ -221,6 +260,91 @@
           </div>
         </div>
 
+        <div class="ide" data-mode="html" id="ide-ch06">
+          <div class="ide__header">
+            <div class="ide__icon">▶</div>
+            <div class="ide__header-text">
+              <div class="ide__label">Try it right here</div>
+              <div class="ide__title">Change one variable, update everything</div>
+            </div>
+            <div class="ide__actions">
+              <button class="ide__btn ide__btn--reset">Reset</button>
+              <button class="ide__btn ide__btn--run">▶ Run</button>
+            </div>
+          </div>
+          <div class="ide__split">
+            <div class="ide__editor-pane"><div class="ide__editor" id="ace-ch06"></div></div>
+            <div class="ide__preview-pane"><iframe class="ide__preview" id="preview-ch06" sandbox="allow-scripts allow-forms"></iframe></div>
+          </div>
+          <script type="text/plain" class="ide__starter"><!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* 👇 Change just these variables — watch everything update */
+    :root {
+      --color-bg: #0a0a0a;
+      --color-surface: #111111;
+      --color-accent: #f5e642;
+      --color-text: #f0f0f0;
+      --color-text-secondary: #888;
+      --radius: 12px;
+      --spacing: 24px;
+      --font: 'Inter', sans-serif;
+    }
+    body {
+      margin: 0;
+      background: var(--color-bg);
+      padding: 48px 24px;
+      font-family: var(--font);
+      color: var(--color-text);
+      display: flex;
+      justify-content: center;
+    }
+    .card {
+      background: var(--color-surface);
+      border-radius: var(--radius);
+      padding: var(--spacing);
+      max-width: 340px;
+      width: 100%;
+    }
+    .card__tag {
+      display: inline-block;
+      background: var(--color-accent);
+      color: #0a0a0a;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      border-radius: calc(var(--radius) / 2);
+      margin-bottom: 12px;
+    }
+    h2 { font-size: 22px; margin-bottom: 8px; }
+    p { color: var(--color-text-secondary); font-size: 15px; line-height: 1.6; }
+    .btn {
+      margin-top: var(--spacing);
+      display: inline-block;
+      background: var(--color-accent);
+      color: #0a0a0a;
+      padding: 10px 20px;
+      border-radius: var(--radius);
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card__tag">Design System</div>
+    <h2>One token to rule them all</h2>
+    <p>Change <code>--color-accent</code> above from yellow to any color. Watch the tag, button, and highlights all update at once.</p>
+    <div class="btn">Try clicking me</div>
+  </div>
+</body>
+</html></script>
+        </div>
+
         <div class="takeaways">
           <div class="takeaways__title">Key takeaways</div>
           <ul class="takeaways__list">
@@ -247,6 +371,8 @@
     </main>
   </div>
   <canvas id="confettiCanvas"></canvas>
+  <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/src-min-noconflict/ace.js"></script>
+  <script src="../scripts/ide.js"></script>
   <script src="../scripts/main.js"></script>
 </body>
 </html>

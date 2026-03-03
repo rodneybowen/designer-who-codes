@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A free course for UX designers who want to speak the language of code — and build with it.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/favicon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rodneybowen.github.io/designer-who-codes/chapters/11-javascript-dom.html">
+  <meta property="og:title" content="Chapter 11 — JavaScript DOM &amp; Events | The Designer Who Codes">
+  <meta property="og:description" content="A free course for UX designers who want to speak the language of code — and build with it.">
+  <meta property="og:image" content="https://rodneybowen.github.io/designer-who-codes/assets/favicon.png">
+  <title>Chapter 11 — JavaScript DOM &amp; Events | The Designer Who Codes</title>
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+  <header class="mobile-header">
+    <span class="mobile-header__title">Ch. 11 — JavaScript DOM</span>
+    <button class="mobile-hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand">
+        <img class="sidebar__brand-logo" src="../assets/favicon.png" alt="The Designer Who Codes">
+        <div class="sidebar__brand-text">
+          <div class="sidebar__brand-title">The Designer<br>Who Codes</div>
+          <div class="sidebar__brand-sub">A 17-chapter course</div>
+        </div>
+      </div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__section-label">Start Here</div>
+        <a class="nav-item" href="../index.html">
+          <span class="nav-item__number">00</span>
+          <div class="nav-item__text"><span class="nav-item__title">Introduction</span></div>
+        </a>
+        <div class="sidebar__section-label">Phase 1 — The Course</div>
+        <a class="nav-item" href="01-how-web-works.html">
+          <span class="nav-item__number">01</span>
+          <div class="nav-item__text"><span class="nav-item__title">How the Web Works</span><span class="nav-item__tag">45 min</span></div>
+        </a>
+        <a class="nav-item" href="02-html-css.html">
+          <span class="nav-item__number">02</span>
+          <div class="nav-item__text"><span class="nav-item__title">Reading &amp; Writing HTML + CSS</span><span class="nav-item__tag">1.5 hrs</span></div>
+        </a>
+        <a class="nav-item" href="03-building-with-claude.html">
+          <span class="nav-item__number">03</span>
+          <div class="nav-item__text"><span class="nav-item__title">Building with Claude</span><span class="nav-item__tag">1 hr</span></div>
+        </a>
+        <a class="nav-item" href="04-figma-to-code.html">
+          <span class="nav-item__number">04</span>
+          <div class="nav-item__text"><span class="nav-item__title">Figma to Code</span><span class="nav-item__tag">1.5 hrs</span></div>
+        </a>
+        <a class="nav-item" href="05-git-github.html">
+          <span class="nav-item__number">05</span>
+          <div class="nav-item__text"><span class="nav-item__title">Git &amp; GitHub</span><span class="nav-item__tag">1 hr</span></div>
+        </a>
+        <a class="nav-item" href="06-design-tokens.html">
+          <span class="nav-item__number">06</span>
+          <div class="nav-item__text"><span class="nav-item__title">Design Tokens &amp; Systems</span><span class="nav-item__tag">1 hr</span></div>
+        </a>
+        <a class="nav-item" href="07-working-with-devs.html">
+          <span class="nav-item__number">07</span>
+          <div class="nav-item__text"><span class="nav-item__title">Working with Developers</span><span class="nav-item__tag">1 hr</span></div>
+        </a>
+        <a class="nav-item" href="08-responsive-accessibility.html">
+          <span class="nav-item__number">08</span>
+          <div class="nav-item__text"><span class="nav-item__title">Responsive &amp; Accessibility</span><span class="nav-item__tag">1 hr</span></div>
+        </a>
+        <a class="nav-item" href="09-ai-design-workflow.html">
+          <span class="nav-item__number">09</span>
+          <div class="nav-item__text"><span class="nav-item__title">AI-Assisted Design</span><span class="nav-item__tag">45 min</span></div>
+        </a>
+        <a class="nav-item" href="10-component-thinking.html">
+          <span class="nav-item__number">10</span>
+          <div class="nav-item__text"><span class="nav-item__title">Component Thinking</span><span class="nav-item__tag">45 min</span></div>
+        </a>
+        <div class="nav-phase-divider">
+          <span class="nav-phase-divider__label">Phase 2 — UX Engineer</span>
+        </div>
+        <a class="nav-item nav-item--active" href="11-javascript-dom.html">
+          <span class="nav-item__number">11</span>
+          <div class="nav-item__text"><span class="nav-item__title">JavaScript DOM &amp; Events</span><span class="nav-item__tag">1.5 hrs</span></div>
+        </a>
+        <a class="nav-item" href="12-css-grid-animations.html">
+          <span class="nav-item__number">12</span>
+          <div class="nav-item__text"><span class="nav-item__title">CSS Grid &amp; Animations</span><span class="nav-item__tag">1 hr</span></div>
+        </a>
+        <a class="nav-item" href="13-react-with-claude.html">
+          <span class="nav-item__number">13</span>
+          <div class="nav-item__text"><span class="nav-item__title">React with Claude</span><span class="nav-item__tag">1.5 hrs</span></div>
+        </a>
+        <a class="nav-item" href="14-firebase-backend.html">
+          <span class="nav-item__number">14</span>
+          <div class="nav-item__text"><span class="nav-item__title">Firebase — No Backend Needed</span><span class="nav-item__tag">2 hrs</span></div>
+        </a>
+        <a class="nav-item" href="15-shipping-products.html">
+          <span class="nav-item__number">15</span>
+          <div class="nav-item__text"><span class="nav-item__title">Shipping Real Products</span><span class="nav-item__tag">1 hr</span></div>
+        </a>
+        <a class="nav-item" href="16-ai-api-integration.html">
+          <span class="nav-item__number">16</span>
+          <div class="nav-item__text"><span class="nav-item__title">Building with AI APIs</span><span class="nav-item__tag">1.5 hrs</span></div>
+        </a>
+        <a class="nav-item" href="17-capstone-full-product.html">
+          <span class="nav-item__number">17</span>
+          <div class="nav-item__text"><span class="nav-item__title">Capstone: Ship Your Product</span><span class="nav-item__tag">3 hrs · Capstone</span></div>
+        </a>
+      </nav>
+      <div class="sidebar__footer">
+        <div class="sidebar__progress-section">
+          <div class="sidebar__progress-phase-label">Phase 1</div>
+          <div class="sidebar__progress-track">
+            <div class="sidebar__progress-fill" id="courseProgress" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="sidebar__progress-section">
+          <div class="sidebar__progress-phase-label">Phase 2</div>
+          <div class="sidebar__progress-track">
+            <div class="sidebar__progress-fill sidebar__progress-fill--p2" id="courseProgressP2" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="theme-toggle">
+          <button class="theme-toggle__btn" id="themeToggle" aria-label="Toggle light/dark mode">
+            <span class="theme-icon theme-icon--dark">🌙</span>
+            <span class="theme-icon theme-icon--light">☀️</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="chapter-header">
+        <div class="chapter-header__eyebrow">
+          <span class="chapter-header__number">Chapter 11</span>
+          <span class="chapter-header__phase">Phase 2 — UX Engineer</span>
+        </div>
+        <h1 class="chapter-header__title">JavaScript That Actually Does Things</h1>
+        <p class="chapter-header__tagline">HTML and CSS describe what things look like. JavaScript makes them behave.</p>
+        <div class="chapter-header__meta">
+          <span class="meta-badge meta-badge--time">⏱ 1.5 hours</span>
+          <span class="meta-badge meta-badge--tools">🛠 VS Code · Browser</span>
+        </div>
+      </header>
+
+      <article class="chapter-body">
+
+        <section class="section">
+          <h2 class="section__title">The line between Phase 1 and Phase 2</h2>
+          <div class="prose">
+            <p>Everything you learned in Phase 1 — HTML structure, CSS styling, design tokens, components — was about the <em>appearance</em> of things. You can build beautiful static pages. But they don't <em>respond</em> yet. A button that can't be clicked is furniture.</p>
+            <p>JavaScript is the thing that makes your designs come alive. A dropdown that opens. A form that validates. A counter that increments. A list that adds and removes items without refreshing the page. This is what separates a mockup from a product.</p>
+          </div>
+          <div class="callout callout--tip">
+            <div class="callout__label">💡 You already know more than you think</div>
+            <div class="callout__title">JavaScript is just instructions</div>
+            <div class="callout__body">Programming feels intimidating because it looks like math. It isn't. It's just telling a computer what to do, step by step, in a very precise way. You already think this way when you write a recipe or create a Figma prototype flow.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Variables — giving things names</h2>
+          <div class="prose">
+            <p>A variable is a label you attach to a piece of data so you can refer to it later. That's it.</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <div class="code-block__dots"><span class="code-block__dot"></span><span class="code-block__dot"></span><span class="code-block__dot"></span></div>
+              <span class="code-block__lang">javascript</span>
+            </div>
+            <pre><code>// const = a value that won't change
+const userName = "Alex";
+const userAge = 28;
+
+// let = a value that might change
+let isLoggedIn = false;
+let cartCount = 0;
+
+// Using your variables
+console.log("Hello, " + userName);
+isLoggedIn = true; // now they're logged in
+cartCount = cartCount + 1; // added something to cart</code></pre>
+          </div>
+          <div class="callout callout--jargon">
+            <div class="callout__label">🔤 Jargon decoded</div>
+            <div class="callout__title">const vs let</div>
+            <div class="callout__body">Use <code>const</code> when the value won't change (a user's name, a DOM element you looked up). Use <code>let</code> when it will (a counter, a boolean toggle). Avoid <code>var</code> — it's the old way and has quirky behavior.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Functions — reusable blocks of logic</h2>
+          <div class="prose">
+            <p>A function is a named set of instructions you can run whenever you need them. Instead of writing the same code ten times, you write it once and call it by name.</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <div class="code-block__dots"><span class="code-block__dot"></span><span class="code-block__dot"></span><span class="code-block__dot"></span></div>
+              <span class="code-block__lang">javascript</span>
+            </div>
+            <pre><code>// Define a function
+function greetUser(name) {
+  return "Welcome back, " + name + "!";
+}
+
+// Call it
+const message = greetUser("Alex"); // "Welcome back, Alex!"
+const message2 = greetUser("Sam"); // "Welcome back, Sam!"
+
+// Arrow function — same thing, shorter syntax
+const greet = (name) => "Welcome back, " + name + "!";
+const msg = greet("Jordan"); // "Welcome back, Jordan!"</code></pre>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">The DOM — JavaScript's map of your HTML</h2>
+          <div class="prose">
+            <p>The DOM (Document Object Model) is how JavaScript sees your HTML. When a page loads, the browser reads your HTML and creates a tree of objects — every element becomes a JavaScript object you can grab, change, add to, or remove.</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <div class="code-block__dots"><span class="code-block__dot"></span><span class="code-block__dot"></span><span class="code-block__dot"></span></div>
+              <span class="code-block__lang">javascript</span>
+            </div>
+            <pre><code>// Find elements
+const title = document.querySelector('h1');
+const button = document.querySelector('.submit-btn');
+const allCards = document.querySelectorAll('.card');
+
+// Read their content
+console.log(title.textContent); // "My Page Title"
+
+// Change their content
+title.textContent = "New Title";
+title.style.color = "#f5e642";
+
+// Add/remove CSS classes (the right way to style with JS)
+button.classList.add('btn--loading');
+button.classList.remove('btn--default');
+button.classList.toggle('btn--active'); // on/off switch
+
+// Create new elements
+const newCard = document.createElement('div');
+newCard.className = 'card';
+newCard.textContent = 'New card content';
+document.querySelector('.card-grid').appendChild(newCard);</code></pre>
+          </div>
+          <div class="callout callout--tip">
+            <div class="callout__label">💡 Designer's rule</div>
+            <div class="callout__title">Never set styles directly in JavaScript if you can help it</div>
+            <div class="callout__body">Use <code>classList.add/remove/toggle</code> to apply CSS classes from your stylesheet instead of <code>element.style.color = '...'</code>. Your CSS stays in CSS, your JavaScript stays in JavaScript. This is cleaner, more maintainable, and easier to debug.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Events — making things respond</h2>
+          <div class="prose">
+            <p>An event is something that happens: a click, a keystroke, a form submission, the page loading, the mouse moving. JavaScript "listens" for these events and runs code when they occur.</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <div class="code-block__dots"><span class="code-block__dot"></span><span class="code-block__dot"></span><span class="code-block__dot"></span></div>
+              <span class="code-block__lang">javascript</span>
+            </div>
+            <pre><code>const btn = document.querySelector('#myButton');
+
+// Listen for a click
+btn.addEventListener('click', function() {
+  console.log('Button was clicked!');
+  btn.textContent = 'Clicked!';
+  btn.classList.add('btn--active');
+});
+
+// Listen for form input
+const input = document.querySelector('#searchInput');
+input.addEventListener('input', function(event) {
+  const searchTerm = event.target.value;
+  console.log('User typed:', searchTerm);
+});
+
+// Listen for keyboard events
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    closeModal();
+  }
+});</code></pre>
+          </div>
+          <ul class="concept-list">
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>click</strong> — user clicks on an element</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>input</strong> — user types in an input field</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>submit</strong> — user submits a form</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>keydown / keyup</strong> — user presses or releases a key</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>mouseover / mouseout</strong> — cursor enters or leaves an element</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>DOMContentLoaded</strong> — page has loaded and DOM is ready</div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Putting it together: a real interactive pattern</h2>
+          <div class="prose">
+            <p>Here's the full pattern you'll use over and over: listen for an event, read some data, update the DOM. This is how virtually every UI interaction works, regardless of framework.</p>
+          </div>
+          <div class="code-block">
+            <div class="code-block__header">
+              <div class="code-block__dots"><span class="code-block__dot"></span><span class="code-block__dot"></span><span class="code-block__dot"></span></div>
+              <span class="code-block__lang">javascript</span>
+            </div>
+            <pre><code>// A simple to-do list — the "Hello World" of interactivity
+const input = document.querySelector('#taskInput');
+const addBtn = document.querySelector('#addBtn');
+const list = document.querySelector('#taskList');
+
+addBtn.addEventListener('click', function() {
+  const taskText = input.value.trim();
+  if (!taskText) return; // don't add empty items
+
+  // Create a new list item
+  const item = document.createElement('li');
+  item.textContent = taskText;
+
+  // Add a delete button to it
+  const del = document.createElement('button');
+  del.textContent = '×';
+  del.addEventListener('click', function() {
+    item.remove();
+  });
+  item.appendChild(del);
+
+  // Add it to the list
+  list.appendChild(item);
+  input.value = ''; // clear the input
+  input.focus();    // put cursor back in input
+});</code></pre>
+          </div>
+          <div class="callout callout--insight">
+            <div class="callout__label">💚 Pattern recognition</div>
+            <div class="callout__title">This same pattern runs the entire web</div>
+            <div class="callout__body">A shopping cart adding items. A filter hiding products. A sidebar opening. A modal appearing. Every single one of these is: listen for event → read data → update DOM. The frameworks (React, Vue) automate this pattern, but the underlying logic is identical.</div>
+          </div>
+        </section>
+
+        <div class="activity">
+          <div class="activity__header">
+            <div class="activity__icon">⚡</div>
+            <div class="activity__header-text">
+              <div class="activity__label">Hands-on activity</div>
+              <div class="activity__title">Build an interactive to-do list</div>
+            </div>
+          </div>
+          <div class="activity__body">
+            <div class="activity__tools">
+              <span class="activity__tools-label">You need:</span>
+              <span class="tool-badge">The in-page IDE below</span>
+            </div>
+            <ol class="activity__steps">
+              <li class="activity__step">
+                <div class="activity__step-number">1</div>
+                <div class="activity__step-text">Look at the starter code in the IDE below. It already has the HTML structure (an input, a button, and an empty list). Your job is to write the JavaScript that makes it work.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">2</div>
+                <div class="activity__step-text">Find the <code>&lt;script&gt;</code> tag at the bottom of the HTML. Write code to: grab the input, button, and list elements using <code>querySelector</code>. Add a click listener to the button. On click: read the input value, create a new <code>&lt;li&gt;</code>, add it to the list.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">3</div>
+                <div class="activity__step-text">Add a delete button to each item. When clicked, remove that <code>&lt;li&gt;</code> from the DOM using <code>.remove()</code>.</div>
+              </li>
+              <li class="activity__step">
+                <div class="activity__step-number">4</div>
+                <div class="activity__step-text"><strong>Bonus:</strong> Add keyboard support — pressing Enter in the input should also add the item (listen for the <code>keydown</code> event and check if <code>event.key === 'Enter'</code>).</div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="ide" data-mode="html" id="ide-ch11">
+          <div class="ide__header">
+            <div class="ide__icon">▶</div>
+            <div class="ide__header-text">
+              <div class="ide__label">Try it right here</div>
+              <div class="ide__title">Build a to-do list with vanilla JavaScript</div>
+            </div>
+            <div class="ide__actions">
+              <button class="ide__btn ide__btn--reset">Reset</button>
+              <button class="ide__btn ide__btn--run">▶ Run</button>
+            </div>
+          </div>
+          <div class="ide__split">
+            <div class="ide__editor-pane"><div class="ide__editor" id="ace-ch11"></div></div>
+            <div class="ide__preview-pane"><iframe class="ide__preview" id="preview-ch11" sandbox="allow-scripts allow-forms"></iframe></div>
+          </div>
+          <script type="text/plain" class="ide__starter"><!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0a0a0a; font-family: 'Inter', sans-serif; padding: 32px; color: #f0f0f0; }
+    h2 { font-size: 20px; margin-bottom: 20px; color: #f5e642; }
+    .input-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    input {
+      flex: 1;
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: #f0f0f0;
+      font-family: inherit;
+      font-size: 15px;
+      outline: none;
+    }
+    input:focus { border-color: #f5e642; }
+    button {
+      background: #f5e642;
+      color: #0a0a0a;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 15px;
+    }
+    .del {
+      background: transparent;
+      color: #555;
+      padding: 2px 8px;
+      font-size: 18px;
+      border: none;
+      border-radius: 4px;
+    }
+    .del:hover { color: #ff4d4d; background: rgba(255,77,77,0.1); }
+  </style>
+</head>
+<body>
+  <h2>My Tasks</h2>
+  <div class="input-row">
+    <input id="taskInput" type="text" placeholder="Add a task...">
+    <button id="addBtn">Add</button>
+  </div>
+  <ul id="taskList"></ul>
+
+  <script>
+    // Your JavaScript goes here!
+    // Hint: use document.querySelector to grab #taskInput, #addBtn, #taskList
+    // Then add a click listener to the button
+
+  <\/script>
+</body>
+</html></script>
+        </div>
+
+        <div class="takeaways">
+          <div class="takeaways__title">Key takeaways</div>
+          <ul class="takeaways__list">
+            <li><code>const</code> for values that don't change, <code>let</code> for values that do</li>
+            <li><code>document.querySelector('.selector')</code> finds the first matching element; <code>querySelectorAll</code> finds all of them</li>
+            <li>Change content with <code>.textContent</code>; change styles by toggling CSS classes with <code>.classList.add/remove/toggle</code></li>
+            <li><code>addEventListener('click', fn)</code> is the foundation of all interactivity</li>
+            <li>The core pattern: listen for event → read data → update DOM. Frameworks automate this, but they all do the same thing underneath</li>
+          </ul>
+        </div>
+
+      </article>
+
+      <nav class="chapter-nav">
+        <a class="chapter-nav__link" href="10-component-thinking.html">
+          <span class="chapter-nav__dir">← Previous</span>
+          <span class="chapter-nav__title">Component Thinking</span>
+        </a>
+        <a class="chapter-nav__link chapter-nav__link--next" href="12-css-grid-animations.html">
+          <span class="chapter-nav__dir">Next →</span>
+          <span class="chapter-nav__title">CSS Grid &amp; Animations</span>
+        </a>
+      </nav>
+    </main>
+  </div>
+
+  <canvas id="confettiCanvas"></canvas>
+  <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.36.0/src-min-noconflict/ace.js"></script>
+  <script src="../scripts/ide.js"></script>
+  <script src="../scripts/main.js"></script>
+</body>
+</html>

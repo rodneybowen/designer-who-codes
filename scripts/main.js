@@ -114,49 +114,75 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ------------------------------------------
      4. COURSE PROGRESS TRACKER (sidebar footer)
+     Dual-phase: Phase 1 (ch01-10) and Phase 2 (ch11-17)
      Fills when users click "next"; decreases on "previous"
   ------------------------------------------ */
-  const TOTAL_CHAPTERS = 10;
-  const STORAGE_KEY = 'dwc_completed';
+  const TOTAL_CHAPTERS_P1 = 10;
+  const TOTAL_CHAPTERS_P2 = 7;
+  const STORAGE_KEY_P1 = 'dwc_completed';
+  const STORAGE_KEY_P2 = 'dwc_completed_p2';
 
-  function getCompleted() {
+  const P2_FILES = [
+    '11-javascript-dom.html',
+    '12-css-grid-animations.html',
+    '13-react-with-claude.html',
+    '14-firebase-backend.html',
+    '15-shipping-products.html',
+    '16-ai-api-integration.html',
+    '17-capstone-full-product.html'
+  ];
+
+  function isP2Chapter(filename) {
+    return P2_FILES.includes(filename);
+  }
+
+  function getCompleted(phase) {
+    const key = phase === 2 ? STORAGE_KEY_P2 : STORAGE_KEY_P1;
     try {
-      return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      return JSON.parse(localStorage.getItem(key) || '[]');
     } catch (e) {
       return [];
     }
   }
 
   function markChapterCompleted(chapterFile) {
-    const completed = getCompleted();
+    const phase = isP2Chapter(chapterFile) ? 2 : 1;
+    const completed = getCompleted(phase);
     if (!completed.includes(chapterFile)) {
       completed.push(chapterFile);
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(completed));
-      } catch (e) {}
+      const key = phase === 2 ? STORAGE_KEY_P2 : STORAGE_KEY_P1;
+      try { localStorage.setItem(key, JSON.stringify(completed)); } catch (e) {}
     }
     updateCourseProgress();
   }
 
   function unmarkChapterCompleted(chapterFile) {
-    const completed = getCompleted();
+    const phase = isP2Chapter(chapterFile) ? 2 : 1;
+    const completed = getCompleted(phase);
     const index = completed.indexOf(chapterFile);
     if (index > -1) {
       completed.splice(index, 1);
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(completed));
-      } catch (e) {}
+      const key = phase === 2 ? STORAGE_KEY_P2 : STORAGE_KEY_P1;
+      try { localStorage.setItem(key, JSON.stringify(completed)); } catch (e) {}
     }
     updateCourseProgress();
   }
 
   function updateCourseProgress() {
-    const fill = document.getElementById('courseProgress');
-    if (!fill) return;
-    const completed = getCompleted();
-    const pct = Math.round((completed.length / TOTAL_CHAPTERS) * 100);
-    fill.style.width = pct + '%';
-    fill.title = pct + '% complete';
+    const fillP1 = document.getElementById('courseProgress');
+    if (fillP1) {
+      const completedP1 = getCompleted(1);
+      const pctP1 = Math.round((completedP1.length / TOTAL_CHAPTERS_P1) * 100);
+      fillP1.style.width = pctP1 + '%';
+      fillP1.title = 'Phase 1: ' + pctP1 + '% complete';
+    }
+    const fillP2 = document.getElementById('courseProgressP2');
+    if (fillP2) {
+      const completedP2 = getCompleted(2);
+      const pctP2 = Math.round((completedP2.length / TOTAL_CHAPTERS_P2) * 100);
+      fillP2.style.width = pctP2 + '%';
+      fillP2.title = 'Phase 2: ' + pctP2 + '% complete';
+    }
   }
 
   // If arriving from a "next" click, fire confetti immediately on page load
@@ -202,37 +228,41 @@ document.addEventListener('DOMContentLoaded', function () {
   updateCourseProgress();
 
   /* ------------------------------------------
-     5. GRADUATE BUTTON + MODAL (Chapter 10)
-     Marks ch10 complete, fills progress to 100%,
-     launches 10s confetti + celebration modal
+     5. GRADUATE BUTTON + MODAL
+     Chapter 10 = Phase 1 graduation
+     Chapter 17 = Phase 2 (UX Engineer) graduation
   ------------------------------------------ */
   const graduateBtn = document.getElementById('graduateBtn');
   const graduateModal = document.getElementById('graduateModal');
-  const graduateClose = document.getElementById('graduateClose');
 
   if (graduateBtn && graduateModal) {
     graduateBtn.addEventListener('click', function () {
-      // Mark Chapter 10 as completed
-      markChapterCompleted('10-component-thinking.html');
+      // Determine which chapter we're graduating from
+      const pageFile = currentPath.split('/').pop() || '';
+      const isP2Graduate = pageFile === '17-capstone-full-product.html';
 
-      // Instantly fill progress bar to 100%
-      const fill = document.getElementById('courseProgress');
-      if (fill) { fill.style.width = '100%'; fill.title = '100% complete'; }
+      if (isP2Graduate) {
+        markChapterCompleted('17-capstone-full-product.html');
+        const fillP2 = document.getElementById('courseProgressP2');
+        if (fillP2) { fillP2.style.width = '100%'; fillP2.title = 'Phase 2: 100% complete'; }
+      } else {
+        markChapterCompleted('10-component-thinking.html');
+        const fillP1 = document.getElementById('courseProgress');
+        if (fillP1) { fillP1.style.width = '100%'; fillP1.title = 'Phase 1: 100% complete'; }
+      }
 
-      // Open modal
       graduateModal.classList.add('graduate-modal--open');
-
-      // Launch big confetti for 10 seconds
       launchConfetti(10000);
     });
 
-    if (graduateClose) {
-      graduateClose.addEventListener('click', function () {
+    // Close via any element with id="graduateClose"
+    document.querySelectorAll('#graduateClose').forEach(function (btn) {
+      btn.addEventListener('click', function () {
         graduateModal.classList.remove('graduate-modal--open');
       });
-    }
+    });
 
-    // Also close on backdrop click
+    // Close on backdrop click
     graduateModal.addEventListener('click', function (e) {
       if (e.target === graduateModal) {
         graduateModal.classList.remove('graduate-modal--open');

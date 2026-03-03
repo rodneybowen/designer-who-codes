@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A free course for UX designers who want to speak the language of code — and build with it.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../assets/favicon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rodneybowen.github.io/designer-who-codes/chapters/17-capstone-full-product.html">
+  <meta property="og:title" content="Chapter 17 — Capstone: Build &amp; Ship Your Product | The Designer Who Codes">
+  <meta property="og:description" content="A free course for UX designers who want to speak the language of code — and build with it.">
+  <meta property="og:image" content="https://rodneybowen.github.io/designer-who-codes/assets/favicon.png">
+  <title>Chapter 17 — Capstone: Build &amp; Ship Your Product | The Designer Who Codes</title>
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+  <div class="progress-bar" id="progressBar"></div>
+  <header class="mobile-header">
+    <span class="mobile-header__title">Ch. 17 — Capstone</span>
+    <button class="mobile-hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </header>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar__brand">
+        <img class="sidebar__brand-logo" src="../assets/favicon.png" alt="The Designer Who Codes">
+        <div class="sidebar__brand-text">
+          <div class="sidebar__brand-title">The Designer<br>Who Codes</div>
+          <div class="sidebar__brand-sub">A 17-chapter course</div>
+        </div>
+      </div>
+      <nav class="sidebar__nav">
+        <div class="sidebar__section-label">Start Here</div>
+        <a class="nav-item" href="../index.html"><span class="nav-item__number">00</span><div class="nav-item__text"><span class="nav-item__title">Introduction</span></div></a>
+        <div class="sidebar__section-label">Phase 1 — The Course</div>
+        <a class="nav-item" href="01-how-web-works.html"><span class="nav-item__number">01</span><div class="nav-item__text"><span class="nav-item__title">How the Web Works</span><span class="nav-item__tag">45 min</span></div></a>
+        <a class="nav-item" href="02-html-css.html"><span class="nav-item__number">02</span><div class="nav-item__text"><span class="nav-item__title">Reading &amp; Writing HTML + CSS</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="03-building-with-claude.html"><span class="nav-item__number">03</span><div class="nav-item__text"><span class="nav-item__title">Building with Claude</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="04-figma-to-code.html"><span class="nav-item__number">04</span><div class="nav-item__text"><span class="nav-item__title">Figma to Code</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="05-git-github.html"><span class="nav-item__number">05</span><div class="nav-item__text"><span class="nav-item__title">Git &amp; GitHub</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="06-design-tokens.html"><span class="nav-item__number">06</span><div class="nav-item__text"><span class="nav-item__title">Design Tokens &amp; Systems</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="07-working-with-devs.html"><span class="nav-item__number">07</span><div class="nav-item__text"><span class="nav-item__title">Working with Developers</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="08-responsive-accessibility.html"><span class="nav-item__number">08</span><div class="nav-item__text"><span class="nav-item__title">Responsive &amp; Accessibility</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="09-ai-design-workflow.html"><span class="nav-item__number">09</span><div class="nav-item__text"><span class="nav-item__title">AI-Assisted Design</span><span class="nav-item__tag">45 min</span></div></a>
+        <a class="nav-item" href="10-component-thinking.html"><span class="nav-item__number">10</span><div class="nav-item__text"><span class="nav-item__title">Component Thinking</span><span class="nav-item__tag">45 min</span></div></a>
+        <div class="nav-phase-divider"><span class="nav-phase-divider__label">Phase 2 — UX Engineer</span></div>
+        <a class="nav-item" href="11-javascript-dom.html"><span class="nav-item__number">11</span><div class="nav-item__text"><span class="nav-item__title">JavaScript DOM &amp; Events</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="12-css-grid-animations.html"><span class="nav-item__number">12</span><div class="nav-item__text"><span class="nav-item__title">CSS Grid &amp; Animations</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="13-react-with-claude.html"><span class="nav-item__number">13</span><div class="nav-item__text"><span class="nav-item__title">React with Claude</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item" href="14-firebase-backend.html"><span class="nav-item__number">14</span><div class="nav-item__text"><span class="nav-item__title">Firebase — No Backend Needed</span><span class="nav-item__tag">2 hrs</span></div></a>
+        <a class="nav-item" href="15-shipping-products.html"><span class="nav-item__number">15</span><div class="nav-item__text"><span class="nav-item__title">Shipping Real Products</span><span class="nav-item__tag">1 hr</span></div></a>
+        <a class="nav-item" href="16-ai-api-integration.html"><span class="nav-item__number">16</span><div class="nav-item__text"><span class="nav-item__title">Building with AI APIs</span><span class="nav-item__tag">1.5 hrs</span></div></a>
+        <a class="nav-item nav-item--active" href="17-capstone-full-product.html"><span class="nav-item__number">17</span><div class="nav-item__text"><span class="nav-item__title">Capstone: Ship Your Product</span><span class="nav-item__tag">3 hrs · Capstone</span></div></a>
+      </nav>
+      <div class="sidebar__footer">
+        <div class="sidebar__progress-section">
+          <div class="sidebar__progress-phase-label">Phase 1</div>
+          <div class="sidebar__progress-track"><div class="sidebar__progress-fill" id="courseProgress" style="width: 0%"></div></div>
+        </div>
+        <div class="sidebar__progress-section">
+          <div class="sidebar__progress-phase-label">Phase 2</div>
+          <div class="sidebar__progress-track"><div class="sidebar__progress-fill sidebar__progress-fill--p2" id="courseProgressP2" style="width: 0%"></div></div>
+        </div>
+        <div class="theme-toggle">
+          <button class="theme-toggle__btn" id="themeToggle" aria-label="Toggle light/dark mode">
+            <span class="theme-icon theme-icon--dark">🌙</span>
+            <span class="theme-icon theme-icon--light">☀️</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="chapter-header">
+        <div class="chapter-header__eyebrow">
+          <span class="chapter-header__number">Chapter 17</span>
+          <span class="chapter-header__phase">Phase 2 — Capstone</span>
+        </div>
+        <h1 class="chapter-header__title">Build &amp; Ship Your Product</h1>
+        <p class="chapter-header__tagline">Everything you&#39;ve learned. One real product. Live by end of day.</p>
+        <div class="chapter-header__meta">
+          <span class="meta-badge meta-badge--time">⏱ 3 hours</span>
+          <span class="meta-badge meta-badge--tools">🛠 All tools from Phase 1 &amp; 2</span>
+        </div>
+      </header>
+
+      <article class="chapter-body">
+
+        <section class="section">
+          <h2 class="section__title">This is the moment</h2>
+          <div class="prose">
+            <p>You started this course as a designer. You&#39;re finishing it as someone who can design a product, build it, ship it to the internet with auth and a database, and wire in AI features. Solo. In one day. Without needing a backend developer.</p>
+            <p>That&#39;s not a small thing. Most people who call themselves "technical" can&#39;t do all of that. This capstone is your proof of work.</p>
+          </div>
+          <div class="callout callout--tip">
+            <div class="callout__label">💡 Pick a small idea</div>
+            <div class="callout__title">Scope aggressively — ship it today</div>
+            <div class="callout__body">The number one mistake in capstone projects is picking something too big. A great capstone idea has: one clear user, one core action, a way to see results immediately. Not a platform, not a marketplace, not an "app like Notion but better." Pick something you can ship in 3 hours.</div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">Product ideas that work well</h2>
+          <ul class="concept-list">
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>AI critique tool</strong> — paste a design description, get structured UX feedback from Claude. Simple form + API + display results.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Team mood board</strong> — team members sign in with Google, post what&#39;s on their mind (mood + text). Everyone sees real-time updates. Firebase.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Micro-learning cards</strong> — enter a topic, Claude generates 5 flashcard Q&amp;As. Users can save their favorites to Firestore.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Job title generator</strong> — describe what you do, Claude generates 10 creative job titles. Share button copies to clipboard.</div>
+            </li>
+            <li>
+              <div class="concept-list__icon"></div>
+              <div class="concept-list__text"><strong>Sprint retro board</strong> — team members post what went well / what didn&#39;t / what to try. Real-time with Firebase Auth.</div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h2 class="section__title">The 5-milestone structure</h2>
+          <div class="prose">
+            <p>Follow these milestones in order. Each builds on the previous. Don&#39;t skip ahead — a half-built product is worse than a simple complete one.</p>
+          </div>
+          <div class="activity">
+            <div class="activity__header">
+              <div class="activity__icon">🎯</div>
+              <div class="activity__header-text">
+                <div class="activity__label">Milestone 1 — 30 min</div>
+                <div class="activity__title">Define your product (one page, no Figma yet)</div>
+              </div>
+            </div>
+            <div class="activity__body">
+              <ol class="activity__steps">
+                <li class="activity__step">
+                  <div class="activity__step-number">1</div>
+                  <div class="activity__step-text">Write 3 sentences: <strong>Who</strong> is this for? <strong>What</strong> is the one thing they do? <strong>What</strong> do they see when it works?</div>
+                </li>
+                <li class="activity__step">
+                  <div class="activity__step-number">2</div>
+                  <div class="activity__step-text">List the screens (max 2): a landing/sign-in screen and the main app screen. That&#39;s it. No dashboard, no settings, no profile page.</div>
+                </li>
+                <li class="activity__step">
+                  <div class="activity__step-number">3</div>
+                  <div class="activity__step-text">Decide: does this need auth (Firebase)? Does it need AI (Claude API)? Does it need persistent data (Firestore)? Only add what&#39;s essential.</div>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="activity">
+            <div class="activity__header">
+              <div class="activity__icon">🖊</div>
+              <div class="activity__header-text">
+                <div class="activity__label">Milestone 2 — 30 min</div>
+                <div class="activity__title">Design in Figma (wireframe, not high-fidelity)</div>
+              </div>
+            </div>
+            <div class="activity__body">
+              <ol class="activity__steps">
+                <li class="activity__step">
+                  <div class="activity__step-number">1</div>
+                  <div class="activity__step-text">Open Figma. Create a frame at 1440px wide (desktop) and 390px (mobile). Draw the layout with rectangles and text — no colors, no final fonts.</div>
+                </li>
+                <li class="activity__step">
+                  <div class="activity__step-number">2</div>
+                  <div class="activity__step-text">Define the components you&#39;ll need: a card, a form, a button, a header. Sketch each one.</div>
+                </li>
+                <li class="activity__step">
+                  <div class="activity__step-number">3</div>
+                  <div class="activity__step-text">Screenshot the wireframes. You&#39;ll use these to brief Claude.</div>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="activity">
+            <div class="activity__header">
+              <div class="activity__icon">💻</div>
+              <div class="activity__header-text">
+                <div class="activity__label">Milestone 3 — 60 min</div>
+                <div class="activity__title">Build the UI with Claude</div>
+              </div>
+            </div>
+            <div class="activity__body">
+              <ol class="activity__steps">
+                <li class="activity__step">
+                  <div class="activity__step-number">1</div>
+                  <div class="activity__step-text">Paste your wireframe screenshot into Claude with a prompt describing the product, design style (dark/light, colors, fonts), and what each part does. Ask for HTML + CSS as a starting point.</div>
+                </li>
+                <li class="activity__step">
+                  <div class="activity__step-number">2</div>
+                  <div class="activity__step-text">Iterate at least 3 times. Each round: describe one specific thing that needs to change (not "make it better" — "the input should have more padding and the button should be yellow").</div>
+                </li>
+                <li class="activity__step">
+                  <div class="activity__step-number">3</div>
+                  <div class="activity__step-text">Get the UI to a state where it looks right before adding backend. A good-looking static version is a better foundation than a half-connected mess.</div>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="activity">
+            <div class="activity__header">
+              <div class="activity__icon">🔥</div>
+              <div class="activity__header-text">
+                <div class="activity__label">Milestone 4 — 45 min</div>
+                <div class="activity__title">Add Firebase auth + data (if needed)</div>
+              </div>
+            </div>
+            <div class="activity__body">
+              <ol class="activity__steps">
+                <li class="activity__step">
+                  <div class="activity__step-number">1</div>
+                  <div class="activity__step-text">Set up a new Firebase project (or reuse your one from Chapter 14). Enable Google auth. Create a Firestore collection for your product&#39;s data.</div>
+                </li>
+                <li class="activity__step">
+                  <div class="activity__step-number">2</div>
+                  <div class="activity__step-text">Ask Claude: "Here&#39;s my HTML. Add Firebase using CDN imports. Add Google sign-in. On auth, show the app and hide the sign-in screen. Add [describe your data write operation]. Add [describe your data read/display operation]."</div>
+                </li>
+                <li class="activity__step">
+                  <div class="activity__step-number">3</div>
+                  <div class="activity__step-text">Test it locally: sign in, post data, confirm it appears in the Firebase console. Fix any issues before deploying.</div>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="activity">
+            <div class="activity__header">
+              <div class="activity__icon">🚀</div>
+              <div class="activity__header-text">
+                <div class="activity__label">Milestone 5 — 15 min</div>
+                <div class="activity__title">Deploy and share</div>
+              </div>
+            </div>
+            <div class="activity__body">
+              <ol class="activity__steps">
+                <li class="activity__step">
+                  <div class="activity__step-number">1</div>
+                  <div class="activity__step-text">Push your code to a GitHub repo. Import it to Vercel. Deploy. Add your Vercel URL to Firebase&#39;s authorized domains list.</div>
+                </li>
+                <li class="activity__step">
+                  <div class="activity__step-number">2</div>
+                  <div class="activity__step-text">Share the live link with at least one real person who isn&#39;t a developer. Watch them use it without explaining anything. What confuses them? Note it for v2.</div>
+                </li>
+                <li class="activity__step">
+                  <div class="activity__step-number">3</div>
+                  <div class="activity__step-text">When you&#39;re done — click the button below.</div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <div class="takeaways">
+          <div class="takeaways__title">What you can do now</div>
+          <ul class="takeaways__list">
+            <li>Design a product in Figma, build it in HTML/CSS/JS, ship it to the internet — solo</li>
+            <li>Add user authentication (Google sign-in) without writing a backend</li>
+            <li>Store and retrieve data in real-time with Firestore</li>
+            <li>Integrate AI into a product feature using the Claude API via serverless functions</li>
+            <li>Deploy to production with CI/CD — every push goes live automatically</li>
+          </ul>
+        </div>
+
+      </article>
+
+      <nav class="chapter-nav">
+        <a class="chapter-nav__link" href="16-ai-api-integration.html">
+          <span class="chapter-nav__dir">← Previous</span>
+          <span class="chapter-nav__title">Building with AI APIs</span>
+        </a>
+        <button class="graduate-btn" id="graduateBtn">🚀 I shipped it.</button>
+      </nav>
+    </main>
+  </div>
+
+  <canvas id="confettiCanvas"></canvas>
+  <!-- Graduate celebration modal — Phase 2 -->
+  <div class="graduate-modal" id="graduateModal" role="dialog" aria-modal="true" aria-label="Graduation celebration">
+    <div class="graduate-modal__card">
+      <span class="graduate-modal__emoji">🚀</span>
+      <div class="graduate-modal__title">You're a UX Engineer.</div>
+      <div class="graduate-modal__sub">You designed it, built it, added auth, connected a database, and shipped it. No backend developer required. This is the new standard for product designers.</div>
+      <button class="graduate-modal__close" id="graduateClose">Go build something bigger →</button>
+    </div>
+  </div>
+  <script src="../scripts/main.js"></script>
+</body>
+</html>
