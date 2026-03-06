@@ -4,7 +4,7 @@
    ============================================ */
 
 /* --- Google Fonts --- */
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Caveat:wght@400;700&family=Kalam:wght@400;700&family=Courier+Prime:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Caveat:wght@400;700&family=Nunito:wght@400;500;600;700&family=Courier+Prime:wght@400;700&display=swap');
 
 /* --- Design Tokens (CSS Variables) --- */
 :root {
@@ -31,7 +31,7 @@
   /* Typography */
   --font-display: 'Permanent Marker', cursive;
   --font-display-accent: 'Caveat', cursive;
-  --font-body: 'Kalam', cursive;
+  --font-body: 'Nunito', -apple-system, sans-serif;
   --font-mono: 'Courier Prime', 'Courier New', monospace;
 
   /* Layout */
@@ -647,7 +647,7 @@ img { max-width: 100%; display: block; }
   line-height: 1.55;
   max-width: 560px;
   margin-bottom: var(--space-6);
-  font-style: italic;
+  font-style: normal;
 }
 
 .chapter-header__meta {
