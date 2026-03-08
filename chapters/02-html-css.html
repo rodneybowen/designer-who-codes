@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="../styles/main.css">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="progress-bar" id="progressBar"></div>
   <header class="mobile-header">
     <span class="mobile-header__title">Ch. 02 — HTML + CSS</span>
@@ -101,7 +102,7 @@
       </div>
     </aside>
 
-    <main class="content">
+    <main class="content" id="main-content">
       <header class="chapter-header">
         <div class="chapter-header__eyebrow"><span class="chapter-header__number">Chapter 02</span></div>
         <h1 class="chapter-header__title">Reading &amp; Writing HTML + CSS</h1>
@@ -408,7 +409,7 @@ h1 {
   <style>
     /* --- Base card shell — DO NOT edit this --- */
     body {
-      background: #0a0a0a;
+      background: #F2EFE9;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -418,19 +419,20 @@ h1 {
     }
 
     .card {
-      background: #141414;
-      border: 1px solid #2a2a2a;
-      border-radius: 16px;
+      background: #ffffff;
+      border: 1px solid #1A1A18;
+      border-radius: 8px;
       padding: 32px;
       width: 280px;
       text-align: center;
+      box-shadow: 4px 4px 0 rgba(196, 132, 10, 0.25);
     }
 
     .card__photo {
       width: 80px;
       height: 80px;
       border-radius: 50%;
-      background: #f5e642;
+      background: #C4840A;
       margin: 0 auto 16px;
       display: flex;
       align-items: center;
@@ -442,9 +444,9 @@ h1 {
        YOUR TASK: Write CSS for these 3 elements
        Use the Figma-to-CSS table from the chapter.
 
-       .card__name   → 20px, weight 700, color #f5f5f5
-       .card__role   → 13px, weight 500, color #888, uppercase, letter-spacing 0.1em
-       .card__bio    → 14px, line-height 1.6, color #aaa, margin-top 12px
+       .card__name   → 20px, weight 700, color #1A1A18
+       .card__role   → 13px, weight 500, color #6B6864, uppercase, letter-spacing 0.1em
+       .card__bio    → 14px, line-height 1.6, color #474540, margin-top 12px
     ---------------------------------------- */
 
 

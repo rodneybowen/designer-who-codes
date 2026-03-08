@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   navItems.forEach(function (item) {
     item.classList.remove('nav-item--active');
+    item.removeAttribute('aria-current');
     const href = item.getAttribute('href');
     if (!href) return;
 
@@ -24,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (hrefFile === pathFile) {
       item.classList.add('nav-item--active');
+      item.setAttribute('aria-current', 'page');
     }
   });
 
@@ -408,12 +410,14 @@ document.addEventListener('DOMContentLoaded', function () {
     sidebar && sidebar.classList.add('sidebar--open');
     overlay && overlay.classList.add('sidebar-overlay--open');
     document.body.style.overflow = 'hidden';
+    hamburger && hamburger.setAttribute('aria-expanded', 'true');
   }
 
   function closeSidebar() {
     sidebar && sidebar.classList.remove('sidebar--open');
     overlay && overlay.classList.remove('sidebar-overlay--open');
     document.body.style.overflow = '';
+    hamburger && hamburger.setAttribute('aria-expanded', 'false');
   }
 
   if (hamburger) {
@@ -456,6 +460,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
+    if (themeToggle) themeToggle.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
   }
 
   // On load: restore saved theme, default to dark

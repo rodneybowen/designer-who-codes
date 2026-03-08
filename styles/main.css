@@ -1551,7 +1551,64 @@ code:not(.code-block code) {
 .mt-6 { margin-top: var(--space-6); }
 
 /* ============================================
-   SKETCH / INK THEME — offset panel shadows
+   SKIP TO CONTENT
+   ============================================ */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-accent);
+  color: var(--color-bg);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  z-index: 9999;
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+/* ============================================
+   FOCUS VISIBLE — keyboard navigation
+   ============================================ */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+/* Remove outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+/* Nav items */
+.nav-item:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+}
+/* Chapter cards */
+.chapter-card:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  box-shadow: 5px 5px 0 rgba(196, 132, 10, 0.45);
+}
+/* Buttons */
+.home-start-btn:focus-visible,
+.graduate-btn:focus-visible,
+.ide__btn:focus-visible,
+.code-block__copy:focus-visible,
+.mobile-hamburger:focus-visible,
+.theme-toggle__btn:focus-visible,
+.chapter-nav__link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* ============================================
+   AMBER THEME — offset panel shadows
    ============================================ */
 
 .chapter-card {

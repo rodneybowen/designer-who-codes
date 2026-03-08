@@ -6,7 +6,10 @@
 document.addEventListener('DOMContentLoaded', function () {
 
   // Wait for Ace to be available (it's loaded from CDN in the HTML)
-  if (typeof ace === 'undefined') return;
+  if (typeof ace === 'undefined') {
+    console.warn('IDE: Ace editor library not loaded — check the CDN script tag.');
+    return;
+  }
 
   document.querySelectorAll('.ide').forEach(function (ide) {
     var starterEl = ide.querySelector('.ide__starter');
