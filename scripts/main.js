@@ -465,7 +465,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // On load: restore saved theme, default to dark
   const savedTheme = (function () {
-    try { return localStorage.getItem(THEME_KEY) || 'dark'; } catch (e) { return 'dark'; }
+    try { return localStorage.getItem(THEME_KEY) || 'light'; } catch (e) { return 'light'; }
   })();
   applyTheme(savedTheme);
 
@@ -473,6 +473,36 @@ document.addEventListener('DOMContentLoaded', function () {
     themeToggle.addEventListener('click', function () {
       const current = document.documentElement.getAttribute('data-theme');
       applyTheme(current === 'light' ? 'dark' : 'light');
+    });
+  }
+
+  /* ------------------------------------------
+     11. HIGH CONTRAST TOGGLE (accessibility)
+     Independent of dark/light — stacks on top
+  ------------------------------------------ */
+  const CONTRAST_KEY = 'dwc_contrast';
+  const contrastToggle = document.getElementById('contrastToggle');
+
+  function applyContrast(on) {
+    if (on) {
+      document.documentElement.setAttribute('data-contrast', 'high');
+    } else {
+      document.documentElement.removeAttribute('data-contrast');
+    }
+    try { localStorage.setItem(CONTRAST_KEY, on ? 'high' : 'off'); } catch (e) {}
+    if (contrastToggle) contrastToggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+  }
+
+  // On load: restore saved contrast preference
+  const savedContrast = (function () {
+    try { return localStorage.getItem(CONTRAST_KEY) === 'high'; } catch (e) { return false; }
+  })();
+  applyContrast(savedContrast);
+
+  if (contrastToggle) {
+    contrastToggle.addEventListener('click', function () {
+      const isHigh = document.documentElement.getAttribute('data-contrast') === 'high';
+      applyContrast(!isHigh);
     });
   }
 
