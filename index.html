@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="A free course for UX designers who want to speak the language of code — and build with it.">
-  <meta name="theme-color" content="#0a0a0a">
+  <meta name="theme-color" content="#f7f5f0">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/favicon.png">
   <meta property="og:type" content="website">
@@ -171,31 +171,31 @@
         <div class="nav-phase-divider">
           <span class="nav-phase-divider__label">Phase 2 — UX Engineer</span>
         </div>
-        <a class="nav-item" href="11-javascript-dom.html">
+        <a class="nav-item" href="chapters/11-javascript-dom.html">
           <span class="nav-item__number">11</span>
           <div class="nav-item__text"><span class="nav-item__title">JavaScript DOM &amp; Events</span><span class="nav-item__tag">1.5 hrs</span></div>
         </a>
-        <a class="nav-item" href="12-css-grid-animations.html">
+        <a class="nav-item" href="chapters/12-css-grid-animations.html">
           <span class="nav-item__number">12</span>
           <div class="nav-item__text"><span class="nav-item__title">CSS Grid &amp; Animations</span><span class="nav-item__tag">1 hr</span></div>
         </a>
-        <a class="nav-item" href="13-react-with-claude.html">
+        <a class="nav-item" href="chapters/13-react-with-claude.html">
           <span class="nav-item__number">13</span>
           <div class="nav-item__text"><span class="nav-item__title">React with Claude</span><span class="nav-item__tag">1.5 hrs</span></div>
         </a>
-        <a class="nav-item" href="14-firebase-backend.html">
+        <a class="nav-item" href="chapters/14-firebase-backend.html">
           <span class="nav-item__number">14</span>
           <div class="nav-item__text"><span class="nav-item__title">Firebase — No Backend Needed</span><span class="nav-item__tag">2 hrs</span></div>
         </a>
-        <a class="nav-item" href="15-shipping-products.html">
+        <a class="nav-item" href="chapters/15-shipping-products.html">
           <span class="nav-item__number">15</span>
           <div class="nav-item__text"><span class="nav-item__title">Shipping Real Products</span><span class="nav-item__tag">1 hr</span></div>
         </a>
-        <a class="nav-item" href="16-ai-api-integration.html">
+        <a class="nav-item" href="chapters/16-ai-api-integration.html">
           <span class="nav-item__number">16</span>
           <div class="nav-item__text"><span class="nav-item__title">Building with AI APIs</span><span class="nav-item__tag">1.5 hrs</span></div>
         </a>
-        <a class="nav-item" href="17-capstone-full-product.html">
+        <a class="nav-item" href="chapters/17-capstone-full-product.html">
           <span class="nav-item__number">17</span>
           <div class="nav-item__text"><span class="nav-item__title">Capstone: Ship Your Product</span><span class="nav-item__tag">3 hrs · Capstone</span></div>
         </a>
@@ -345,6 +345,19 @@
       <footer class="home-footer">
         <p>Built with pure HTML, CSS, and JavaScript &mdash; no frameworks, no build tools. Hostable for free on <a href="https://pages.github.com" style="color: var(--color-accent); text-decoration: underline;">GitHub Pages</a>. See the README for instructions.</p>
       </footer>
+
+      <!-- Graduate celebration modal -->
+      <div class="graduate-modal" id="graduateModal" role="dialog" aria-modal="true" aria-label="Graduation celebration">
+        <div class="graduate-modal__card">
+          <span class="graduate-modal__emoji">🎓</span>
+          <div class="graduate-modal__title">You're a UX Engineer.</div>
+          <div class="graduate-modal__sub">You've completed all 17 chapters. You can design, build, and ship real products without needing a backend developer for most use cases. That's the whole thing.</div>
+          <button class="graduate-modal__close" id="graduateClose">Close</button>
+        </div>
+      </div>
+
+      <!-- Confetti canvas -->
+      <canvas id="confettiCanvas"></canvas>
 
     </main>
   </div>
