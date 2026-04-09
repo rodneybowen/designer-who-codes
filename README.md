@@ -2,8 +2,7 @@
 
 A 10-chapter interactive course for UX designers who want to build real things with Claude + Figma.
 
-**Live demo:** [yourname.github.io/designer-who-codes](https://yourname.github.io/designer-who-codes) ← update this after you host it
-
+**Live demo:** https://rodneybowen.github.io/designer-who-codes/index.html
 ---
 
 ## What's inside
